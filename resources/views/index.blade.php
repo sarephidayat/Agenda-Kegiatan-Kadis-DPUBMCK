@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dinas Komunikasi dan Informatika - Provinsi Jawa Tengah</title>
+    <title>Dinas PU Bina Marga dan Cipta Karya - Provinsi Jawa Tengah</title>
     <style>
         * {
             margin: 0;
@@ -338,7 +338,7 @@
                 <div class="logo-section">
                     <div class="logo">JT</div>
                     <div class="header-text">
-                        <h1>Dinas Komunikasi dan Informatika</h1>
+                        <h1>Dinas PU Bina Marga dan Cipta Karya</h1>
                         <p>Provinsi Jawa Tengah</p>
                     </div>
                 </div>
@@ -362,7 +362,7 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <h2>Selamat Datang di Dinas Komunikasi dan Informatika</h2>
+            <h2>Selamat Datang di Dinas PU Bina Marga dan Cipta Karya</h2>
             <p>Membangun Jawa Tengah Digital yang Maju dan Berkelanjutan</p>
         </div>
     </section>
@@ -374,7 +374,7 @@
                 <div class="main-content-area">
                     <div class="content-card">
                         <h2 class="card-title">Tentang Kami</h2>
-                        <p>Dinas Komunikasi dan Informatika Provinsi Jawa Tengah merupakan unsur pelaksana Pemerintah Daerah di bidang komunikasi dan informatika. Kami berkomitmen untuk memberikan pelayanan terbaik dalam penyelenggaraan komunikasi publik, pengelolaan informasi, dan pengembangan teknologi informasi di Jawa Tengah.</p>
+                        <p>Dinas PU Bina Marga dan Cipta Karya Provinsi Jawa Tengah merupakan unsur pelaksana Pemerintah Daerah di bidang komunikasi dan informatika. Kami berkomitmen untuk memberikan pelayanan terbaik dalam penyelenggaraan komunikasi publik, pengelolaan informasi, dan pengembangan teknologi informasi di Jawa Tengah.</p>
                         <br>
                         <p>Visi kami adalah mewujudkan Jawa Tengah sebagai provinsi yang unggul dalam pemanfaatan teknologi informasi dan komunikasi untuk mendukung tata kelola pemerintahan yang baik dan pelayanan publik yang prima.</p>
                     </div>
@@ -478,7 +478,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h4>Dinas Komunikasi dan Informatika</h4>
+                    <h4>Dinas PU Bina Marga dan Cipta Karya</h4>
                     <p>Provinsi Jawa Tengah</p>
                     <p>Jl. Pahlawan No. 7, Semarang</p>
                     <p>Jawa Tengah 50241</p>
@@ -509,7 +509,7 @@
                 </div>
             </div>
             <hr style="margin: 2rem 0; border-color: #2e7d32;">
-            <p>&copy; 2025 Dinas Komunikasi dan Informatika Provinsi Jawa Tengah. Semua hak dilindungi.</p>
+            <p>&copy; 2025 Dinas PU Bina Marga dan Cipta Karya Provinsi Jawa Tengah. Semua hak dilindungi.</p>
         </div>
     </footer>
 
