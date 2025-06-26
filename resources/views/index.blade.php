@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dinas PU Bina Marga dan Cipta Karya - Provinsi Jawa Tengah</title>
+    <title>Dinas PU Bina Marga dan Cipta Karya - Provinsi Jawa Timur</title>
     <style>
         * {
             margin: 0;
