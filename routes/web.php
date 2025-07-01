@@ -10,20 +10,40 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 });
 
+// Halaman Kepala Dinas
 Route::get('/kadis', function () {
     return view('Kadis/dashboard');
 });
 
+Route::get('/kadis/daftarAgenda', function () {
+    return view('Kadis/daftarAgenda');
+});
+
+// Halaman Staff
 Route::get('/staff', function () {
     return view('Staff/dashboard');
 });
 
+Route::get('/staff/daftarAgenda', function () {
+    return view('Staff/daftarAgenda');
+});
+
+// Halaman Sub-Koor
 Route::get('/sub-koor', function () {
     return view('Sub-Koor/dashboard');
 });
 
+Route::get('/sub-koor/daftarAgenda', function () {
+    return view('Sub-Koor/daftarAgenda');
+});
+
+// Halaman TU
 Route::get('/tu', function () {
     return view('TU/dashboard');
+});
+
+Route::get('/tu/daftarAgenda', function () {
+    return view('TU/daftarAgenda');
 });
 
 // Route::get('/DaftarRuang', function () {

@@ -1,4 +1,4 @@
-@extends('TemplateDashboard/main')
+@extends('Sub-Koor/TemplateDashboard/main')
 
 @section('content')
 <!--begin::App Main-->

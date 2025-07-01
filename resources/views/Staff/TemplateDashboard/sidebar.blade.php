@@ -21,7 +21,7 @@
             <!--begin::Sidebar Menu-->
             <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" role="menu" data-accordion="false">
                 <li class="nav-item">
-                    <a href="/" class="nav-link">
+                    <a href="/staff" class="nav-link">
                         <i class="nav-icon bi bi-speedometer"></i>
                         <p>
                             Dashboard
@@ -44,8 +44,9 @@
                         </p>
                     </a>
                 </li> --}}
+                
                 <li class="nav-item">
-                    <a href="/DaftarPeminjam" class="nav-link">
+                    <a href="/staff/daftarAgenda" class="nav-link">
                         <i class="nav-icon bi bi-table"></i>
                         <p>
                             Daftar Peminjam
