@@ -15,21 +15,34 @@
             font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
         }
         .navbar {
-            background: rgba(255,255,255,0.85) !important;
+            background: rgba(255,255,255,0.92) !important;
             backdrop-filter: blur(8px);
             border-bottom: 1px solid #e3e3e3;
         }
         .glass-card {
-            background: rgba(255,255,255,0.7);
+            background: rgba(255,255,255,0.8);
             border-radius: 22px;
             box-shadow: 0 8px 32px 0 rgba(31,38,135,0.18);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255,255,255,0.18);
-            transition: transform 0.25s cubic-bezier(.4,2,.6,1), box-shadow 0.25s;
+            transition: transform 0.25s cubic-bezier(.4,2,.6,1), box-shadow 0.25s, border 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+        .glass-card::before {
+            content: "";
+            position: absolute;
+            top: -60px; left: -60px;
+            width: 120px; height: 120px;
+            background: linear-gradient(135deg, #0d6efd33 0%, #51e2c233 100%);
+            border-radius: 50%;
+            z-index: 0;
+            filter: blur(8px);
         }
         .glass-card:hover {
-            transform: translateY(-12px) scale(1.04) rotate(-1deg);
+            transform: translateY(-10px) scale(1.03) rotate(-1deg);
             box-shadow: 0 16px 40px 0 rgba(31,38,135,0.22);
+            border: 1.5px solid #0d6efd44;
         }
         .icon-circle {
             width: 70px;
@@ -73,8 +86,16 @@
             background: linear-gradient(90deg, #0d6efd 40%, #51e2c2 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
+            font-size: 2.7rem;
+            margin-bottom: 2.5rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-align: center;
+            animation: fadeInDown 1s cubic-bezier(.4,2,.6,1);
+        }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px);}
+            to { opacity: 1; transform: translateY(0);}
         }
         footer {
             background: rgba(255,255,255,0.85);
@@ -104,11 +125,11 @@
     </nav>
 
     <div class="container py-5">
-        <h1 class="text-center fw-bold">Agenda Kegiatan Kadis</h1>
+        <h1>Agenda Kegiatan Kadis</h1>
         <div class="row g-4 justify-content-center">
-            <div class="col-md-5 col-lg-4">
-                <div class="glass-card h-100 p-3">
-                    <div class="card-body text-center">
+            <div class="col-md-6 col-lg-6">
+                <div class="glass-card h-100 p-4">
+                    <div class="card-body text-center position-relative">
                         <div class="icon-circle icon-kadis mb-2">
                             <i class="bi bi-person-badge"></i>
                         </div>
@@ -120,9 +141,9 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-5 col-lg-4">
-                <div class="glass-card h-100 p-3">
-                    <div class="card-body text-center">
+            <div class="col-md-6 col-lg-6">
+                <div class="glass-card h-100 p-4">
+                    <div class="card-body text-center position-relative">
                         <div class="icon-circle icon-subkoor mb-2">
                             <i class="bi bi-people"></i>
                         </div>
@@ -134,9 +155,9 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-5 col-lg-4">
-                <div class="glass-card h-100 p-3">
-                    <div class="card-body text-center">
+            <div class="col-md-6 col-lg-6">
+                <div class="glass-card h-100 p-4">
+                    <div class="card-body text-center position-relative">
                         <div class="icon-circle icon-staff mb-2">
                             <i class="bi bi-person-lines-fill"></i>
                         </div>
@@ -148,9 +169,9 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-5 col-lg-4">
-                <div class="glass-card h-100 p-3">
-                    <div class="card-body text-center">
+            <div class="col-md-6 col-lg-6">
+                <div class="glass-card h-100 p-4">
+                    <div class="card-body text-center position-relative">
                         <div class="icon-circle icon-tu mb-2">
                             <i class="bi bi-journal-check"></i>
                         </div>
