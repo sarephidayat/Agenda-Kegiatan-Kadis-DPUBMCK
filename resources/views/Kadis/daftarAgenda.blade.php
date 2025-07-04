@@ -1,468 +1,207 @@
 @extends('Kadis/TemplateDashboard/main')
 
 @section('content')
-<!--begin::App Main-->
-<main class="app-main">
-    <!--begin::App Content Header-->
+<main class="app-main bg-gradient-to-br from-slate-50 to-indigo-100 min-vh-100">
     <div class="app-content-header">
-        <!--begin::Container-->
         <div class="container-fluid">
-            <!--begin::Row-->
-            <div class="row">
+            <div class="row align-items-center mb-4">
                 <div class="col-sm-6">
-                    <h3 class="mb-0">Daftar Agenda</h3>
+                    <h3 class="mb-0 fw-bold text-capitalize text-primary">Daftar Agenda</h3>
                 </div>
                 <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-end">
-                        <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Daftar Mahasiswa</li>
+                    <ol class="breadcrumb float-sm-end bg-white rounded px-3 py-2 shadow-sm">
+                        <li class="breadcrumb-item"><a href="#" class="text-decoration-none text-primary">Dashboard</a></li>
+                        <li class="breadcrumb-item active text-secondary" aria-current="page">Daftar Mahasiswa</li>
                     </ol>
                 </div>
             </div>
-            <!--end::Row-->
         </div>
         <div class="app-content">
-            <!--begin::Container-->
-            <div class="container-fluid">
-                <!-- Info boxes -->
-                <div class="row">
+            <div class="container-fluid mb-4">
+                <div class="row g-3">
                     <div class="col-12 col-sm-6 col-md-3">
-                        <div class="info-box">
-                            <span class="info-box-icon text-bg-primary shadow-sm">
-                                <i class="bi bi-gear-fill"></i>
+                        <div class="info-box rounded shadow-lg border-0 bg-gradient-primary" style="background: linear-gradient(135deg, #6366f1 0%, #818cf8 100%);">
+                            <span class="info-box-icon text-bg-primary shadow-sm rounded-circle border border-white border-3">
+                                <i class="bi bi-gear-fill fs-3"></i>
                             </span>
                             <div class="info-box-content">
-                                <span class="info-box-text">Jumlah Mahasiswa</span>
-                                <span class="info-box-number">
-                                    10
-                                    <small>%</small>
+                                <span class="info-box-text fw-semibold text-white">Jumlah Mahasiswa</span>
+                                <span class="info-box-number fs-5 text-white">
+                                    10 <small>%</small>
                                 </span>
                             </div>
-                            <!-- /.info-box-content -->
                         </div>
-                        <!-- /.info-box -->
                     </div>
-                    <!-- /.col -->
                     <div class="col-12 col-sm-6 col-md-3">
-                        <div class="info-box">
-                            <span class="info-box-icon text-bg-danger shadow-sm">
-                                <i class="bi bi-hand-thumbs-up-fill"></i>
+                        <div class="info-box rounded shadow-lg border-0" style="background: linear-gradient(135deg, #f87171 0%, #fbbf24 100%);">
+                            <span class="info-box-icon text-bg-danger shadow-sm rounded-circle border border-white border-3">
+                                <i class="bi bi-hand-thumbs-up-fill fs-3"></i>
                             </span>
                             <div class="info-box-content">
-                                <span class="info-box-text">Sedang Meminjam</span>
-                                <span class="info-box-number">41,410</span>
+                                <span class="info-box-text fw-semibold text-white">Sedang Meminjam</span>
+                                <span class="info-box-number fs-5 text-white">41,410</span>
                             </div>
-                            <!-- /.info-box-content -->
                         </div>
-                        <!-- /.info-box -->
                     </div>
-                    <!-- /.col -->
-                    <!-- fix for small devices only -->
-                    <!-- <div class="clearfix hidden-md-up"></div> -->
                     <div class="col-12 col-sm-6 col-md-3">
-                        <div class="info-box">
-                            <span class="info-box-icon text-bg-success shadow-sm">
-                                <i class="bi bi-cart-fill"></i>
+                        <div class="info-box rounded shadow-lg border-0" style="background: linear-gradient(135deg, #34d399 0%, #60a5fa 100%);">
+                            <span class="info-box-icon text-bg-success shadow-sm rounded-circle border border-white border-3">
+                                <i class="bi bi-cart-fill fs-3"></i>
                             </span>
                             <div class="info-box-content">
-                                <span class="info-box-text">Pernah Meminjam</span>
-                                <span class="info-box-number">760</span>
+                                <span class="info-box-text fw-semibold text-white">Pernah Meminjam</span>
+                                <span class="info-box-number fs-5 text-white">760</span>
                             </div>
-                            <!-- /.info-box-content -->
                         </div>
-                        <!-- /.info-box -->
                     </div>
-                    <!-- /.col -->
                     <div class="col-12 col-sm-6 col-md-3">
-                        <div class="info-box">
-                            <span class="info-box-icon text-bg-warning shadow-sm">
-                                <i class="bi bi-people-fill"></i>
+                        <div class="info-box rounded shadow-lg border-0" style="background: linear-gradient(135deg, #fbbf24 0%, #f472b6 100%);">
+                            <span class="info-box-icon text-bg-warning shadow-sm rounded-circle border border-white border-3">
+                                <i class="bi bi-people-fill fs-3"></i>
                             </span>
                             <div class="info-box-content">
-                                <span class="info-box-text">Belum Pernah Meminjam</span>
-                                <span class="info-box-number">2,000</span>
+                                <span class="info-box-text fw-semibold text-white">Belum Pernah Meminjam</span>
+                                <span class="info-box-number fs-5 text-white">2,000</span>
                             </div>
-                            <!-- /.info-box-content -->
                         </div>
-                        <!-- /.info-box -->
                     </div>
-                    <!-- /.col -->
-                    <!--end::Container-->
                 </div>
             </div>
-            {{-- end:: container --}}
-            <!--begin::Container-->
-            <div class="container-fluid">
-                <!--begin::Row-->
+
+            @php
+                $tables = [
+                    ['title' => 'Sedang Meminjam'],
+                    ['title' => 'Pernah Meminjam'],
+                    ['title' => 'Belum Pernah Meminjam'],
+                ];
+            @endphp
+
+            @foreach($tables as $table)
+            <div class="container-fluid mb-5">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="card mb-4">
-                            <div class="card-header">
-                                <h3 class="card-title">Sedang Meminjam</h3>
+                        <div class="card rounded shadow-lg border-0">
+                            <div class="card-header bg-gradient-primary text-white rounded-top" style="background: linear-gradient(90deg, #6366f1 0%, #818cf8 100%);">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h3 class="card-title mb-0 fw-bold">{{ $table['title'] }}</h3>
+                                    <div>
+                                        <input type="text" class="form-control form-control-sm d-inline-block w-auto me-2" placeholder="Cari...">
+                                        <select class="form-select form-select-sm d-inline-block w-auto">
+                                            <option>Status</option>
+                                            <option>Disetujui</option>
+                                            <option>Ditolak</option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
-                            <!-- /.card-header -->
-                            <div class="card-body">
-                                <table class="table table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Name</th>
-                                            <th>NIM</th>
-                                            <th>Email</th>
-                                            <th>Program Studi</th>
-                                            <th>Status</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr class="align-middle">
-                                            <td>1.</td>
-                                            <td>Muhammad Syarifudin Hidayat</td>
-                                            <td>232080960032</td>
-                                            <td>232080960032@student.walisongo.ac.id</td>
-                                            <td>Teknologi Informasi</td>
-                                            <td>
-                                                <div>
-                                                    <a href="#" class="badge text-bg-primary">
-                                                        Disetujui
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr class="align-middle">
-                                            <td>2.</td>
-                                            <td>Muhammad Syarifudin Hidayat</td>
-                                            <td>232080960032</td>
-                                            <td>232080960032@student.walisongo.ac.id</td>
-                                            <td>Teknologi Informasi</td>
-                                            <td>
-                                                <div>
-                                                    <a href="#" class="badge text-bg-danger">
-                                                        Ditolak
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr class="align-middle">
-                                            <td>3.</td>
-                                            <td>Muhammad Syarifudin Hidayat</td>
-                                            <td>232080960032</td>
-                                            <td>232080960032@student.walisongo.ac.id</td>
-                                            <td>Teknologi Informasi</td>
-                                            <td>
-                                                <div>
-                                                    <a href="#" class="badge text-bg-danger">
-                                                        Ditolak
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr class="align-middle">
-                                            <td>4.</td>
-                                            <td>Muhammad Syarifudin Hidayat</td>
-                                            <td>232080960032</td>
-                                            <td>232080960032@student.walisongo.ac.id</td>
-                                            <td>Teknologi Informasi</td>
-                                            <td>
-                                                <div>
-                                                    <a href="#" class="badge text-bg-primary">
-                                                        Disetujui
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr class="align-middle">
-                                            <td>5.</td>
-                                            <td>Muhammad Syarifudin Hidayat</td>
-                                            <td>232080960032</td>
-                                            <td>232080960032@student.walisongo.ac.id</td>
-                                            <td>Teknologi Informasi</td>
-                                            <td>
-                                                <div>
-                                                    <a href="#" class="badge text-bg-danger">
-                                                        Ditolak
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr class="align-middle">
-                                            <td>6.</td>
-                                            <td>Fix and squish bugs</td>
-                                            <td>
-                                                <div class="progress progress-xs progress-striped active">
-                                                    <div class="progress-bar text-bg-success" style="width: 90%"></div>
-                                                </div>
-                                            </td>
-                                            <td><span class="badge text-bg-success">90%</span></td>
-                                            <td></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                            <div class="card-body bg-light rounded-bottom">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-striped table-hover align-middle shadow-sm">
+                                        <thead class="table-primary">
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Name</th>
+                                                <th>NIM</th>
+                                                <th>Email</th>
+                                                <th>Program Studi</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="table-row-hover">
+                                                <td>1.</td>
+                                                <td>Muhammad Syarifudin Hidayat</td>
+                                                <td>232080960032</td>
+                                                <td>232080960032@student.walisongo.ac.id</td>
+                                                <td>Teknologi Informasi</td>
+                                                <td>
+                                                    <span class="badge bg-gradient-primary px-3 py-2 rounded-pill" style="background: linear-gradient(90deg, #34d399 0%, #60a5fa 100%);">
+                                                        <i class="bi bi-check-circle me-1"></i> Disetujui
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            <tr class="table-row-hover">
+                                                <td>2.</td>
+                                                <td>Muhammad Syarifudin Hidayat</td>
+                                                <td>232080960032</td>
+                                                <td>232080960032@student.walisongo.ac.id</td>
+                                                <td>Teknologi Informasi</td>
+                                                <td>
+                                                    <span class="badge bg-gradient-danger px-3 py-2 rounded-pill" style="background: linear-gradient(90deg, #f87171 0%, #fbbf24 100%);">
+                                                        <i class="bi bi-x-circle me-1"></i> Ditolak
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            <tr class="table-row-hover">
+                                                <td>3.</td>
+                                                <td>Muhammad Syarifudin Hidayat</td>
+                                                <td>232080960032</td>
+                                                <td>232080960032@student.walisongo.ac.id</td>
+                                                <td>Teknologi Informasi</td>
+                                                <td>
+                                                    <span class="badge bg-gradient-danger px-3 py-2 rounded-pill" style="background: linear-gradient(90deg, #f87171 0%, #fbbf24 100%);">
+                                                        <i class="bi bi-x-circle me-1"></i> Ditolak
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            <tr class="table-row-hover">
+                                                <td>4.</td>
+                                                <td>Muhammad Syarifudin Hidayat</td>
+                                                <td>232080960032</td>
+                                                <td>232080960032@student.walisongo.ac.id</td>
+                                                <td>Teknologi Informasi</td>
+                                                <td>
+                                                    <span class="badge bg-gradient-primary px-3 py-2 rounded-pill" style="background: linear-gradient(90deg, #34d399 0%, #60a5fa 100%);">
+                                                        <i class="bi bi-check-circle me-1"></i> Disetujui
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            <tr class="table-row-hover">
+                                                <td>5.</td>
+                                                <td>Muhammad Syarifudin Hidayat</td>
+                                                <td>232080960032</td>
+                                                <td>232080960032@student.walisongo.ac.id</td>
+                                                <td>Teknologi Informasi</td>
+                                                <td>
+                                                    <span class="badge bg-gradient-danger px-3 py-2 rounded-pill" style="background: linear-gradient(90deg, #f87171 0%, #fbbf24 100%);">
+                                                        <i class="bi bi-x-circle me-1"></i> Ditolak
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
-                            <!-- /.card-body -->
-                            <div class="card-footer clearfix">
-                                <ul class="pagination pagination-sm m-0 float-end">
-                                    <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
-                                </ul>
+                            <div class="card-footer bg-white rounded-bottom border-0">
+                                <nav>
+                                    <ul class="pagination pagination-sm m-0 float-end">
+                                        <li class="page-item"><a class="page-link rounded-circle" href="#">&laquo;</a></li>
+                                        <li class="page-item active"><a class="page-link rounded-circle" href="#">1</a></li>
+                                        <li class="page-item"><a class="page-link rounded-circle" href="#">2</a></li>
+                                        <li class="page-item"><a class="page-link rounded-circle" href="#">3</a></li>
+                                        <li class="page-item"><a class="page-link rounded-circle" href="#">&raquo;</a></li>
+                                    </ul>
+                                </nav>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!--end::Row-->
             </div>
-            <!--end::Container-->
-            <!--begin::Container-->
-            <div class="container-fluid">
-                <!--begin::Row-->
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card mb-4">
-                            <div class="card-header">
-                                <h3 class="card-title">Pernah Meminjam</h3>
-                            </div>
-                            <!-- /.card-header -->
-                            <div class="card-body">
-                                <table class="table table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Name</th>
-                                            <th>NIM</th>
-                                            <th>Email</th>
-                                            <th>Program Studi</th>
-                                            <th>Status</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr class="align-middle">
-                                            <td>1.</td>
-                                            <td>Muhammad Syarifudin Hidayat</td>
-                                            <td>232080960032</td>
-                                            <td>232080960032@student.walisongo.ac.id</td>
-                                            <td>Teknologi Informasi</td>
-                                            <td>
-                                                <div>
-                                                    <a href="#" class="badge text-bg-primary">
-                                                        Disetujui
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr class="align-middle">
-                                            <td>2.</td>
-                                            <td>Muhammad Syarifudin Hidayat</td>
-                                            <td>232080960032</td>
-                                            <td>232080960032@student.walisongo.ac.id</td>
-                                            <td>Teknologi Informasi</td>
-                                            <td>
-                                                <div>
-                                                    <a href="#" class="badge text-bg-danger">
-                                                        Ditolak
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr class="align-middle">
-                                            <td>3.</td>
-                                            <td>Muhammad Syarifudin Hidayat</td>
-                                            <td>232080960032</td>
-                                            <td>232080960032@student.walisongo.ac.id</td>
-                                            <td>Teknologi Informasi</td>
-                                            <td>
-                                                <div>
-                                                    <a href="#" class="badge text-bg-danger">
-                                                        Ditolak
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr class="align-middle">
-                                            <td>4.</td>
-                                            <td>Muhammad Syarifudin Hidayat</td>
-                                            <td>232080960032</td>
-                                            <td>232080960032@student.walisongo.ac.id</td>
-                                            <td>Teknologi Informasi</td>
-                                            <td>
-                                                <div>
-                                                    <a href="#" class="badge text-bg-primary">
-                                                        Disetujui
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr class="align-middle">
-                                            <td>5.</td>
-                                            <td>Muhammad Syarifudin Hidayat</td>
-                                            <td>232080960032</td>
-                                            <td>232080960032@student.walisongo.ac.id</td>
-                                            <td>Teknologi Informasi</td>
-                                            <td>
-                                                <div>
-                                                    <a href="#" class="badge text-bg-danger">
-                                                        Ditolak
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr class="align-middle">
-                                            <td>6.</td>
-                                            <td>Fix and squish bugs</td>
-                                            <td>
-                                                <div class="progress progress-xs progress-striped active">
-                                                    <div class="progress-bar text-bg-success" style="width: 90%"></div>
-                                                </div>
-                                            </td>
-                                            <td><span class="badge text-bg-success">90%</span></td>
-                                            <td></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <!-- /.card-body -->
-                            <div class="card-footer clearfix">
-                                <ul class="pagination pagination-sm m-0 float-end">
-                                    <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--end::Row-->
-            </div>
-            <!--end::Container-->
-            <!--begin::Container-->
-            <div class="container-fluid">
-                <!--begin::Row-->
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card mb-4">
-                            <div class="card-header">
-                                <h3 class="card-title">Belum Pernah Meminjam</h3>
-                            </div>
-                            <!-- /.card-header -->
-                            <div class="card-body">
-                                <table class="table table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Name</th>
-                                            <th>NIM</th>
-                                            <th>Email</th>
-                                            <th>Program Studi</th>
-                                            <th>Status</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr class="align-middle">
-                                            <td>1.</td>
-                                            <td>Muhammad Syarifudin Hidayat</td>
-                                            <td>232080960032</td>
-                                            <td>232080960032@student.walisongo.ac.id</td>
-                                            <td>Teknologi Informasi</td>
-                                            <td>
-                                                <div>
-                                                    <a href="#" class="badge text-bg-primary">
-                                                        Disetujui
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr class="align-middle">
-                                            <td>2.</td>
-                                            <td>Muhammad Syarifudin Hidayat</td>
-                                            <td>232080960032</td>
-                                            <td>232080960032@student.walisongo.ac.id</td>
-                                            <td>Teknologi Informasi</td>
-                                            <td>
-                                                <div>
-                                                    <a href="#" class="badge text-bg-danger">
-                                                        Ditolak
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr class="align-middle">
-                                            <td>3.</td>
-                                            <td>Muhammad Syarifudin Hidayat</td>
-                                            <td>232080960032</td>
-                                            <td>232080960032@student.walisongo.ac.id</td>
-                                            <td>Teknologi Informasi</td>
-                                            <td>
-                                                <div>
-                                                    <a href="#" class="badge text-bg-danger">
-                                                        Ditolak
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr class="align-middle">
-                                            <td>4.</td>
-                                            <td>Muhammad Syarifudin Hidayat</td>
-                                            <td>232080960032</td>
-                                            <td>232080960032@student.walisongo.ac.id</td>
-                                            <td>Teknologi Informasi</td>
-                                            <td>
-                                                <div>
-                                                    <a href="#" class="badge text-bg-primary">
-                                                        Disetujui
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr class="align-middle">
-                                            <td>5.</td>
-                                            <td>Muhammad Syarifudin Hidayat</td>
-                                            <td>232080960032</td>
-                                            <td>232080960032@student.walisongo.ac.id</td>
-                                            <td>Teknologi Informasi</td>
-                                            <td>
-                                                <div>
-                                                    <a href="#" class="badge text-bg-danger">
-                                                        Ditolak
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr class="align-middle">
-                                            <td>6.</td>
-                                            <td>Fix and squish bugs</td>
-                                            <td>
-                                                <div class="progress progress-xs progress-striped active">
-                                                    <div class="progress-bar text-bg-success" style="width: 90%"></div>
-                                                </div>
-                                            </td>
-                                            <td><span class="badge text-bg-success">90%</span></td>
-                                            <td></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <!-- /.card-body -->
-                            <div class="card-footer clearfix">
-                                <ul class="pagination pagination-sm m-0 float-end">
-                                    <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--end::Row-->
-            </div>
-            <!--end::Container-->
+            @endforeach
+
         </div>
     </div>
-    <!--end::App Content Header-->
 </main>
-<!--end::App Main-->
+<style>
+    .table-row-hover:hover {
+        background: #f1f5f9 !important;
+        transition: background 0.2s;
+    }
+    .bg-gradient-primary {
+        background: linear-gradient(90deg, #6366f1 0%, #818cf8 100%) !important;
+    }
+    .bg-gradient-danger {
+        background: linear-gradient(90deg, #f87171 0%, #fbbf24 100%) !important;
+    }
+</style>
 @endsection
