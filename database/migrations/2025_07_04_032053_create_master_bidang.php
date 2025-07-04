@@ -10,9 +10,9 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('kadis', function (Blueprint $table) {
-            $table->id();
-            $table->string('nama');
+        Schema::create('master_bidang', function (Blueprint $table) {
+            $table->id('id_bidang'); // primary key + auto increment
+            $table->string('nama_bidang');
             $table->timestamps();
         });
     }
@@ -22,6 +22,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('kadis');
+        Schema::dropIfExists('master_bidang');
     }
 };
