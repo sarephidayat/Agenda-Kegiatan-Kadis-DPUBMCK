@@ -60,6 +60,66 @@ class MasterJabatanSeeder extends Seeder
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
+            [
+                'nama_jabatan' => 'Kepala Seksi Rancang Bangun dan Pengawasan',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'nama_jabatan' => 'Kepala Seksi Pengawasan Teknis',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'nama_jabatan' => 'Kepala Seksi Pengelolaan Aset Kebinamargaan  dan Keciptakaryaan',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'nama_jabatan' => 'Sub Koordinator Jalan dan Jembatan Ahli Muda Pelaksana Jalan Timur',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'nama_jabatan' => 'Sub koordinator Teknik Jalan dan Jembatan Ahli Muda Pelaksana Jalan Timur',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'nama_jabatan' => 'PLT Sub Koordinator Jalan dan Jembatan Ahli Muda Seksi Administrasi Teknis Timur',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'nama_jabatan' => 'PLT Sub Koordinator Jalan dan Jembatan Ahli Muda Pelaksana Jalan Barat',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'nama_jabatan' => 'Sub koordinator Jalan dan Jembatan Ahli Muda Pelaksana Jalan Barat II',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'nama_jabatan' => 'PLT Sub Koordinator Jalan dan Jembatan Ahli Muda Seksi Administrasi Teknis Barat',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'nama_jabatan' => 'Sub Koordinator Penyehatan Lingkungan Ahli Muda Seksi Pengembangan Air Minum',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'nama_jabatan' => 'Sub Koordinator Penyehatan Lingkungan Ahli Muda Seksi Pengembangan Penyehatan Lingkungan',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'nama_jabatan' => 'Sub Koordinator Tata Bangunan dan Perumahan Ahli Muda Seksi Tata Bangunan dan Jasa Konstruksi',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
         ]);
     }
 }
