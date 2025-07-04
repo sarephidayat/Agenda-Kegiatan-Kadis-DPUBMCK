@@ -1,10 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AgendaKadisController;
 
 Route::get('/', function () {
-    return view('index');
+    return view('CobaDatabase');
 });
+
+Route::get('/agenda', [AgendaKadisController::class, 'index']);
+Route::post('/agenda', [AgendaKadisController::class, 'store'])->name('agenda.store');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
