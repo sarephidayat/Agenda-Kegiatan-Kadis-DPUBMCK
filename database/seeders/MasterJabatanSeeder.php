@@ -51,7 +51,12 @@ class MasterJabatanSeeder extends Seeder
                 'updated_at' => Carbon::now(),
             ],
             [
-                'nama_jabatan' => 'Kepala Bidang Sumber Daya Air',
+                'nama_jabatan' => 'Kepala Sub Bagian Keungan',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'nama_jabatan' => 'Kepala Sub Bagian Program',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
