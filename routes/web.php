@@ -2,14 +2,27 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AgendaKadisController;
+use App\Http\Controllers\SekretarisDinasController;
 
 Route::get('/', function () {
-    return view('CobaDatabase');
+    return view('index');
 });
 
+// untuk controller AgendaKadisController halaman CobaDatabase
 Route::get('/agenda', [AgendaKadisController::class, 'index']);
 Route::post('/agenda', [AgendaKadisController::class, 'store'])->name('agenda.store');
 
+// Sekelompok route untuk SekretarisDinasController
+Route::prefix('sekretaris-dinas')->name('sekretaris-dinas.')->group(function () {
+    // Halaman tabel data
+    Route::get('/', [SekretarisDinasController::class, 'index'])->name('index');
+
+    // Form tambah data
+    Route::get('/tambah-data', [SekretarisDinasController::class, 'create'])->name('create');
+
+    // Proses simpan data
+    Route::post('/', [SekretarisDinasController::class, 'store'])->name('store');
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');

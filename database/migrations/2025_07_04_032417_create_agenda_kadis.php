@@ -28,6 +28,7 @@ return new class extends Migration {
             $table->string('waktu');
             $table->string('nama_pendamping');
             $table->text('catatan');
+            $table->string('softfile_surat')->nullable(); // Optional field for storing file path
 
             $table->timestamps();
 

@@ -30,6 +30,7 @@ class AgendaKadisSeeder extends Seeder
                 'id_instruksi' => 1,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
+                'softfile_surat' => '132-335-1-PB.pdf', // Optional field for storing file path
             ],
             [
                 'tanggal_surat' => '2024-01-04',
@@ -46,6 +47,7 @@ class AgendaKadisSeeder extends Seeder
                 'id_instruksi' => 1,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
+                'softfile_surat' => '132-335-1-PB.pdf', // Optional field for storing file path
             ],
             [
                 'tanggal_surat' => '2023-12-03',
@@ -62,6 +64,7 @@ class AgendaKadisSeeder extends Seeder
                 'id_instruksi' => 1,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
+                'softfile_surat' => '132-335-1-PB.pdf' // Optional field for storing file path
             ],
             [
                 'tanggal_surat' => '2024-01-05',
@@ -78,6 +81,7 @@ class AgendaKadisSeeder extends Seeder
                 'id_instruksi' => 1,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
+                'softfile_surat' => '132-335-1-PB.pdf'
             ]
         ]);
     }

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="">
     <style>
     body {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -81,6 +82,19 @@
 
     button[type="submit"]:hover {
         background-color: #3498db;
+    }
+
+    .alert {
+        margin: 1rem 0;
+        border-radius: 0.5rem;
+        box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.075);
+    }
+
+    .navbar {
+        padding: 1rem;
+        background-color: #f8f9fa;
+        border-bottom: 1px solid #dee2e6;
+        margin-bottom: 1rem;
     }
 
     /* Responsive Form */
@@ -200,69 +214,29 @@
 </head>
 <body>
     <h1>Ini adalah halaman sekretaris</h1>
-    <div class="container">
+    <!-- Versi menggunakan Bootstrap 5 (standar Laravel) -->
+    <div class="navbar bg-light border-bottom mb-3 p-3">
         @if(session('success'))
-            <div class="alert alert-success">
+            <div class="alert alert-success alert-dismissible fade show mb-3">
+                <i class="fas fa-check-circle me-2"></i>
                 {{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        @endif
+        
+        @if(session('error'))
+            <div class="alert alert-danger alert-dismissible fade show mb-3">
+                <i class="fas fa-exclamation-circle me-2"></i>
+                {{ session('error') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
             </div>
         @endif
 
-        <form action="{{ route('agenda.store') }}" method="POST">
-            @csrf
-            <h1>Masukkan Agenda Hari Ini</h1>
-            <label for="">Nomor Surat : </label>
-            <input type="text" name="no_surat" placeholder="Masukkan Nomor Surat" required>
-
-            <label for="">Tanggal Surat : </label>
-            <input type="date" name="tanggal_surat" required>
-
-            <label for="">Pengundang : </label>
-            <input type="text" name="pengundang" placeholder="Masukkan Pengundang" required>
-
-            <label for="">Tempat : </label>
-            <input type="text" name="tempat" placeholder="Masukkan Tempat" required>
-
-            <label for="">Tanggal Acara</label>
-            <input type="date" name="tanggal_acara" placeholder="Masukkan Hari dan Tanggal" required>
-
-            <label for="">Acara : </label>
-            <input type="text" name="acara" placeholder="Masukkan Acara" required>
-
-            <label for="">Pendamping / Disposisi Ke : </label>
-            <select id="meeting-day" name="id_jabatan" class="form-control">
-                <option value="">Pilih Jabatan</option>
-                @foreach($jabatan as $j)
-                    <option value="{{ $j->id_jabatan }}">{{ $j->nama_jabatan }}</option>
-                @endforeach
-            </select>
-
-            <label for="">Bidang : </label>
-            <select id="meeting-day" name="id_bidang" class="form-control">
-                <option value="">Pilih Bidang</option>
-                @foreach($bidang as $b)
-                    <option value="{{ $b->id_bidang }}">{{ $b->nama_bidang }}</option>
-                @endforeach
-            </select>
-
-            <label for="">Nama Pendamping : </label>
-            <input type="text" name="nama_pendamping" placeholder="Masukkan Nama Pendamping" required>
-
-            <label for="">Instruksi : </label>
-            <select id="meeting-day" name="id_instruksi" class="form-control">
-                <option value="">Pilih Instruksi</option>
-                @foreach($instruksi as $i)
-                    <option value="{{ $i->id_instruksi }}">{{ $i->isi_instruksi }}</option>
-                @endforeach
-            </select>
-
-            <label for="">Waktu : </label>
-            <input type="time" name="waktu" placeholder="Masukkan Waktu" required>
-
-            <label for="">Catatan : </label>
-            <textarea name="catatan" rows="4" placeholder="Masukkan Catatan"></textarea>
-            <button type="submit" class="btn btn-primary">Simpan Agenda</button>
-
-        </form>
+        <div class="d-flex justify-content-end">
+            <a href="sekretaris-dinas/tambah-data" class="btn btn-primary">
+                <i class="fas fa-plus me-1"></i> Tambah Data
+            </a>
+        </div>
     </div>
     
     <div class="container">
@@ -306,9 +280,13 @@
                     <td>
                         <canvas id="pdf-preview-{{ $loop->index }}" style="width: 100px; height: auto;"></canvas>
                         <br>
-                        <a href="{{ asset('storage/dokumen/' . $agenda->softfile_surat) }}" target="_blank">
-                            📄 Lihat PDF
+                        @if($agenda->softfile_surat)
+                        <a href="{{ asset('storage/dokumen/' . $agenda->softfile_surat) }}" target="_blank" class="btn btn-sm btn-primary">
+                            <i class="fas fa-file-pdf"></i> Lihat Dokumen
                         </a>
+                        @else
+                        <span class="text-muted">Tidak ada dokumen</span>
+                        @endif
                     </td>
                     <td>
                         <a href="">edit</a>

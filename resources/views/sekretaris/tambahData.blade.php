@@ -120,81 +120,6 @@
         border-left: 3px solid #2ecc71;
     }
     
-    /* Table Styles */
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        margin: 25px 0;
-        font-size: 0.9em;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-        border-radius: 8px;
-        overflow: hidden;
-    }
-    
-    thead tr {
-        background-color: #2c3e50;
-        color: #ffffff;
-        text-align: left;
-        font-weight: bold;
-    }
-    
-    th, td {
-        padding: 12px 15px;
-        border: 1px solid #dddddd;
-    }
-    
-    tbody tr {
-        border-bottom: 1px solid #dddddd;
-        transition: all 0.2s;
-    }
-    
-    tbody tr:nth-of-type(even) {
-        background-color: #f3f3f3;
-    }
-    
-    tbody tr:last-of-type {
-        border-bottom: 2px solid #2c3e50;
-    }
-    
-    tbody tr:hover {
-        background-color: #e1f5fe;
-        transform: scale(1.01);
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-    
-    th {
-        position: sticky;
-        top: 0;
-        background-color: #2c3e50;
-    }
-    
-    /* Responsive table */
-    @media screen and (max-width: 768px) {
-        table {
-            display: block;
-            overflow-x: auto;
-        }
-    }
-    
-    /* Zebra striping */
-    tbody tr:nth-child(odd) {
-        background-color: #fff;
-    }
-    
-    tbody tr:nth-child(even) {
-        background-color: #f8f9fa;
-    }
-    
-    /* Improve text readability */
-    td {
-        vertical-align: top;
-    }
-    
-    /* Add some spacing between columns */
-    th:not(:last-child),
-    td:not(:last-child) {
-        border-right: 1px solid #e0e0e0;
-    }
 </style>
     <title>Document</title>
 </head>
@@ -206,29 +131,34 @@
                 {{ session('success') }}
             </div>
         @endif
+        <div>
+            <a href="{{ route('sekretaris-dinas.index') }}" class="btn btn-secondary">
+                <i class="fas fa-arrow-left"></i> Kembali ke Tabel Data
+            </a>
+        </div>
 
-        <form action="{{ route('agenda.store') }}" method="POST">
+        <form action="{{ route('sekretaris-dinas.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <h1>Masukkan Agenda Hari Ini</h1>
-            <label for="">Nomor Surat : </label>
+            <label for="no_surat">Nomor Surat : </label>
             <input type="text" name="no_surat" placeholder="Masukkan Nomor Surat" required>
 
-            <label for="">Tanggal Surat : </label>
+            <label for="tanggal_surat">Tanggal Surat : </label>
             <input type="date" name="tanggal_surat" required>
 
-            <label for="">Pengundang : </label>
+            <label for="pengundang">Pengundang : </label>
             <input type="text" name="pengundang" placeholder="Masukkan Pengundang" required>
 
-            <label for="">Tempat : </label>
+            <label for="tempat">Tempat : </label>
             <input type="text" name="tempat" placeholder="Masukkan Tempat" required>
 
-            <label for="">Tanggal Acara</label>
+            <label for="tanggal_acara">Tanggal Acara</label>
             <input type="date" name="tanggal_acara" placeholder="Masukkan Hari dan Tanggal" required>
 
             <label for="">Acara : </label>
             <input type="text" name="acara" placeholder="Masukkan Acara" required>
 
-            <label for="">Pendamping / Disposisi Ke : </label>
+            <label for="id_jabatan">Pendamping / Disposisi Ke : </label>
             <select id="meeting-day" name="id_jabatan" class="form-control">
                 <option value="">Pilih Jabatan</option>
                 @foreach($jabatan as $j)
@@ -236,7 +166,7 @@
                 @endforeach
             </select>
 
-            <label for="">Bidang : </label>
+            <label for="id_bidang">Bidang : </label>
             <select id="meeting-day" name="id_bidang" class="form-control">
                 <option value="">Pilih Bidang</option>
                 @foreach($bidang as $b)
@@ -247,7 +177,7 @@
             <label for="">Nama Pendamping : </label>
             <input type="text" name="nama_pendamping" placeholder="Masukkan Nama Pendamping" required>
 
-            <label for="">Instruksi : </label>
+            <label for="id_instruksi">Instruksi : </label>
             <select id="meeting-day" name="id_instruksi" class="form-control">
                 <option value="">Pilih Instruksi</option>
                 @foreach($instruksi as $i)
@@ -255,94 +185,20 @@
                 @endforeach
             </select>
 
-            <label for="">Waktu : </label>
+            <label for="waktu">Waktu : </label>
             <input type="time" name="waktu" placeholder="Masukkan Waktu" required>
 
             <label for="">Catatan : </label>
             <textarea name="catatan" rows="4" placeholder="Masukkan Catatan"></textarea>
+
+            <label for="file-upload" class="custom-file-upload">
+                Pilih File PDF (maks. 2MB)
+            </label>
+            <input id="file-upload" type="file" name="softfile_surat" accept=".pdf" required>
+            
             <button type="submit" class="btn btn-primary">Simpan Agenda</button>
 
         </form>
     </div>
-    
-    <div class="container">
-        <table>
-        <thead>
-            <tr>
-                <th>No</th>
-                <th>Tanggal Surat</th>
-                <th>No Surat</th>
-                <th>Pengundang</th>
-                <th>Tempat</th>
-                <th>Hari/Tanggal</th>
-                <th>Acara</th>
-                <th>Pendamping / Disposisi Ke</th>
-                <th>Bidang</th>
-                <th>Nama Pendamping</th>
-                <th>Instruksi</th>
-                <th>Waktu</th>
-                <th>Catatan</th>
-                <th>File</th>
-                <th>Aksi</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($data as $agenda)
-            <?php $no = 1; ?>
-                <tr>
-                    <td>{{ $loop->iteration }}</td>
-                    <td>{{ $agenda->tanggal_surat }}</td>
-                    <td>{{$agenda->no_surat}}</td>
-                    <td>{{ $agenda->pengundang }}</td>
-                    <td>{{ $agenda->tempat }}</td>
-                    <td>{{ $agenda->hari_tanggal }}</td>
-                    <td>{{ $agenda->acara }}</td>
-                    <td>{{ $agenda->nama_jabatan }}</td>
-                    <td>{{ $agenda->nama_bidang }}</td>
-                    <td>{{ $agenda->nama_pendamping }}</td>
-                    <td>{{ $agenda->isi_instruksi }}</td>
-                    <td>{{ $agenda->waktu }}</td>
-                    <td>{{ $agenda->catatan }}</td>
-                    <td>
-                        <canvas id="pdf-preview-{{ $loop->index }}" style="width: 100px; height: auto;"></canvas>
-                        <br>
-                        <a href="{{ asset('storage/dokumen/' . $agenda->softfile_surat) }}" target="_blank">
-                            📄 Lihat PDF
-                        </a>
-                    </td>
-                    <td>
-                        <a href="">edit</a>
-                    </td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-    <script>
-        @foreach ($data as $agenda)
-            const url{{ $loop->index }} = "{{ asset('storage/dokumen/' . $agenda->softfile_surat) }}";
-            const loadingTask{{ $loop->index }} = pdfjsLib.getDocument(url{{ $loop->index }});
-            loadingTask{{ $loop->index }}.promise.then(pdf => {
-                pdf.getPage(1).then(page => {
-                    const scale = 0.3; // kecilkan ukuran
-                    const viewport = page.getViewport({ scale });
-
-                    const canvas = document.getElementById("pdf-preview-{{ $loop->index }}");
-                    const context = canvas.getContext("2d");
-                    canvas.width = viewport.width;
-                    canvas.height = viewport.height;
-
-                    const renderContext = {
-                        canvasContext: context,
-                        viewport: viewport
-                    };
-
-                    page.render(renderContext);
-                });
-            });
-        @endforeach
-    </script>
-
 </body>
 </html>
