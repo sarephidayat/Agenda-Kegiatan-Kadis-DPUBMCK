@@ -10,9 +10,10 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::table('agenda_kadis', function (Blueprint $table) {
-            //
-            $table->string('softfile_surat')->nullable();
+        Schema::create('master_cakupan', function (Blueprint $table) {
+            $table->id('id_cakupan'); // primary key + auto increment
+            $table->string('cakupan');
+            $table->timestamps();
         });
     }
 
@@ -21,9 +22,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::table('agenda_kadis', function (Blueprint $table) {
-            //
-            $table->dropColumn('softfile_surat');
-        });
+        Schema::dropIfExists('master_cakupan');
     }
 };

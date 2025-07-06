@@ -155,11 +155,19 @@
             <label for="tanggal_acara">Tanggal Acara</label>
             <input type="date" name="tanggal_acara" placeholder="Masukkan Hari dan Tanggal" required>
 
-            <label for="">Acara : </label>
+            <label for="acara">Acara : </label>
             <input type="text" name="acara" placeholder="Masukkan Acara" required>
 
+            <label for="cakupan">Cakupan</label>
+            <select id="cakupan" name="id_cakupan" class="form-control" required>
+                <option value="">Pilih Cakupan</option>
+                @foreach($cakupan as $c)
+                    <option value="{{ $c->id_cakupan }}">{{ $c->cakupan }}</option>
+                @endforeach
+            </select>
+
             <label for="id_jabatan">Pendamping / Disposisi Ke : </label>
-            <select id="meeting-day" name="id_jabatan" class="form-control">
+            <select id="meeting-day" name="id_jabatan" class="form-control" required>
                 <option value="">Pilih Jabatan</option>
                 @foreach($jabatan as $j)
                     <option value="{{ $j->id_jabatan }}">{{ $j->nama_jabatan }}</option>
@@ -167,7 +175,7 @@
             </select>
 
             <label for="id_bidang">Bidang : </label>
-            <select id="meeting-day" name="id_bidang" class="form-control">
+            <select id="meeting-day" name="id_bidang" class="form-control" required>
                 <option value="">Pilih Bidang</option>
                 @foreach($bidang as $b)
                     <option value="{{ $b->id_bidang }}">{{ $b->nama_bidang }}</option>
@@ -178,7 +186,7 @@
             <input type="text" name="nama_pendamping" placeholder="Masukkan Nama Pendamping" required>
 
             <label for="id_instruksi">Instruksi : </label>
-            <select id="meeting-day" name="id_instruksi" class="form-control">
+            <select id="meeting-day" name="id_instruksi" class="form-control" required>
                 <option value="">Pilih Instruksi</option>
                 @foreach($instruksi as $i)
                     <option value="{{ $i->id_instruksi }}">{{ $i->isi_instruksi }}</option>
@@ -189,7 +197,7 @@
             <input type="time" name="waktu" placeholder="Masukkan Waktu" required>
 
             <label for="">Catatan : </label>
-            <textarea name="catatan" rows="4" placeholder="Masukkan Catatan"></textarea>
+            <textarea name="catatan" rows="4" placeholder="Masukkan Catatan" required></textarea>
 
             <label for="file-upload" class="custom-file-upload">
                 Pilih File PDF (maks. 2MB)

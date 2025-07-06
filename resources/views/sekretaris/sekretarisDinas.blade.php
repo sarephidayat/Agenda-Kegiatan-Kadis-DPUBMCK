@@ -250,6 +250,7 @@
                 <th>Tempat</th>
                 <th>Hari/Tanggal</th>
                 <th>Acara</th>
+                <th>Cakupan</th>
                 <th>Pendamping / Disposisi Ke</th>
                 <th>Bidang</th>
                 <th>Nama Pendamping</th>
@@ -271,6 +272,7 @@
                     <td>{{ $agenda->tempat }}</td>
                     <td>{{ $agenda->hari_tanggal }}</td>
                     <td>{{ $agenda->acara }}</td>
+                    <td>{{ $agenda->cakupan}}</td>
                     <td>{{ $agenda->nama_jabatan }}</td>
                     <td>{{ $agenda->nama_bidang }}</td>
                     <td>{{ $agenda->nama_pendamping }}</td>
@@ -289,7 +291,7 @@
                         @endif
                     </td>
                     <td>
-                        <a href="">edit</a>
+                        <a href="sekretaris-dinas/edit/{{$agenda->id}}">edit</a>
                     </td>
                 </tr>
             @endforeach

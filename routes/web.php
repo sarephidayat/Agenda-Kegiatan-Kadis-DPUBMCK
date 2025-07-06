@@ -22,6 +22,13 @@ Route::prefix('sekretaris-dinas')->name('sekretaris-dinas.')->group(function () 
 
     // Proses simpan data
     Route::post('/', [SekretarisDinasController::class, 'store'])->name('store');
+
+    // Form edit data
+    Route::get('/edit/{id}', [SekretarisDinasController::class, 'edit'])->name('edit');
+
+    // Proses update data
+    Route::post('/update/{id}', [SekretarisDinasController::class, 'update'])->name('update');
+
 });
 
 Route::get('/dashboard', function () {

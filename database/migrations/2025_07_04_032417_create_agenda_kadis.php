@@ -23,12 +23,13 @@ return new class extends Migration {
             $table->unsignedBigInteger('id_bidang');
             $table->unsignedBigInteger('id_jabatan');
             $table->unsignedBigInteger('id_instruksi');
+            $table->unsignedBigInteger('id_cakupan');
 
             $table->string('acara');
             $table->string('waktu');
             $table->string('nama_pendamping');
             $table->text('catatan');
-            $table->string('softfile_surat')->nullable(); // Optional field for storing file path
+            $table->string('softfile_surat');
 
             $table->timestamps();
 
@@ -36,6 +37,7 @@ return new class extends Migration {
             $table->foreign('id_bidang')->references('id_bidang')->on('master_bidang')->onDelete('cascade');
             $table->foreign('id_jabatan')->references('id_jabatan')->on('master_jabatan')->onDelete('cascade');
             $table->foreign('id_instruksi')->references('id_instruksi')->on('master_instruksi')->onDelete('cascade');
+            $table->foreign('id_cakupan')->references('id_cakupan')->on('master_cakupan')->onDelete('cascade');
         });
 
     }
