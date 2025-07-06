@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TUBidangController;
 use App\Http\Controllers\AgendaKadisController;
 use App\Http\Controllers\SekretarisDinasController;
 
@@ -29,6 +30,12 @@ Route::prefix('sekretaris-dinas')->name('sekretaris-dinas.')->group(function () 
     // Proses update data
     Route::post('/update/{id}', [SekretarisDinasController::class, 'update'])->name('update');
 
+});
+
+// Sekelompok route untuk TUBidangController
+Route::prefix('tu-bidang')->name('tu-bidang.')->group(function () {
+    // Halaman dashboard TU
+    Route::get('/', [TUBidangController::class, 'index'])->name('index');
 });
 
 Route::get('/dashboard', function () {

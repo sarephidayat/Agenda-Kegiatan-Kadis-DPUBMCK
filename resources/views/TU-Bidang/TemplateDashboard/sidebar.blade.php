@@ -9,7 +9,7 @@
                 class="brand-image opacity-75 shadow" /> --}}
             <!--end::Brand Image-->
             <!--begin::Brand Text-->
-            <span class="brand-text fw-light">TU Bidang</span>
+            <span class="brand-text fw-light">TU-Bidang Bidang</span>
             <!--end::Brand Text-->
         </a>
         <!--end::Brand Link-->
@@ -21,7 +21,7 @@
             <!--begin::Sidebar Menu-->
             <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" role="menu" data-accordion="false">
                 <li class="nav-item">
-                    <a href="/tu" class="nav-link">
+                    <a href="/TU-Bidang" class="nav-link">
                         <i class="nav-icon bi bi-speedometer"></i>
                         <p>
                             Dashboard
@@ -45,43 +45,12 @@
                     </a>
                 </li> --}}
                 <li class="nav-item">
-                    <a href="/tu/daftarAgenda" class="nav-link">
+                    <a href="/TU-Bidang/daftarAgenda" class="nav-link">
                         <i class="nav-icon bi bi-table"></i>
                         <p>
                             Daftar Peminjam
                         </p>
                     </a>
-                </li>
-
-                <li class="nav-header">PEMINJAMAN ALAT</li>
-                <li class="nav-item">
-                <li class="nav-item">
-                    <a href="/approvalAlat" class="nav-link">
-                        <i class="nav-icon bi bi-circle"></i>
-                        <p>Reservation Approval</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="/approvalAlatComplete" class="nav-link">
-                        <i class="nav-icon bi bi-circle"></i>
-                        <p>Reservation Complete</p>
-                    </a>
-                </li>
-                </li>
-                <li class="nav-header">PEMINJAMAN RUANG</li>
-                <li class="nav-item">
-                <li class="nav-item">
-                    <a href="/approvalRuang" class="nav-link">
-                        <i class="nav-icon bi bi-circle"></i>
-                        <p>Reservation Approval</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="/approvalRuangComplete" class="nav-link">
-                        <i class="nav-icon bi bi-circle"></i>
-                        <p>Reservation Complete</p>
-                    </a>
-                </li>
                 </li>
             </ul>
             <!--end::Sidebar Menu-->
