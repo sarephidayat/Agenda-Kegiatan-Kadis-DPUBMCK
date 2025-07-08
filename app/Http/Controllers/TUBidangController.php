@@ -42,9 +42,9 @@ class TUBidangController extends Controller
 
     }
 
-    public function create()
+    public function tambah()
     {
-        return view('sekretaris/tambahData', $this->getDropdownData());
+        return view('TU-Bidang/tambahData', $this->getDropdownData());
     }
 
     public function store(Request $request)
@@ -104,7 +104,7 @@ class TUBidangController extends Controller
                 'updated_at' => now(),
             ]);
 
-            return redirect()->route('sekretaris-dinas.index')->with('success', 'Data berhasil disimpan!');
+            return redirect()->route('TU-Bidang-dinas.index')->with('success', 'Data berhasil disimpan!');
 
         } catch (\Exception $e) {
             // Hapus file yang sudah terupload jika terjadi error
@@ -205,6 +205,56 @@ class TUBidangController extends Controller
             ]);
 
         return redirect()->route('tu-bidang.index')->with('success', 'Data berhasil diperbarui!');
+    }
+
+    public function agendaEksternal()
+    {
+        $data = DB::table('agenda_kadis')
+            ->join('master_jabatan', 'agenda_kadis.id_jabatan', '=', 'master_jabatan.id_jabatan')
+            ->join('master_bidang', 'agenda_kadis.id_bidang', '=', 'master_bidang.id_bidang')
+            ->join('master_instruksi', 'agenda_kadis.id_instruksi', '=', 'master_instruksi.id_instruksi')
+            ->join('master_cakupan', 'agenda_kadis.id_cakupan', '=', 'master_cakupan.id_cakupan') // Join dengan master_cakupan
+            ->select(
+                'agenda_kadis.*',
+                'master_jabatan.nama_jabatan',
+                'master_bidang.nama_bidang',
+                'master_instruksi.isi_instruksi',
+                'master_cakupan.cakupan'
+            )
+            ->get();
+
+        $jabatan = DB::table('master_jabatan')->get();
+        $bidang = DB::table('master_bidang')->get();
+        $instruksi = DB::table('master_instruksi')->get();
+        $cakupan = DB::table('master_cakupan')->get();
+
+        return view('TU-Bidang/agendaEksternal', compact('data', 'jabatan', 'bidang', 'instruksi', 'cakupan'));
+
+    }
+
+    public function agendaInternal()
+    {
+        $data = DB::table('agenda_kadis')
+            ->join('master_jabatan', 'agenda_kadis.id_jabatan', '=', 'master_jabatan.id_jabatan')
+            ->join('master_bidang', 'agenda_kadis.id_bidang', '=', 'master_bidang.id_bidang')
+            ->join('master_instruksi', 'agenda_kadis.id_instruksi', '=', 'master_instruksi.id_instruksi')
+            ->join('master_cakupan', 'agenda_kadis.id_cakupan', '=', 'master_cakupan.id_cakupan') // Join dengan master_cakupan
+            ->select(
+                'agenda_kadis.*',
+                'master_jabatan.nama_jabatan',
+                'master_bidang.nama_bidang',
+                'master_instruksi.isi_instruksi',
+                'master_cakupan.cakupan'
+            )
+            ->get();
+
+        $jabatan = DB::table('master_jabatan')->get();
+        $bidang = DB::table('master_bidang')->get();
+        $instruksi = DB::table('master_instruksi')->get();
+        $cakupan = DB::table('master_cakupan')->get();
+
+        return view('TU-Bidang/agendaInternal', compact('data', 'jabatan', 'bidang', 'instruksi', 'cakupan'));
+
     }
 
 
