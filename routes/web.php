@@ -36,6 +36,12 @@ Route::prefix('sekretaris-dinas')->name('sekretaris-dinas.')->group(function () 
 Route::prefix('tu-bidang')->name('tu-bidang.')->group(function () {
     // Halaman dashboard TU
     Route::get('/', [TUBidangController::class, 'index'])->name('index');
+
+    //halaman edit data
+    Route::get('/edit/{id}', [TUBidangController::class, 'edit'])->name('edit');
+
+    // Proses update data
+    Route::post('/update/{id}', [TUBidangController::class, 'update'])->name('update');
 });
 
 Route::get('/dashboard', function () {

@@ -9,7 +9,7 @@
                 class="brand-image opacity-75 shadow" /> --}}
             <!--end::Brand Image-->
             <!--begin::Brand Text-->
-            <span class="brand-text fw-light">TU-Bidang Bidang</span>
+            <span class="brand-text fw-light">TU-Bidang</span>
             <!--end::Brand Text-->
         </a>
         <!--end::Brand Link-->
@@ -48,9 +48,41 @@
                     <a href="/tu-bidang/daftarAgenda" class="nav-link">
                         <i class="nav-icon bi bi-table"></i>
                         <p>
-                            Daftar Peminjam
+                            Daftar Agenda
                         </p>
                     </a>
+                </li>
+
+                <li class="nav-header">AGENDA EKSTERNAL</li>
+                <li class="nav-item">
+                    <li class="nav-item">
+                        <a href="/approvalAlat" class="nav-link">
+                            <i class="nav-icon bi bi-circle"></i>
+                            <p>Input Agenda</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/approvalAlatComplete" class="nav-link">
+                            <i class="nav-icon bi bi-circle"></i>
+                            <p>Agenda Eksternal</p>
+                        </a>
+                    </li>
+                </li>
+
+                <li class="nav-header">AGENDA INTERNAL</li>
+                <li class="nav-item">
+                    <li class="nav-item">
+                        <a href="/approvalAlat" class="nav-link">
+                            <i class="nav-icon bi bi-circle"></i>
+                            <p>Input Agenda</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/approvalAlatComplete" class="nav-link">
+                            <i class="nav-icon bi bi-circle"></i>
+                            <p>Agenda Internal</p>
+                        </a>
+                    </li>
                 </li>
             </ul>
             <!--end::Sidebar Menu-->

@@ -144,7 +144,7 @@ class TUBidangController extends Controller
         // query untuk mendapatkan data berdasarkan ID
 
 
-        return view('sekretaris/editData', compact('data', 'jabatan', 'bidang', 'instruksi', 'cakupan'));
+        return view('TU-Bidang/edit', compact('data', 'jabatan', 'bidang', 'instruksi', 'cakupan'));
 
     }
 
@@ -204,7 +204,7 @@ class TUBidangController extends Controller
                 'updated_at' => now(),
             ]);
 
-        return redirect()->route('sekretaris-dinas.index')->with('success', 'Data berhasil diperbarui!');
+        return redirect()->route('tu-bidang.index')->with('success', 'Data berhasil diperbarui!');
     }
 
 

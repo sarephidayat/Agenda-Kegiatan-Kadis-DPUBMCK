@@ -193,7 +193,7 @@
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    <a href="sekretaris-dinas/edit/{{$agenda->id}}">edit</a>
+                                                    <a href="tu-bidang/edit/{{$agenda->id}}">edit</a>
                                                 </td>
                                             </tr>
                                         @endforeach
