@@ -177,7 +177,7 @@
                         </div>
                         <h5 class="card-title">Halaman TU</h5>
                         <p class="card-text">Akses halaman Tata Usaha untuk pengelolaan administrasi.</p>
-                        <a href="tu" class="btn btn-info text-white px-4" data-bs-toggle="tooltip" title="Masuk ke halaman Tata Usaha">
+                        <a href="tu-bidang" class="btn btn-info text-white px-4" data-bs-toggle="tooltip" title="Masuk ke halaman Tata Usaha">
                             <i class="bi bi-box-arrow-in-right"></i> Halaman TU
                         </a>
                     </div>

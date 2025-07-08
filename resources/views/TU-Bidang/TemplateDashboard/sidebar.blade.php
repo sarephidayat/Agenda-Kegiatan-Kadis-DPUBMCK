@@ -21,7 +21,7 @@
             <!--begin::Sidebar Menu-->
             <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" role="menu" data-accordion="false">
                 <li class="nav-item">
-                    <a href="/TU-Bidang" class="nav-link">
+                    <a href="/tu-bidang" class="nav-link">
                         <i class="nav-icon bi bi-speedometer"></i>
                         <p>
                             Dashboard
@@ -45,7 +45,7 @@
                     </a>
                 </li> --}}
                 <li class="nav-item">
-                    <a href="/TU-Bidang/daftarAgenda" class="nav-link">
+                    <a href="/tu-bidang/daftarAgenda" class="nav-link">
                         <i class="nav-icon bi bi-table"></i>
                         <p>
                             Daftar Peminjam

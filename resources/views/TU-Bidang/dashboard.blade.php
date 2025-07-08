@@ -140,7 +140,7 @@
                             </h3>
                         </div>
                         <!-- /.card-header -->
-                        <div class="card-body" style="border: 1px solid #d20000; border-radius: 5px;">
+                        <div class="card-body">
                             <div style="overflow-x: auto;">
                                 <table class="table table-bordered w-100" style="table-layout: auto;">
                                     <thead>
