@@ -28,41 +28,17 @@
                         </p>
                     </a>
                 </li>
-                {{-- <li class="nav-item">
-                    <a href="/DaftarAlat" class="nav-link">
-                        <i class="nav-icon bi bi-table"></i>
-                        <p>
-                            Daftar Alat
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="/DaftarRuang" class="nav-link">
-                        <i class="nav-icon bi bi-table"></i>
-                        <p>
-                            Daftar Ruang
-                        </p>
-                    </a>
-                </li> --}}
-                <li class="nav-item">
-                    <a href="/tu-bidang/daftarAgenda" class="nav-link">
-                        <i class="nav-icon bi bi-table"></i>
-                        <p>
-                            Daftar Agenda
-                        </p>
-                    </a>
-                </li>
 
-                <li class="nav-header">AGENDA EKSTERNAL</li>
+                <li class="nav-header">AGENDA</li>
                 <li class="nav-item">
                     <li class="nav-item">
-                        <a href="/approvalAlat" class="nav-link">
+                        <a href="/tu-bidang/input-agenda" class="nav-link">
                             <i class="nav-icon bi bi-circle"></i>
                             <p>Input Agenda</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/approvalAlatComplete" class="nav-link">
+                        <a href="/tu-bidang/agenda-eksternal" class="nav-link">
                             <i class="nav-icon bi bi-circle"></i>
                             <p>Agenda Eksternal</p>
                         </a>
@@ -72,13 +48,13 @@
                 <li class="nav-header">AGENDA INTERNAL</li>
                 <li class="nav-item">
                     <li class="nav-item">
-                        <a href="/approvalAlat" class="nav-link">
+                        <a href="/tu-bidang/input-agenda" class="nav-link">
                             <i class="nav-icon bi bi-circle"></i>
                             <p>Input Agenda</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/approvalAlatComplete" class="nav-link">
+                        <a href="/tu-bidang/input-agenda" class="nav-link">
                             <i class="nav-icon bi bi-circle"></i>
                             <p>Agenda Internal</p>
                         </a>

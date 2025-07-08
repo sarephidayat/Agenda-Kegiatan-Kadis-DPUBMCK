@@ -182,10 +182,9 @@
                                                 <td>{{ $agenda->waktu }}</td>
                                                 <td>{{ $agenda->catatan }}</td>
                                                 <td>
-                                                    <canvas id="pdf-preview-{{ $loop->index }}" style="width: 100px; height: auto;"></canvas>
                                                     <br>
                                                     @if($agenda->softfile_surat)
-                                                    <a href="{{ asset('storage/dokumen/' . $agenda->softfile_surat) }}" target="_blank" >
+                                                    <a href="{{ asset('storage/dokumen/' . $agenda->softfile_surat) }}" target="_blank" class="btn btn-success btn-sm">
                                                         <i class="fas fa-file-pdf"></i> Lihat Dokumen
                                                     </a>
                                                     @else
@@ -193,7 +192,7 @@
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    <a href="tu-bidang/edit/{{$agenda->id}}">edit</a>
+                                                    <a href="tu-bidang/edit/{{$agenda->id}}" class="btn btn-warning btn-sm">edit</a>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -222,4 +221,7 @@
     <!--end::App Content-->
 </main>
 <!--end::App Main-->
+
+{{-- script --}}
+    
 @endsection
