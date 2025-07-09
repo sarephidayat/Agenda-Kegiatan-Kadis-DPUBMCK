@@ -97,7 +97,7 @@
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    <a href="tu-bidang/edit/{{$agendaEksternal->id}}" class="btn btn-warning btn-sm">edit</a>
+                                                    <a href="tu-bidang/editEksternal/{{$agendaEksternal->id}}" class="btn btn-warning btn-sm">edit</a>
                                                 </td>
                                             </tr>
                                         @endforeach
