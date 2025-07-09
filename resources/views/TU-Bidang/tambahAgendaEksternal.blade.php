@@ -38,7 +38,7 @@
                         <!-- /.card-header -->
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <form action="{{ route('tu-bidang.store') }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('tu-bidang.storeEksternal') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
 
                                 <div class="form-group row mb-3">

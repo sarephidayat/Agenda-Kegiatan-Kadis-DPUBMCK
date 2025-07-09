@@ -38,7 +38,7 @@
                         <!-- /.card-header -->
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <form action="{{ route('tu-bidang.store') }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('tu-bidang.storeInternal') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group row mb-3">
                                     <label for="no_surat" class="col-sm-3 col-form-label">Nomor Surat</label>
@@ -65,32 +65,11 @@
                                         </select>
                                     </div>
                                 </div>
-
-                                <div class="form-group row mb-3">
-                                    <label for="tempat" class="col-sm-3 col-form-label">Tempat</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" name="tempat" class="form-control" placeholder="Masukkan Tempat" required>
-                                    </div>
-                                </div>
-
-                                <div class="form-group row mb-3">
-                                    <label for="tanggal_acara" class="col-sm-3 col-form-label">Tanggal Acara</label>
-                                    <div class="col-sm-9">
-                                        <input type="date" name="tanggal_acara" class="form-control" required>
-                                    </div>
-                                </div>
-
+                                
                                 <div class="form-group row mb-3">
                                     <label for="acara" class="col-sm-3 col-form-label">Acara</label>
                                     <div class="col-sm-9">
                                         <input type="text" name="acara" class="form-control" placeholder="Masukkan Acara" required>
-                                    </div>
-                                </div>
-
-                                <div class="form-group row mb-3">
-                                    <label for="nama_pendamping" class="col-sm-3 col-form-label">Kepada</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" name="nama_pendamping" class="form-control" placeholder="Masukkan Nama Pendamping" required>
                                     </div>
                                 </div>
 
@@ -100,6 +79,30 @@
                                         <input type="time" name="waktu" class="form-control" required>
                                     </div>
                                 </div>
+                                
+                                <div class="form-group row mb-3">
+                                    <label for="tanggal" class="col-sm-3 col-form-label">Tanggal Acara</label>
+                                    <div class="col-sm-9">
+                                        <input type="date" name="tanggal" class="form-control" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-3">
+                                    <label for="tempat" class="col-sm-3 col-form-label">Tempat</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" name="tempat" class="form-control" placeholder="Masukkan Tempat" required>
+                                    </div>
+                                </div>
+                                
+
+                                <div class="form-group row mb-3">
+                                    <label for="kepada" class="col-sm-3 col-form-label">Kepada</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" name="kepada" class="form-control" placeholder="Masukkan Nama Pendamping" required>
+                                    </div>
+                                </div>
+
+                                
 
                                 <div class="form-group row mb-3">
                                     <label for="catatan" class="col-sm-3 col-form-label">Catatan</label>

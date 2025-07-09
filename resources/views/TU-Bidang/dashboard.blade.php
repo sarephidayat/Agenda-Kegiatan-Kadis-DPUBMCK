@@ -30,6 +30,7 @@
         <div class="container-fluid">
             <!--begin::Row-->
             <div class="row">
+                
                 <!--begin::Col-->
                 <div class="col-lg-3 col-6">
                     <!--begin::Small Box Widget 1-->
@@ -140,7 +141,7 @@
 
                             </h3>
                             <span class="float-end">
-                                 <a href="tu-bidang/tambah-agenda" class="btn btn-primary">Tambah Data</a>
+                                 <a href="tu-bidang/tambah-agenda-eksternal" class="btn btn-primary">Tambah Data</a>
                             </span>
                         </div>
                         <!-- /.card-header -->
@@ -224,7 +225,7 @@
                                 
                             </h3>
                                 <span class="float-end">
-                                    <a href="tu-bidang/tambah-agenda" class="btn btn-primary">Tambah Data</a>
+                                    <a href="tu-bidang/tambah-agenda-internal" class="btn btn-primary">Tambah Data</a>
                                 </span>
                         </div>
                         <!-- /.card-header -->
@@ -272,7 +273,7 @@
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    <a href="tu-bidang/edit/{{$agendaInternal->id}}" class="btn btn-warning btn-sm">edit</a>
+                                                    <a href="tu-bidang/editInternal/{{$agendaInternal->id}}" class="btn btn-warning btn-sm">edit</a>
                                                 </td>
                                             </tr>
                                         @endforeach

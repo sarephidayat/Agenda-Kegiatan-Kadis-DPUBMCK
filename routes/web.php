@@ -46,7 +46,10 @@ Route::prefix('tu-bidang')->name('tu-bidang.')->group(function () {
     Route::get('/tambah-agenda-internal', [TUBidangController::class, 'tambahAgendaInternal'])->name('tambahAgendaInternal');
 
     // proses simpan agenda
-    Route::post('/', [TUBidangController::class, 'store'])->name('store');
+    Route::post('/eksternal', [TUBidangController::class, 'storeEksternal'])->name('storeEksternal');
+
+    // proses simpan agenda
+    Route::post('/internal', [TUBidangController::class, 'storeInternal'])->name('storeInternal');
 
     // Halaman agenda eksternal
     Route::get('/agenda-eksternal', [TUBidangController::class, 'agendaEksternal'])->name('agendaEksternal');
@@ -62,6 +65,9 @@ Route::prefix('tu-bidang')->name('tu-bidang.')->group(function () {
 
     // Proses update data
     Route::post('/updateEksternal/{id}', [TUBidangController::class, 'updateEksternal'])->name('updateEksternal');
+
+    // Proses update data
+    Route::post('/updateInternal/{id}', [TUBidangController::class, 'updateInternal'])->name('updateInternal');
 });
 
 
