@@ -1,4 +1,4 @@
-@extends('Sub-Koor/TemplateDashboard/main')
+@extends('Staff/TemplateDashboard/main')
 
 @section('content')
 <!--begin::App Main-->
@@ -38,7 +38,7 @@
                         <!-- /.card-header -->
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <form action="{{ route('sub-koor.store') }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('staff.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
 
                                 <div class="form-group row mb-3">

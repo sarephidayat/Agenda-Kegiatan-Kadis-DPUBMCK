@@ -10,7 +10,7 @@
             <!--end::Brand Image-->
             <!--begin::Brand Text-->
             <img src="{{ asset('storage/img/logo-jateng.jpg') }}" class="user-image rounded-circle shadow " style="width: 40px; height: 40px;" alt="User Image" />
-            <span class="brand-text fw-light">Sub Koordinator</span>
+            <span class="brand-text fw-light">Staff</span>
             <!--end::Brand Text-->
         </a>
         <!--end::Brand Link-->
@@ -22,7 +22,7 @@
             <!--begin::Sidebar Menu-->
             <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" role="menu" data-accordion="false">
                 <li class="nav-item">
-                    <a href="/sub-koor" class="nav-link">
+                    <a href="/staff" class="nav-link">
                         <i class="nav-icon bi bi-house-door"></i>
                         <p>
                             Dashboard
@@ -31,7 +31,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="/sub-koor/tambah-agenda" class="nav-link">
+                    <a href="/staff/tambah-agenda" class="nav-link">
                         <i class="nav-icon bi bi-upload"></i>
                         <p>
                             Input Agenda
@@ -42,13 +42,13 @@
                 <li class="nav-header">AGENDA</li>
                 <li class="nav-item">
                     <li class="nav-item">
-                        <a href="/sub-koor/agenda-internal" class="nav-link">
+                        <a href="/staff/agenda-internal" class="nav-link">
                             <i class="nav-icon bi bi-circle"></i>
                             <p>Agenda Internal</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/sub-koor/agenda-eksternal" class="nav-link">
+                        <a href="/staff/agenda-eksternal" class="nav-link">
                             <i class="nav-icon bi bi-circle"></i>
                             <p>Agenda Eksternal</p>
                         </a>

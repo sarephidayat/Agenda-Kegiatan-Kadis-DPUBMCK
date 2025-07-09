@@ -1,4 +1,4 @@
-@extends('TU-Bidang/TemplateDashboard/main')
+@extends('Sub-Koor/TemplateDashboard/main')
 
 @section('content')
 <!--begin::App Main-->
@@ -95,7 +95,7 @@
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    <a href="tu-bidang/edit/{{$agenda->id}}" class="btn btn-warning btn-sm">edit</a>
+                                                    <a href="sub-koor/edit/{{$agenda->id}}" class="btn btn-warning btn-sm">edit</a>
                                                 </td>
                                             </tr>
                                         @endforeach

@@ -1,4 +1,4 @@
-@extends('Sub-Koor/TemplateDashboard/main')
+@extends('Staff/TemplateDashboard/main')
 
 @section('content')
 <!--begin::App Main-->
@@ -10,7 +10,7 @@
             <!--begin::Row-->
             <div class="row mt-3">
                 <div class="mb-3 text-end">
-                        <a href="/sub-koor" class="btn btn-secondary">
+                        <a href="/staff" class="btn btn-secondary">
                             Kembali ke Dashboard
                         </a>
                 </div>
@@ -30,7 +30,7 @@
                         <!-- /.card-header -->
                         <div class="card-body">
                             <div style="overflow-x: auto;">
-                                <form action="{{ route('sub-koor.update', $data->id) }}" method="POST" enctype="multipart/form-data">
+                                <form action="{{ route('staff.update', $data->id) }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     
                                     <table style="width: 100%; border-collapse: separate; border-spacing: 15px;">

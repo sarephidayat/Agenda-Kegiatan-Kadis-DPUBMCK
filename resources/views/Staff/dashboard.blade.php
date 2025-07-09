@@ -1,4 +1,4 @@
-@extends('Sub-Koor/TemplateDashboard/main')
+@extends('Staff/TemplateDashboard/main')
 
 @section('content')
 <!--begin::App Main-->
@@ -129,7 +129,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="text-end mb-3">
-                        <a href="sub-koor/tambah-agenda" class="btn btn-primary">Tambah Data</a>
+                        <a href="staff/tambah-agenda" class="btn btn-primary">Tambah Data</a>
                     </div>
                     <div class="card mb-4">
                         <div class="card-header">
@@ -195,7 +195,7 @@
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    <a href="sub-koor/edit/{{$agenda->id}}" class="btn btn-warning btn-sm">edit</a>
+                                                    <a href="staff/edit/{{$agenda->id}}" class="btn btn-warning btn-sm">edit</a>
                                                 </td>
                                             </tr>
                                         @endforeach

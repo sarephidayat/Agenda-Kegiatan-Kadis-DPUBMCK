@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\StaffController;
+use App\Http\Controllers\SubKoorController;
 use App\Http\Controllers\TUBidangController;
 use App\Http\Controllers\AgendaKadisController;
 use App\Http\Controllers\SekretarisDinasController;
@@ -58,88 +60,50 @@ Route::prefix('tu-bidang')->name('tu-bidang.')->group(function () {
 
 
 // Sekelompok route untuk Sub-Koor
-Route::prefix('sub-koor')->name('tu-bidang.')->group(function () {
+Route::prefix('sub-koor')->name('sub-koor.')->group(function () {
     // Halaman dashboard TU
-    Route::get('/', [TUBidangController::class, 'index'])->name('index');
+    Route::get('/', [SubKoorController::class, 'index'])->name('index');
 
     // Halaman input agenda
-    Route::get('/tambah-agenda', [TUBidangController::class, 'tambah'])->name('tambah');
+    Route::get('/tambah-agenda', [SubKoorController::class, 'tambah'])->name('tambah');
 
     // proses simpan agenda
-    Route::post('/', [TUBidangController::class, 'store'])->name('store');
+    Route::post('/', [SubKoorController::class, 'store'])->name('store');
 
     // Halaman agenda eksternal
-    Route::get('/agenda-eksternal', [TUBidangController::class, 'agendaEksternal'])->name('agendaEksternal');
+    Route::get('/agenda-eksternal', [SubKoorController::class, 'agendaEksternal'])->name('agendaEksternal');
 
     // Halaman agenda internal
-    Route::get('/agenda-internal', [TUBidangController::class, 'agendaInternal'])->name('agendaInternal');
+    Route::get('/agenda-internal', [SubKoorController::class, 'agendaInternal'])->name('agendaInternal');
 
     //halaman edit data
-    Route::get('/edit/{id}', [TUBidangController::class, 'edit'])->name('edit');
+    Route::get('/edit/{id}', [SubKoorController::class, 'edit'])->name('edit');
 
     // Proses update data
-    Route::post('/update/{id}', [TUBidangController::class, 'update'])->name('update');
+    Route::post('/update/{id}', [SubKoorController::class, 'update'])->name('update');
 });
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-});
+// Sekelompok route untuk Staff
+Route::prefix('staff')->name('staff.')->group(function () {
+    // Halaman dashboard TU
+    Route::get('/', [StaffController::class, 'index'])->name('index');
 
-// Halaman Kepala Dinas
-Route::get('/kadis', function () {
-    return view('Kadis/dashboard');
-});
+    // Halaman input agenda
+    Route::get('/tambah-agenda', [StaffController::class, 'tambah'])->name('tambah');
 
-Route::get('/kadis/daftarAgenda', function () {
-    return view('Kadis/daftarAgenda');
-});
+    // proses simpan agenda
+    Route::post('/', [StaffController::class, 'store'])->name('store');
 
-// Halaman Staff
-Route::get('/staff', function () {
-    return view('Staff/dashboard');
-});
+    // Halaman agenda eksternal
+    Route::get('/agenda-eksternal', [StaffController::class, 'agendaEksternal'])->name('agendaEksternal');
 
-Route::get('/staff/daftarAgenda', function () {
-    return view('Staff/daftarAgenda');
-});
+    // Halaman agenda internal
+    Route::get('/agenda-internal', [StaffController::class, 'agendaInternal'])->name('agendaInternal');
 
-// Halaman Sub-Koor
-Route::get('/sub-koor', function () {
-    return view('Sub-Koor/dashboard');
-});
+    //halaman edit data
+    Route::get('/edit/{id}', [StaffController::class, 'edit'])->name('edit');
 
-Route::get('/sub-koor/daftarAgenda', function () {
-    return view('Sub-Koor/daftarAgenda');
+    // Proses update data
+    Route::post('/update/{id}', [StaffController::class, 'update'])->name('update');
 });
-
-// Halaman TU
-Route::get('/tu', function () {
-    return view('TU/dashboard');
-});
-
-Route::get('/tu/daftarAgenda', function () {
-    return view('TU/daftarAgenda');
-});
-
-// Route::get('/DaftarRuang', function () {
-//     return view('Mahasiswa/DaftarRuang');
-// });
-// Route::get('/DaftarPeminjam', function () {
-//     return view('DaftarPeminjam');
-// });
-// Route::get('/approvalAlat', function () {
-//     return view('PeminjamanAlat/approvalAlat');
-// });
-// Route::get('/approvalAlatComplete', function () {
-//     return view('PeminjamanAlat/approvalAlatComplete');
-// });
-// Route::get('/approvalRuang', function () {
-//     return view('PeminjamanRuang/approvalRuang');
-// });
-// Route::get('/approvalRuangComplete', function () {
-//     return view('PeminjamanRuang/approvalRuangComplete');
-// });
-// Route::get('/login', function () {
-//     return view('templateLogin/login');
-// });

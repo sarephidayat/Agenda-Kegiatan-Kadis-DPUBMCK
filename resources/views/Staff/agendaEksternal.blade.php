@@ -1,4 +1,4 @@
-@extends('Sub-Koor/TemplateDashboard/main')
+@extends('Staff/TemplateDashboard/main')
 
 @section('content')
 <!--begin::App Main-->
@@ -95,7 +95,7 @@
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    <a href="sub-koor/edit/{{$agenda->id}}" class="btn btn-warning btn-sm">edit</a>
+                                                    <a href="staff/edit/{{$agenda->id}}" class="btn btn-warning btn-sm">edit</a>
                                                 </td>
                                             </tr>
                                         @endforeach

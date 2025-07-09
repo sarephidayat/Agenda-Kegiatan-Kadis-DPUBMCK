@@ -1,4 +1,4 @@
-@extends('Sub-Koor/TemplateDashboard/main')
+@extends('Staff/TemplateDashboard/main')
 
 @section('content')
 <!--begin::App Main-->
@@ -10,12 +10,12 @@
             <!--begin::Row-->
             <div class="row">
                 <div class="col-sm-6">
-                    <h3 class="mb-0">Agenda Eksternal</h3>
+                    <h3 class="mb-0">Agenda Internal</h3>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-end">
                         <li class="breadcrumb-item"><a href="#">Agenda</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Agenda Eksternal</li>
+                        <li class="breadcrumb-item active" aria-current="page">Agenda Internal</li>
                     </ol>
                 </div>
             </div>
@@ -37,7 +37,7 @@
                                 <a href="/approvalAlat" style="color: black; text-decoration: none;"
                                     onmouseover="this.style.textDecoration='underline'"
                                     onmouseout="this.style.textDecoration='none'">
-                                    Daftar Agenda Eksernal Kepala Dinas
+                                    Daftar Agenda Internal Kepala Dinas
                                 </a>
 
                             </h3>
@@ -70,7 +70,7 @@
                                         @foreach($data as $agenda)
                                         <?php $no = 1; ?>
                                             <tr>
-                                                <td>{{ $loop->iteration }}</td>
+                                                <td>{{ ($data->currentPage() - 1) * $data->perPage() + $loop->iteration }}</td>
                                                 <td>{{ $agenda->tanggal_surat }}</td>
                                                 <td>{{$agenda->no_surat}}</td>
                                                 <td>{{ $agenda->pengundang }}</td>
@@ -95,7 +95,7 @@
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    <a href="sub-koor/edit/{{$agenda->id}}" class="btn btn-warning btn-sm">edit</a>
+                                                    <a href="staff/edit/{{$agenda->id}}" class="btn btn-warning btn-sm">edit</a>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -106,9 +106,13 @@
                         </div>
                         <!-- /.card-body -->
                         <div class="card-footer clearfix">
-                            <div class="float-end">
-                                {{ $data->links('pagination::bootstrap-4') }}
-                            </div>
+                            <ul class="pagination pagination-sm m-0 float-end">
+                                <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
