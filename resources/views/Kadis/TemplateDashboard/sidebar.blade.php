@@ -34,23 +34,39 @@
                     <a href="/tu-bidang/tambah-agenda" class="nav-link">
                         <i class="nav-icon bi bi-upload"></i>
                         <p>
-                            Input Agenda
+                            Daftar Agenda
                         </p>
                     </a>
                 </li>
 
-                <li class="nav-header">AGENDA</li>
+                <li class="nav-header">EKSTERNAL</li>
                 <li class="nav-item">
                     <li class="nav-item">
                         <a href="/tu-bidang/agenda-internal" class="nav-link">
                             <i class="nav-icon bi bi-circle"></i>
-                            <p>Agenda Internal</p>
+                            <p>Input Agenda</p>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="/tu-bidang/agenda-eksternal" class="nav-link">
                             <i class="nav-icon bi bi-circle"></i>
                             <p>Agenda Eksternal</p>
+                        </a>
+                    </li>
+                </li>
+
+                <li class="nav-header">INTERNAL</li>
+                <li class="nav-item">
+                    <li class="nav-item">
+                        <a href="/tu-bidang/agenda-internal" class="nav-link">
+                            <i class="nav-icon bi bi-circle"></i>
+                            <p>Input Agenda</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/tu-bidang/agenda-eksternal" class="nav-link">
+                            <i class="nav-icon bi bi-circle"></i>
+                            <p>Agenda Internal</p>
                         </a>
                     </li>
                 </li>

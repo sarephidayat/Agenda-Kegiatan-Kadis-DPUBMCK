@@ -31,16 +31,20 @@
             <!--begin::Row-->
             <div class="row">
                 <div class="col-md-12">
-                    <div class="card mb-4">
+                    {{-- Agenda Eksternal --}}
+                    <div class="card mb-4">       
                         <div class="card-header">
                             <h3 class="card-title">
                                 <a href="/approvalAlat" style="color: black; text-decoration: none;"
                                     onmouseover="this.style.textDecoration='underline'"
                                     onmouseout="this.style.textDecoration='none'">
-                                    Daftar Agenda Eksernal Kepala Dinas
+                                    Daftar Agenda Eksternal Kepala Dinas
                                 </a>
 
                             </h3>
+                            <span class="float-end">
+                                 <a href="tu-bidang/tambah-agenda" class="btn btn-primary">Tambah Data</a>
+                            </span>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -55,7 +59,6 @@
                                             <th style="width: 120px;">Tempat</th>
                                             <th style="width: 150px;">Hari/Tanggal</th>
                                             <th style="width: 180px;">Acara</th>
-                                            <th style="width: 100px;">Cakupan</th>
                                             <th style="width: 180px;">Pendamping</th>
                                             <th style="width: 120px;">Bidang</th>
                                             <th style="width: 150px;">Nama Pendamping</th>
@@ -67,27 +70,26 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($data as $agenda)
+                                        @foreach($dataAgendaEksternal as $agendaEksternal)
                                         <?php $no = 1; ?>
                                             <tr>
-                                                <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $agenda->tanggal_surat }}</td>
-                                                <td>{{$agenda->no_surat}}</td>
-                                                <td>{{ $agenda->pengundang }}</td>
-                                                <td>{{ $agenda->tempat }}</td>
-                                                <td>{{ $agenda->hari_tanggal }}</td>
-                                                <td>{{ $agenda->acara }}</td>
-                                                <td>{{ $agenda->cakupan}}</td>
-                                                <td>{{ $agenda->nama_jabatan }}</td>
-                                                <td>{{ $agenda->nama_bidang }}</td>
-                                                <td>{{ $agenda->nama_pendamping }}</td>
-                                                <td>{{ $agenda->isi_instruksi }}</td>
-                                                <td>{{ $agenda->waktu }}</td>
-                                                <td>{{ $agenda->catatan }}</td>
+                                                <td>{{ ($dataAgendaEksternal->currentPage() - 1) * $dataAgendaEksternal->perPage() + $loop->iteration }}</td>
+                                                <td>{{ $agendaEksternal->tanggal_surat }}</td>
+                                                <td>{{$agendaEksternal->no_surat}}</td>
+                                                <td>{{ $agendaEksternal->pengundang }}</td>
+                                                <td>{{ $agendaEksternal->tempat }}</td>
+                                                <td>{{ $agendaEksternal->tanggal }}</td>
+                                                <td>{{ $agendaEksternal->acara }}</td>
+                                                <td>{{ $agendaEksternal->nama_jabatan }}</td>
+                                                <td>{{ $agendaEksternal->nama_bidang }}</td>
+                                                <td>{{ $agendaEksternal->nama_pendamping }}</td>
+                                                <td>{{ $agendaEksternal->isi_instruksi }}</td>
+                                                <td>{{ $agendaEksternal->waktu }}</td>
+                                                <td>{{ $agendaEksternal->catatan }}</td>
                                                 <td>
                                                     <br>
-                                                    @if($agenda->softfile_surat)
-                                                    <a href="{{ asset('storage/dokumen/' . $agenda->softfile_surat) }}" target="_blank" class="btn btn-success btn-sm">
+                                                    @if($agendaEksternal->softfile_surat)
+                                                    <a href="{{ asset('storage/dokumen/' . $agendaEksternal->softfile_surat) }}" target="_blank" class="btn btn-success btn-sm">
                                                         <i class="fas fa-file-pdf"></i> Lihat Dokumen
                                                     </a>
                                                     @else
@@ -95,19 +97,20 @@
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    <a href="tu-bidang/edit/{{$agenda->id}}" class="btn btn-warning btn-sm">edit</a>
+                                                    <a href="tu-bidang/edit/{{$agendaEksternal->id}}" class="btn btn-warning btn-sm">edit</a>
                                                 </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
-
                             </div>
                         </div>
+
+                        
                         <!-- /.card-body -->
                         <div class="card-footer clearfix">
                             <div class="float-end">
-                                {{ $data->links('pagination::bootstrap-4') }}
+                                {{ $dataAgendaEksternal->links('pagination::bootstrap-4') }}
                             </div>
                         </div>
                     </div>

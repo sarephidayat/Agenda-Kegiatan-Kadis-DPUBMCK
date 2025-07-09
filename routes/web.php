@@ -39,8 +39,11 @@ Route::prefix('tu-bidang')->name('tu-bidang.')->group(function () {
     // Halaman dashboard TU
     Route::get('/', [TUBidangController::class, 'index'])->name('index');
 
-    // Halaman input agenda
-    Route::get('/tambah-agenda', [TUBidangController::class, 'tambah'])->name('tambah');
+    // Halaman input agenda eksternal
+    Route::get('/tambah-agenda-eksternal', [TUBidangController::class, 'tambahAgendaEksternal'])->name('tambahAgendaEksternal');
+
+    // Halaman input agenda internal
+    Route::get('/tambah-agenda-internal', [TUBidangController::class, 'tambahAgendaInternal'])->name('tambahAgendaInternal');
 
     // proses simpan agenda
     Route::post('/', [TUBidangController::class, 'store'])->name('store');
@@ -51,11 +54,14 @@ Route::prefix('tu-bidang')->name('tu-bidang.')->group(function () {
     // Halaman agenda internal
     Route::get('/agenda-internal', [TUBidangController::class, 'agendaInternal'])->name('agendaInternal');
 
-    //halaman edit data
-    Route::get('/edit/{id}', [TUBidangController::class, 'edit'])->name('edit');
+    //halaman edit data eksternal
+    Route::get('/editEksternal/{id}', [TUBidangController::class, 'editEksternal'])->name('editEksternal');
+
+    //halaman edit data internal
+    Route::get('/editInternal/{id}', [TUBidangController::class, 'editInternal'])->name('editInternal');
 
     // Proses update data
-    Route::post('/update/{id}', [TUBidangController::class, 'update'])->name('update');
+    Route::post('/updateEksternal/{id}', [TUBidangController::class, 'updateEksternal'])->name('updateEksternal');
 });
 
 

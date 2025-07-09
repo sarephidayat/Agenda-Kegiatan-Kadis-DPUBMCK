@@ -17,8 +17,8 @@ class DatabaseSeeder extends Seeder
             MasterJabatanSeeder::class,
             MasterBidangSeeder::class,
             MasterInstruksiSeeder::class,
-            MasterCakupanSeeder::class,
-            AgendaKadisSeeder::class,
+            AgendaInternalKadisSeeder::class,
+            AgendaEksternalKadisSeeder::class,
         ]);
     }
 }

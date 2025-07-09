@@ -31,6 +31,7 @@
             <!--begin::Row-->
             <div class="row">
                 <div class="col-md-12">
+                    {{-- Agenda Internal --}}
                     <div class="card mb-4">
                         <div class="card-header">
                             <h3 class="card-title">
@@ -39,8 +40,11 @@
                                     onmouseout="this.style.textDecoration='none'">
                                     Daftar Agenda Internal Kepala Dinas
                                 </a>
-
+                                
                             </h3>
+                                <span class="float-end">
+                                    <a href="tu-bidang/tambah-agenda" class="btn btn-primary">Tambah Data</a>
+                                </span>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -52,42 +56,34 @@
                                             <th style="width: 120px;">Tanggal Surat</th>
                                             <th style="width: 150px;">No Surat</th>
                                             <th style="width: 200px;">Pengundang</th>
-                                            <th style="width: 120px;">Tempat</th>
-                                            <th style="width: 150px;">Hari/Tanggal</th>
                                             <th style="width: 180px;">Acara</th>
-                                            <th style="width: 100px;">Cakupan</th>
-                                            <th style="width: 180px;">Pendamping</th>
-                                            <th style="width: 120px;">Bidang</th>
-                                            <th style="width: 150px;">Nama Pendamping</th>
-                                            <th style="width: 120px;">Instruksi</th>
                                             <th style="width: 80px;">Waktu</th>
+                                            <th style="width: 150px;">Tanggal</th>
+                                            <th style="width: 120px;">Tempat</th>
+                                            <th style="width: 120px;">Kepada</th>
                                             <th style="width: 250px;">Catatan</th>
                                             <th style="width: 130px;">File</th>
                                             <th style="width: 80px;">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($data as $agenda)
+                                        @foreach($dataAgendaInternal as $agendaInternal)
                                         <?php $no = 1; ?>
                                             <tr>
-                                                <td>{{ ($data->currentPage() - 1) * $data->perPage() + $loop->iteration }}</td>
-                                                <td>{{ $agenda->tanggal_surat }}</td>
-                                                <td>{{$agenda->no_surat}}</td>
-                                                <td>{{ $agenda->pengundang }}</td>
-                                                <td>{{ $agenda->tempat }}</td>
-                                                <td>{{ $agenda->hari_tanggal }}</td>
-                                                <td>{{ $agenda->acara }}</td>
-                                                <td>{{ $agenda->cakupan}}</td>
-                                                <td>{{ $agenda->nama_jabatan }}</td>
-                                                <td>{{ $agenda->nama_bidang }}</td>
-                                                <td>{{ $agenda->nama_pendamping }}</td>
-                                                <td>{{ $agenda->isi_instruksi }}</td>
-                                                <td>{{ $agenda->waktu }}</td>
-                                                <td>{{ $agenda->catatan }}</td>
+                                                <td>{{ ($dataAgendaInternal->currentPage() - 1) * $dataAgendaInternal->perPage() + $loop->iteration }}</td>
+                                                <td>{{ $agendaInternal->tanggal_surat }}</td>
+                                                <td>{{$agendaInternal->no_surat}}</td>
+                                                <td>{{ $agendaInternal->nama_bidang }}</td>
+                                                <td>{{ $agendaInternal->acara }}</td>
+                                                <td>{{ $agendaInternal->waktu }}</td>
+                                                <td>{{ $agendaInternal->tanggal }}</td>
+                                                <td>{{ $agendaInternal->tempat }}</td>
+                                                <td>{{ $agendaInternal->kepada }}</td>
+                                                <td>{{ $agendaInternal->catatan }}</td>
                                                 <td>
                                                     <br>
-                                                    @if($agenda->softfile_surat)
-                                                    <a href="{{ asset('storage/dokumen/' . $agenda->softfile_surat) }}" target="_blank" class="btn btn-success btn-sm">
+                                                    @if($agendaInternal->softfile_surat)
+                                                    <a href="{{ asset('storage/dokumen/' . $agendaInternal->softfile_surat) }}" target="_blank" class="btn btn-success btn-sm">
                                                         <i class="fas fa-file-pdf"></i> Lihat Dokumen
                                                     </a>
                                                     @else
@@ -95,24 +91,21 @@
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    <a href="tu-bidang/edit/{{$agenda->id}}" class="btn btn-warning btn-sm">edit</a>
+                                                    <a href="tu-bidang/edit/{{$agendaInternal->id}}" class="btn btn-warning btn-sm">edit</a>
                                                 </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
-
                             </div>
                         </div>
+
+                        
                         <!-- /.card-body -->
                         <div class="card-footer clearfix">
-                            <ul class="pagination pagination-sm m-0 float-end">
-                                <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
-                            </ul>
+                            <div class="float-end">
+                                {{ $dataAgendaInternal->links('pagination::bootstrap-4') }}
+                            </div>
                         </div>
                     </div>
                 </div>

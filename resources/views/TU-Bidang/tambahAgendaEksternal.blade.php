@@ -10,7 +10,7 @@
             <!--begin::Row-->
             <div class="row mt-3">
                 <div class="col-sm-6">
-                    <h3 class="mb-0">Input Agenda</h3>
+                    <h3 class="mb-0">Input Agenda Eksternal</h3>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-end">
@@ -30,7 +30,7 @@
                                 <a href="/approvalAlat" style="color: black; text-decoration: none;"
                                     onmouseover="this.style.textDecoration='underline'"
                                     onmouseout="this.style.textDecoration='none'">
-                                    Masukkan Agenda Hari Ini
+                                    Masukkan Agenda Eksternal Kepala Dinas
                                 </a>
 
                             </h3>
@@ -80,18 +80,6 @@
                                     <label for="acara" class="col-sm-3 col-form-label">Acara</label>
                                     <div class="col-sm-9">
                                         <input type="text" name="acara" class="form-control" placeholder="Masukkan Acara" required>
-                                    </div>
-                                </div>
-
-                                <div class="form-group row mb-3">
-                                    <label for="id_cakupan" class="col-sm-3 col-form-label">Cakupan</label>
-                                    <div class="col-sm-9">
-                                        <select name="id_cakupan" class="form-control" required>
-                                            <option value="">Pilih Cakupan</option>
-                                            @foreach($cakupan as $c)
-                                                <option value="{{ $c->id_cakupan }}">{{ $c->cakupan }}</option>
-                                            @endforeach
-                                        </select>
                                     </div>
                                 </div>
 

@@ -8,43 +8,59 @@ use Illuminate\Support\Facades\Storage;
 class TUBidangController extends Controller
 {
     // Method untuk mendapatkan data dropdown
-    protected function getDropdownData()
+    protected function getDropdownDataInternal()
+    {
+        return [
+            'bidang' => DB::table('master_bidang')->get(),
+        ];
+    }
+
+    protected function getDropdownDataEksternal()
     {
         return [
             'jabatan' => DB::table('master_jabatan')->get(),
             'bidang' => DB::table('master_bidang')->get(),
             'instruksi' => DB::table('master_instruksi')->get(),
-            'cakupan' => DB::table('master_cakupan')->get(), // Ambil data cakupan
         ];
     }
+
     public function index()
     {
-        $data = DB::table('agenda_kadis')
-            ->join('master_jabatan', 'agenda_kadis.id_jabatan', '=', 'master_jabatan.id_jabatan')
-            ->join('master_bidang', 'agenda_kadis.id_bidang', '=', 'master_bidang.id_bidang')
-            ->join('master_instruksi', 'agenda_kadis.id_instruksi', '=', 'master_instruksi.id_instruksi')
-            ->join('master_cakupan', 'agenda_kadis.id_cakupan', '=', 'master_cakupan.id_cakupan') // Join dengan master_cakupan
+        $dataAgendaEksternal = DB::table('agenda_kadis_eksternal')
+            ->join('master_jabatan', 'agenda_kadis_eksternal.id_jabatan', '=', 'master_jabatan.id_jabatan')
+            ->join('master_bidang', 'agenda_kadis_eksternal.id_bidang', '=', 'master_bidang.id_bidang')
+            ->join('master_instruksi', 'agenda_kadis_eksternal.id_instruksi', '=', 'master_instruksi.id_instruksi')
             ->select(
-                'agenda_kadis.*',
+                'agenda_kadis_eksternal.*',
                 'master_jabatan.nama_jabatan',
                 'master_bidang.nama_bidang',
-                'master_instruksi.isi_instruksi',
-                'master_cakupan.cakupan'
-            )
-            ->paginate(10);
+                'master_instruksi.isi_instruksi'
+            )->paginate(10);
 
         $jabatan = DB::table('master_jabatan')->get();
         $bidang = DB::table('master_bidang')->get();
         $instruksi = DB::table('master_instruksi')->get();
-        $cakupan = DB::table('master_cakupan')->get();
 
-        return view('TU-Bidang/dashboard', compact('data', 'jabatan', 'bidang', 'instruksi', 'cakupan'));
 
+        $dataAgendaInternal = DB::table('agenda_kadis_internal')
+            ->join('master_bidang', 'agenda_kadis_internal.id_bidang', '=', 'master_bidang.id_bidang') // Join dengan master_cakupan
+            ->select(
+                'agenda_kadis_internal.*',
+                'master_bidang.nama_bidang'
+            )
+            ->paginate(10);
+
+        return view('TU-Bidang/dashboard', compact('dataAgendaEksternal', 'dataAgendaInternal', 'jabatan', 'bidang', 'instruksi', ));
     }
 
-    public function tambah()
+    public function tambahAgendaInternal()
     {
-        return view('TU-Bidang/tambah', $this->getDropdownData());
+        return view('TU-Bidang/tambahAgendaInternal', $this->getDropdownDataInternal());
+    }
+
+    public function tambahAgendaEksternal()
+    {
+        return view('TU-Bidang/tambahAgendaEksternal', $this->getDropdownDataEksternal());
     }
 
     public function store(Request $request)
@@ -118,37 +134,102 @@ class TUBidangController extends Controller
         }
     }
 
-    public function edit($id)
+    public function editEksternal($id)
     {
-        $data = DB::table('agenda_kadis')
-            ->join('master_jabatan', 'agenda_kadis.id_jabatan', '=', 'master_jabatan.id_jabatan')
-            ->join('master_bidang', 'agenda_kadis.id_bidang', '=', 'master_bidang.id_bidang')
-            ->join('master_instruksi', 'agenda_kadis.id_instruksi', '=', 'master_instruksi.id_instruksi')
-            ->join('master_cakupan', 'agenda_kadis.id_cakupan', '=', 'master_cakupan.id_cakupan') // Join dengan master_cakupan
+        $dataAgendaEksternal = DB::table('agenda_kadis_eksternal')
+            ->join('master_jabatan', 'agenda_kadis_eksternal.id_jabatan', '=', 'master_jabatan.id_jabatan')
+            ->join('master_bidang', 'agenda_kadis_eksternal.id_bidang', '=', 'master_bidang.id_bidang')
+            ->join('master_instruksi', 'agenda_kadis_eksternal.id_instruksi', '=', 'master_instruksi.id_instruksi')
             ->select(
-                'agenda_kadis.*',
+                'agenda_kadis_eksternal.*',
                 'master_jabatan.nama_jabatan',
                 'master_bidang.nama_bidang',
-                'master_instruksi.isi_instruksi',
-                'master_cakupan.cakupan'
+                'master_instruksi.isi_instruksi'
             )
-            ->where('agenda_kadis.id', $id)
+            ->where('agenda_kadis_eksternal.id', $id)
             ->first(); // Ambil hanya satu baris
 
 
         $jabatan = DB::table('master_jabatan')->get();
         $bidang = DB::table('master_bidang')->get();
-        $instruksi = DB::table('master_instruksi')->get();
-        $cakupan = DB::table('master_cakupan')->get(); // Ambil data cakupan
-
-        // query untuk mendapatkan data berdasarkan ID
+        $instruksi = DB::table('master_instruksi')->get();        // query untuk mendapatkan data berdasarkan ID
 
 
-        return view('TU-Bidang/edit', compact('data', 'jabatan', 'bidang', 'instruksi', 'cakupan'));
+        return view('TU-Bidang/editEksternal', compact('dataAgendaEksternal', 'jabatan', 'bidang', 'instruksi'));
 
     }
 
-    public function update(Request $request, $id)
+    public function editInternal($id)
+    {
+        $dataAgendaEksternal = DB::table('agenda_kadis_internal')
+            ->join('master_bidang', 'agenda_kadis.id_bidang', '=', 'master_bidang.id_bidang') // Join dengan master_cakupan
+            ->select(
+                'agenda_kadis_internal.*',
+                'master_bidang.nama_bidang',
+            )
+            ->where('agenda_kadis.id', $id)
+            ->first(); // Ambil hanya satu baris
+
+    }
+
+    public function updateEksternal(Request $request, $id)
+    {
+        $validatedData = $request->validate([
+            'no_surat' => 'required|string',
+            'tanggal_surat' => 'required|date',
+            'pengundang' => 'required|string',
+            'tempat' => 'required|string',
+            'tanggal_acara' => 'required|date',
+            'acara' => 'required|string',
+            'id_jabatan' => 'required|integer',
+            'id_bidang' => 'required|integer',
+            'nama_pendamping' => 'required|string',
+            'id_instruksi' => 'required|integer',
+            'waktu' => 'required|string',
+            'catatan' => 'nullable|string',
+            'softfile_surat' => 'nullable|file|mimes:pdf|max:2048', // Max 2MB
+        ]);
+
+        // Jika ada file baru diupload
+        if ($request->hasFile('softfile_surat')) {
+            $file = $request->file('softfile_surat');
+            $fileName = 'surat' . '_' . $file->getClientOriginalName();
+            $file->move('storage/dokumen/', $fileName);
+
+            // Hapus file lama jika ada
+            $oldFile = DB::table('agenda_kadis_eksternal')->where('id', $id)->value('softfile_surat');
+            if ($oldFile && Storage::exists('storage/dokumen/' . $oldFile)) {
+                Storage::delete('storage/dokumen/' . $oldFile);
+            }
+        } else {
+            // Jika tidak ada file baru, gunakan file lama
+            $fileName = DB::table('agenda_kadis_eksternal')->where('id', $id)->value('softfile_surat');
+        }
+
+        // Update data di database
+        DB::table('agenda_kadis_eksternal')
+            ->where('id', $id)
+            ->update([
+                'no_surat' => $validatedData['no_surat'],
+                'tanggal_surat' => $validatedData['tanggal_surat'],
+                'pengundang' => $validatedData['pengundang'],
+                'tempat' => $validatedData['tempat'],
+                'hari_tanggal' => $validatedData['tanggal_acara'],
+                'acara' => $validatedData['acara'],
+                'id_jabatan' => $validatedData['id_jabatan'],
+                'id_bidang' => $validatedData['id_bidang'],
+                'nama_pendamping' => $validatedData['nama_pendamping'],
+                'id_instruksi' => $validatedData['id_instruksi'],
+                'waktu' => $validatedData['waktu'],
+                'catatan' => $validatedData['catatan'],
+                'softfile_surat' => $fileName,
+                'updated_at' => now(),
+            ]);
+
+        return redirect()->route('tu-bidang.index')->with('success', 'Data berhasil diperbarui!');
+    }
+
+    public function updateInternal(Request $request, $id)
     {
         $validatedData = $request->validate([
             'no_surat' => 'required|string',
@@ -209,53 +290,39 @@ class TUBidangController extends Controller
 
     public function agendaEksternal()
     {
-        $data = DB::table('agenda_kadis')
-            ->join('master_jabatan', 'agenda_kadis.id_jabatan', '=', 'master_jabatan.id_jabatan')
-            ->join('master_bidang', 'agenda_kadis.id_bidang', '=', 'master_bidang.id_bidang')
-            ->join('master_instruksi', 'agenda_kadis.id_instruksi', '=', 'master_instruksi.id_instruksi')
-            ->join('master_cakupan', 'agenda_kadis.id_cakupan', '=', 'master_cakupan.id_cakupan')
-            ->where('agenda_kadis.id_cakupan', 1) // Filter untuk cakupan eksternal
+        $dataAgendaEksternal = DB::table('agenda_kadis_eksternal')
+            ->join('master_jabatan', 'agenda_kadis_eksternal.id_jabatan', '=', 'master_jabatan.id_jabatan')
+            ->join('master_bidang', 'agenda_kadis_eksternal.id_bidang', '=', 'master_bidang.id_bidang')
+            ->join('master_instruksi', 'agenda_kadis_eksternal.id_instruksi', '=', 'master_instruksi.id_instruksi')
             ->select(
-                'agenda_kadis.*',
+                'agenda_kadis_eksternal.*',
                 'master_jabatan.nama_jabatan',
                 'master_bidang.nama_bidang',
-                'master_instruksi.isi_instruksi',
-                'master_cakupan.cakupan'
+                'master_instruksi.isi_instruksi'
             )
             ->paginate(10);
 
         $jabatan = DB::table('master_jabatan')->get();
         $bidang = DB::table('master_bidang')->get();
         $instruksi = DB::table('master_instruksi')->get();
-        $cakupan = DB::table('master_cakupan')->get();
 
-        return view('TU-Bidang/agendaEksternal', compact('data', 'jabatan', 'bidang', 'instruksi', 'cakupan'));
+        return view('TU-Bidang/agendaEksternal', compact('dataAgendaEksternal', 'jabatan', 'bidang', 'instruksi'));
 
     }
 
     public function agendaInternal()
     {
-        $data = DB::table('agenda_kadis')
-            ->join('master_jabatan', 'agenda_kadis.id_jabatan', '=', 'master_jabatan.id_jabatan')
-            ->join('master_bidang', 'agenda_kadis.id_bidang', '=', 'master_bidang.id_bidang')
-            ->join('master_instruksi', 'agenda_kadis.id_instruksi', '=', 'master_instruksi.id_instruksi')
-            ->join('master_cakupan', 'agenda_kadis.id_cakupan', '=', 'master_cakupan.id_cakupan')
-            ->where('agenda_kadis.id_cakupan', 2) // Filter untuk cakupan internal
+        $dataAgendaInternal = DB::table('agenda_kadis_internal')
+            ->join('master_bidang', 'agenda_kadis_internal.id_bidang', '=', 'master_bidang.id_bidang')
             ->select(
-                'agenda_kadis.*',
-                'master_jabatan.nama_jabatan',
+                'agenda_kadis_internal.*',
                 'master_bidang.nama_bidang',
-                'master_instruksi.isi_instruksi',
-                'master_cakupan.cakupan'
             )
             ->paginate(10);
 
-        $jabatan = DB::table('master_jabatan')->get();
         $bidang = DB::table('master_bidang')->get();
-        $instruksi = DB::table('master_instruksi')->get();
-        $cakupan = DB::table('master_cakupan')->get();
 
-        return view('TU-Bidang/agendaInternal', compact('data', 'jabatan', 'bidang', 'instruksi', 'cakupan'));
+        return view('TU-Bidang/agendaInternal', compact('dataAgendaInternal', 'bidang'));
 
     }
 
