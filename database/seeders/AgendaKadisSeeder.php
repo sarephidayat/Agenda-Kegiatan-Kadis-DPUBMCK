@@ -86,7 +86,80 @@ class AgendaKadisSeeder extends Seeder
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
                 'softfile_surat' => '132-335-1-PB.pdf'
-            ]
+            ],
+            [
+                'tanggal_surat' => '2024-01-02',
+                'no_surat' => '800.1.4.4/ 650',
+                'pengundang' => 'SKPD TP',
+                'acara' => 'Undangan Penyusunan Perjanjian Kinerja 2024',
+                'id_cakupan' => 2,
+                'hari_tanggal' => 'Selasa / 3 Januari 2024',
+                'waktu' => '09.00',
+                'tempat' => 'Ruang Rapat SKPD-TP',
+                'nama_pendamping' => '-',
+                'catatan' => '-',
+                'id_bidang' => 2,
+                'id_jabatan' => 19, // "SKPD TP"
+                'id_instruksi' => 1 ,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+                'softfile_surat' => '132-335-1-PB.pdf'
+            ],
+            [
+                'tanggal_surat' => '2024-01-22',
+                'no_surat' => '005/320',
+                'pengundang' => 'SPPBG',
+                'acara' => 'Undangan Rapat Evaluasi',
+                'id_cakupan' => 2,
+                'hari_tanggal' => 'Rabu / 24 Januari 2024',
+                'waktu' => '10.00',
+                'tempat' => 'Ruang Rapat SPPBG',
+                'nama_pendamping' => '-',
+                'catatan' => '-',
+                'id_bidang' => 5,
+                'id_jabatan' => 3, // "SPPBG"
+                'id_instruksi' => 1,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+                'softfile_surat' => '132-335-1-PB.pdf'
+            ],
+            [
+                'tanggal_surat' => '2024-01-24',
+                'no_surat' => '005/343',
+                'pengundang' => 'Ranbawas',
+                'acara' => 'Undangan Sosialisasi Pengadaan Tanah ',
+                'id_cakupan' => 2,
+                'hari_tanggal' => 'Kamis / 25 Januari 2024',
+                'waktu' => '13.00',
+                'tempat' => 'Balai Desa Karangbondo Kec Adipolo Kab Cilacap ',
+                'nama_pendamping' => '-',
+                'catatan' => '-',
+                'id_bidang' => 2,
+                'id_jabatan' => 3, // "Ranbawas"
+                'id_instruksi' => 1,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+                'softfile_surat' => '132-335-1-PB.pdf'
+            ],
+            [
+                'tanggal_surat' => '2024-01-24',
+                'no_surat' => '005/344',
+                'pengundang' => 'Ranbawas',
+                'acara' => 'Undangan Sosialisasi Pengadaan Tanah ',
+                'id_cakupan' => 2,
+                'hari_tanggal' => 'Kamis / 25 Januari 2024',
+                'waktu' => '13.00',
+                'tempat' => 'Balai Desa Karangbondo Kec Adipolo Kab Cilacap ',
+                'nama_pendamping' => '-',
+                'catatan' => '-',
+                'id_bidang' => 2,
+                'id_jabatan' => 3, // "Ranbawas"
+                'id_instruksi' => 1,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+                'softfile_surat' => '132-335-1-PB.pdf'
+            ],
+
         ]);
     }
 }
