@@ -1,20 +1,20 @@
-@include('Sub-Koor/TemplateDashboard/header')
+@include('TU-Bidang/TemplateDashboard/header')
 <!--begin::Body-->
 
 <body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
     <!--begin::App Wrapper-->
     <div class="app-wrapper">
 
-        @include('Sub-Koor/TemplateDashboard/navbar')
+        @include('TU-Bidang/TemplateDashboard/navbar')
 
-        @include('Sub-Koor/TemplateDashboard/sidebar')
+        @include('TU-Bidang/TemplateDashboard/sidebar')
 
         @yield('content')
 
-        @include('Sub-Koor/TemplateDashboard/footer')
+        @include('TU-Bidang/TemplateDashboard/footer')
     </div>
     <!--end::App Wrapper-->
-    @include('Sub-Koor/TemplateDashboard/script')
+    @include('TU-Bidang/TemplateDashboard/script')
 </body>
 <!--end::Body-->
 

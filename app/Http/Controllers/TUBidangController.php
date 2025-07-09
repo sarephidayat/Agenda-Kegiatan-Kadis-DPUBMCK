@@ -31,7 +31,7 @@ class TUBidangController extends Controller
                 'master_instruksi.isi_instruksi',
                 'master_cakupan.cakupan'
             )
-            ->get();
+            ->paginate(10);
 
         $jabatan = DB::table('master_jabatan')->get();
         $bidang = DB::table('master_bidang')->get();
@@ -44,7 +44,7 @@ class TUBidangController extends Controller
 
     public function tambah()
     {
-        return view('TU-Bidang/tambahData', $this->getDropdownData());
+        return view('TU-Bidang/tambah', $this->getDropdownData());
     }
 
     public function store(Request $request)
@@ -104,7 +104,7 @@ class TUBidangController extends Controller
                 'updated_at' => now(),
             ]);
 
-            return redirect()->route('TU-Bidang-dinas.index')->with('success', 'Data berhasil disimpan!');
+            return redirect()->route('tu-bidang.index')->with('success', 'Data berhasil disimpan!');
 
         } catch (\Exception $e) {
             // Hapus file yang sudah terupload jika terjadi error
@@ -213,7 +213,8 @@ class TUBidangController extends Controller
             ->join('master_jabatan', 'agenda_kadis.id_jabatan', '=', 'master_jabatan.id_jabatan')
             ->join('master_bidang', 'agenda_kadis.id_bidang', '=', 'master_bidang.id_bidang')
             ->join('master_instruksi', 'agenda_kadis.id_instruksi', '=', 'master_instruksi.id_instruksi')
-            ->join('master_cakupan', 'agenda_kadis.id_cakupan', '=', 'master_cakupan.id_cakupan') // Join dengan master_cakupan
+            ->join('master_cakupan', 'agenda_kadis.id_cakupan', '=', 'master_cakupan.id_cakupan')
+            ->where('agenda_kadis.id_cakupan', 1) // Filter untuk cakupan eksternal
             ->select(
                 'agenda_kadis.*',
                 'master_jabatan.nama_jabatan',
@@ -221,7 +222,7 @@ class TUBidangController extends Controller
                 'master_instruksi.isi_instruksi',
                 'master_cakupan.cakupan'
             )
-            ->get();
+            ->paginate(10);
 
         $jabatan = DB::table('master_jabatan')->get();
         $bidang = DB::table('master_bidang')->get();
@@ -238,7 +239,8 @@ class TUBidangController extends Controller
             ->join('master_jabatan', 'agenda_kadis.id_jabatan', '=', 'master_jabatan.id_jabatan')
             ->join('master_bidang', 'agenda_kadis.id_bidang', '=', 'master_bidang.id_bidang')
             ->join('master_instruksi', 'agenda_kadis.id_instruksi', '=', 'master_instruksi.id_instruksi')
-            ->join('master_cakupan', 'agenda_kadis.id_cakupan', '=', 'master_cakupan.id_cakupan') // Join dengan master_cakupan
+            ->join('master_cakupan', 'agenda_kadis.id_cakupan', '=', 'master_cakupan.id_cakupan')
+            ->where('agenda_kadis.id_cakupan', 2) // Filter untuk cakupan internal
             ->select(
                 'agenda_kadis.*',
                 'master_jabatan.nama_jabatan',
@@ -246,7 +248,7 @@ class TUBidangController extends Controller
                 'master_instruksi.isi_instruksi',
                 'master_cakupan.cakupan'
             )
-            ->get();
+            ->paginate(10);
 
         $jabatan = DB::table('master_jabatan')->get();
         $bidang = DB::table('master_bidang')->get();

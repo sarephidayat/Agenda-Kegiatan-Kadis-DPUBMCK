@@ -1,4 +1,4 @@
-@extends('Sub-Koor/TemplateDashboard/main')
+@extends('TU-Bidang/TemplateDashboard/main')
 
 @section('content')
 <!--begin::App Main-->
@@ -128,128 +128,86 @@
             <!--begin::Row-->
             <div class="row">
                 <div class="col-md-12">
+                    <div class="text-end mb-3">
+                        <a href="tu-bidang/tambah-agenda" class="btn btn-primary">Tambah Data</a>
+                    </div>
                     <div class="card mb-4">
                         <div class="card-header">
                             <h3 class="card-title">
                                 <a href="/approvalAlat" style="color: black; text-decoration: none;"
                                     onmouseover="this.style.textDecoration='underline'"
                                     onmouseout="this.style.textDecoration='none'">
-                                    Persetujuan Reservasi
+                                    Daftar Agenda Kepala Dinas
                                 </a>
 
                             </h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <table class="table table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Name</th>
-                                        <th>NIM</th>
-                                        <th>Email</th>
-                                        <th>Program Studi</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="align-middle">
-                                        <td>1.</td>
-                                        <td>Muhammad Syarifudin Hidayat</td>
-                                        <td>232080960032</td>
-                                        <td>232080960032@student.walisongo.ac.id</td>
-                                        <td>Teknologi Informasi</td>
-                                        <td>
-                                            <div>
-                                                <a href="#" class="badge text-bg-success">
-                                                    Approve
-                                                </a>
-                                                <a href="#" class="badge text-bg-danger">
-                                                    Delete
-                                                </a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr class="align-middle">
-                                        <td>2.</td>
-                                        <td>Muhammad Syarifudin Hidayat</td>
-                                        <td>232080960032</td>
-                                        <td>232080960032@student.walisongo.ac.id</td>
-                                        <td>Teknologi Informasi</td>
-                                        <td>
-                                            <div>
-                                                <a href="#" class="badge text-bg-success">
-                                                    Approve
-                                                </a>
-                                                <a href="#" class="badge text-bg-danger">
-                                                    Delete
-                                                </a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr class="align-middle">
-                                        <td>3.</td>
-                                        <td>Muhammad Syarifudin Hidayat</td>
-                                        <td>232080960032</td>
-                                        <td>232080960032@student.walisongo.ac.id</td>
-                                        <td>Teknologi Informasi</td>
-                                        <td>
-                                            <div>
-                                                <a href="#" class="badge text-bg-success">
-                                                    Approve
-                                                </a>
-                                                <a href="#" class="badge text-bg-danger">
-                                                    Delete
-                                                </a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr class="align-middle">
-                                        <td>4.</td>
-                                        <td>Muhammad Syarifudin Hidayat</td>
-                                        <td>232080960032</td>
-                                        <td>232080960032@student.walisongo.ac.id</td>
-                                        <td>Teknologi Informasi</td>
-                                        <td>
-                                            <div>
-                                                <a href="#" class="badge text-bg-success">
-                                                    Approve
-                                                </a>
-                                                <a href="#" class="badge text-bg-danger">
-                                                    Delete
-                                                </a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr class="align-middle">
-                                        <td>5.</td>
-                                        <td>Muhammad Syarifudin Hidayat</td>
-                                        <td>232080960032</td>
-                                        <td>232080960032@student.walisongo.ac.id</td>
-                                        <td>Teknologi Informasi</td>
-                                        <td>
-                                            <div>
-                                                <a href="#" class="badge text-bg-success">
-                                                    Approve
-                                                </a>
-                                                <a href="#" class="badge text-bg-danger">
-                                                    Delete
-                                                </a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <div style="overflow-x: auto;">
+                                <table class="table table-bordered w-100" style="table-layout: auto;">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 40px;">No</th>
+                                            <th style="width: 120px;">Tanggal Surat</th>
+                                            <th style="width: 150px;">No Surat</th>
+                                            <th style="width: 200px;">Pengundang</th>
+                                            <th style="width: 120px;">Tempat</th>
+                                            <th style="width: 150px;">Hari/Tanggal</th>
+                                            <th style="width: 180px;">Acara</th>
+                                            <th style="width: 100px;">Cakupan</th>
+                                            <th style="width: 180px;">Pendamping</th>
+                                            <th style="width: 120px;">Bidang</th>
+                                            <th style="width: 150px;">Nama Pendamping</th>
+                                            <th style="width: 120px;">Instruksi</th>
+                                            <th style="width: 80px;">Waktu</th>
+                                            <th style="width: 250px;">Catatan</th>
+                                            <th style="width: 130px;">File</th>
+                                            <th style="width: 80px;">Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($data as $agenda)
+                                        <?php $no = 1; ?>
+                                            <tr>
+                                                <td>{{ ($data->currentPage() - 1) * $data->perPage() + $loop->iteration }}</td>
+                                                <td>{{ $agenda->tanggal_surat }}</td>
+                                                <td>{{$agenda->no_surat}}</td>
+                                                <td>{{ $agenda->pengundang }}</td>
+                                                <td>{{ $agenda->tempat }}</td>
+                                                <td>{{ $agenda->hari_tanggal }}</td>
+                                                <td>{{ $agenda->acara }}</td>
+                                                <td>{{ $agenda->cakupan}}</td>
+                                                <td>{{ $agenda->nama_jabatan }}</td>
+                                                <td>{{ $agenda->nama_bidang }}</td>
+                                                <td>{{ $agenda->nama_pendamping }}</td>
+                                                <td>{{ $agenda->isi_instruksi }}</td>
+                                                <td>{{ $agenda->waktu }}</td>
+                                                <td>{{ $agenda->catatan }}</td>
+                                                <td>
+                                                    <br>
+                                                    @if($agenda->softfile_surat)
+                                                    <a href="{{ asset('storage/dokumen/' . $agenda->softfile_surat) }}" target="_blank" class="btn btn-success btn-sm">
+                                                        <i class="fas fa-file-pdf"></i> Lihat Dokumen
+                                                    </a>
+                                                    @else
+                                                    <span class="text-muted">Tidak ada dokumen</span>
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    <a href="tu-bidang/edit/{{$agenda->id}}" class="btn btn-warning btn-sm">edit</a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                         <!-- /.card-body -->
                         <div class="card-footer clearfix">
-                            <ul class="pagination pagination-sm m-0 float-end">
-                                <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
-                            </ul>
+                            <div class="float-end">
+                                {{ $data->links('pagination::bootstrap-4') }}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -261,4 +219,7 @@
     <!--end::App Content-->
 </main>
 <!--end::App Main-->
+
+{{-- script --}}
+    
 @endsection

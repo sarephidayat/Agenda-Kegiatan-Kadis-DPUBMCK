@@ -1,176 +1,225 @@
-@extends('Kadis/TemplateDashboard/main')
+@extends('TU-Bidang/TemplateDashboard/main')
 
 @section('content')
+<!--begin::App Main-->
 <main class="app-main">
-    <div class="app-content-header bg-gradient-primary py-4 shadow-sm mb-4 rounded-4">
+    <!--begin::App Content Header-->
+    <div class="app-content-header">
+        <!--begin::Container-->
         <div class="container-fluid">
-            <div class="row align-items-center">
+            <!--begin::Row-->
+            <div class="row">
                 <div class="col-sm-6">
-                    <h3 class="mb-0 fw-bold text-white">
-                        <i class="bi bi-speedometer2 me-2"></i> Dashboard
-                    </h3>
+                    <h3 class="mb-0">Dashboard</h3>
                 </div>
                 <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-end bg-transparent mb-0">
-                        <li class="breadcrumb-item">
-                            <a href="#" class="text-decoration-none text-light">Home</a>
-                        </li>
-                        <li class="breadcrumb-item active text-white" aria-current="page">Dashboard</li>
+                    <ol class="breadcrumb float-sm-end">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
                     </ol>
                 </div>
             </div>
+            <!--end::Row-->
         </div>
+        <!--end::Container-->
     </div>
+    <!--end::App Content Header-->
+    <!--begin::App Content-->
     <div class="app-content">
+        <!--begin::Container-->
         <div class="container-fluid">
-            <div class="row g-4 mb-4">
+            <!--begin::Row-->
+            <div class="row">
+                <!--begin::Col-->
                 <div class="col-lg-3 col-6">
-                    <div class="small-box bg-gradient-primary shadow rounded-4 border-0 position-relative overflow-hidden">
+                    <!--begin::Small Box Widget 1-->
+                    <div class="small-box text-bg-primary">
                         <div class="inner">
-                            <h3 class="fw-bold">150</h3>
-                            <p class="mb-0">New Orders</p>
+                            <h3>150</h3>
+                            <p>New Orders</p>
                         </div>
-                        <div class="position-absolute top-0 end-0 p-2 opacity-25">
-                            <i class="bi bi-bag-fill display-4"></i>
-                        </div>
-                        <a href="#" class="small-box-footer link-light text-decoration-none d-block py-2 fw-semibold">
-                            More info <i class="bi bi-arrow-right-circle"></i>
+                        <svg class="small-box-icon" fill="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path
+                                d="M2.25 2.25a.75.75 0 000 1.5h1.386c.17 0 .318.114.362.278l2.558 9.592a3.752 3.752 0 00-2.806 3.63c0 .414.336.75.75.75h15.75a.75.75 0 000-1.5H5.378A2.25 2.25 0 017.5 15h11.218a.75.75 0 00.674-.421 60.358 60.358 0 002.96-7.228.75.75 0 00-.525-.965A60.864 60.864 0 005.68 4.509l-.232-.867A1.875 1.875 0 003.636 2.25H2.25zM3.75 20.25a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0zM16.5 20.25a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0z">
+                            </path>
+                        </svg>
+                        <a href="#"
+                            class="small-box-footer link-light link-underline-opacity-0 link-underline-opacity-50-hover">
+                            More info <i class="bi bi-link-45deg"></i>
                         </a>
                     </div>
+                    <!--end::Small Box Widget 1-->
                 </div>
+                <!--end::Col-->
                 <div class="col-lg-3 col-6">
-                    <div class="small-box bg-gradient-success shadow rounded-4 border-0 position-relative overflow-hidden">
+                    <!--begin::Small Box Widget 2-->
+                    <div class="small-box text-bg-success">
                         <div class="inner">
-                            <h3 class="fw-bold">53<sup class="fs-5">%</sup></h3>
-                            <p class="mb-0">Bounce Rate</p>
+                            <h3>53<sup class="fs-5">%</sup></h3>
+                            <p>Bounce Rate</p>
                         </div>
-                        <div class="position-absolute top-0 end-0 p-2 opacity-25">
-                            <i class="bi bi-bar-chart-fill display-4"></i>
-                        </div>
-                        <a href="#" class="small-box-footer link-light text-decoration-none d-block py-2 fw-semibold">
-                            More info <i class="bi bi-arrow-right-circle"></i>
+                        <svg class="small-box-icon" fill="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path
+                                d="M18.375 2.25c-1.035 0-1.875.84-1.875 1.875v15.75c0 1.035.84 1.875 1.875 1.875h.75c1.035 0 1.875-.84 1.875-1.875V4.125c0-1.036-.84-1.875-1.875-1.875h-.75zM9.75 8.625c0-1.036.84-1.875 1.875-1.875h.75c1.036 0 1.875.84 1.875 1.875v11.25c0 1.035-.84 1.875-1.875 1.875h-.75a1.875 1.875 0 01-1.875-1.875V8.625zM3 13.125c0-1.036.84-1.875 1.875-1.875h.75c1.036 0 1.875.84 1.875 1.875v6.75c0 1.035-.84 1.875-1.875 1.875h-.75A1.875 1.875 0 013 19.875v-6.75z">
+                            </path>
+                        </svg>
+                        <a href="#"
+                            class="small-box-footer link-light link-underline-opacity-0 link-underline-opacity-50-hover">
+                            More info <i class="bi bi-link-45deg"></i>
                         </a>
                     </div>
+                    <!--end::Small Box Widget 2-->
                 </div>
+                <!--end::Col-->
                 <div class="col-lg-3 col-6">
-                    <div class="small-box bg-gradient-warning shadow rounded-4 border-0 position-relative overflow-hidden">
+                    <!--begin::Small Box Widget 3-->
+                    <div class="small-box text-bg-warning">
                         <div class="inner">
-                            <h3 class="fw-bold">44</h3>
-                            <p class="mb-0">User Registrations</p>
+                            <h3>44</h3>
+                            <p>User Registrations</p>
                         </div>
-                        <div class="position-absolute top-0 end-0 p-2 opacity-25">
-                            <i class="bi bi-person-plus-fill display-4"></i>
-                        </div>
-                        <a href="#" class="small-box-footer link-dark text-decoration-none d-block py-2 fw-semibold">
-                            More info <i class="bi bi-arrow-right-circle"></i>
+                        <svg class="small-box-icon" fill="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path
+                                d="M6.25 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM3.25 19.125a7.125 7.125 0 0114.25 0v.003l-.001.119a.75.75 0 01-.363.63 13.067 13.067 0 01-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 01-.364-.63l-.001-.122zM19.75 7.5a.75.75 0 00-1.5 0v2.25H16a.75.75 0 000 1.5h2.25v2.25a.75.75 0 001.5 0v-2.25H22a.75.75 0 000-1.5h-2.25V7.5z">
+                            </path>
+                        </svg>
+                        <a href="#"
+                            class="small-box-footer link-dark link-underline-opacity-0 link-underline-opacity-50-hover">
+                            More info <i class="bi bi-link-45deg"></i>
                         </a>
                     </div>
+                    <!--end::Small Box Widget 3-->
                 </div>
+                <!--end::Col-->
                 <div class="col-lg-3 col-6">
-                    <div class="small-box bg-gradient-danger shadow rounded-4 border-0 position-relative overflow-hidden">
+                    <!--begin::Small Box Widget 4-->
+                    <div class="small-box text-bg-danger">
                         <div class="inner">
-                            <h3 class="fw-bold">65</h3>
-                            <p class="mb-0">Unique Visitors</p>
+                            <h3>65</h3>
+                            <p>Unique Visitors</p>
                         </div>
-                        <div class="position-absolute top-0 end-0 p-2 opacity-25">
-                            <i class="bi bi-people-fill display-4"></i>
-                        </div>
-                        <a href="#" class="small-box-footer link-light text-decoration-none d-block py-2 fw-semibold">
-                            More info <i class="bi bi-arrow-right-circle"></i>
+                        <svg class="small-box-icon" fill="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path clip-rule="evenodd" fill-rule="evenodd"
+                                d="M2.25 13.5a8.25 8.25 0 018.25-8.25.75.75 0 01.75.75v6.75H18a.75.75 0 01.75.75 8.25 8.25 0 01-16.5 0z">
+                            </path>
+                            <path clip-rule="evenodd" fill-rule="evenodd"
+                                d="M12.75 3a.75.75 0 01.75-.75 8.25 8.25 0 018.25 8.25.75.75 0 01-.75.75h-7.5a.75.75 0 01-.75-.75V3z">
+                            </path>
+                        </svg>
+                        <a href="#"
+                            class="small-box-footer link-light link-underline-opacity-0 link-underline-opacity-50-hover">
+                            More info <i class="bi bi-link-45deg"></i>
                         </a>
                     </div>
+                    <!--end::Small Box Widget 4-->
                 </div>
+                <!--end::Col-->
             </div>
+            <!--end::Row-->
         </div>
+        <!--end::Container-->
+
+        <!--begin::Container-->
         <div class="container-fluid">
+            <!--begin::Row-->
             <div class="row">
                 <div class="col-md-12">
-                    <div class="card shadow rounded-4 border-0">
-                        <div class="card-header bg-gradient-info border-0 rounded-top-4">
-                            <h3 class="card-title mb-0">
-                                <a href="/approvalAlat" class="text-white text-decoration-none fw-bold"
+                    <div class="text-end mb-3">
+                        <a href="tu-bidang/tambah-agenda" class="btn btn-primary">Tambah Data</a>
+                    </div>
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h3 class="card-title">
+                                <a href="/approvalAlat" style="color: black; text-decoration: none;"
                                     onmouseover="this.style.textDecoration='underline'"
                                     onmouseout="this.style.textDecoration='none'">
-                                    <i class="bi bi-clipboard-check me-2"></i>Persetujuan Reservasi
+                                    Daftar Agenda Kepala Dinas
                                 </a>
+
                             </h3>
                         </div>
-                        <div class="card-body bg-light rounded-bottom-4">
-                            <table class="table table-hover table-bordered align-middle rounded-3 overflow-hidden shadow-sm">
-                                <thead class="table-primary">
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Name</th>
-                                        <th>NIM</th>
-                                        <th>Email</th>
-                                        <th>Program Studi</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @for($i=1; $i<=5; $i++)
-                                    <tr>
-                                        <td>{{ $i }}.</td>
-                                        <td>Muhammad Syarifudin Hidayat</td>
-                                        <td>232080960032</td>
-                                        <td>232080960032@student.walisongo.ac.id</td>
-                                        <td>Teknologi Informasi</td>
-                                        <td>
-                                            <div class="d-flex gap-2">
-                                                <a href="#" class="badge bg-success text-decoration-none px-3 py-2 fs-6 shadow-sm">
-                                                    <i class="bi bi-check-circle me-1"></i> Approve
-                                                </a>
-                                                <a href="#" class="badge bg-danger text-decoration-none px-3 py-2 fs-6 shadow-sm">
-                                                    <i class="bi bi-trash me-1"></i> Delete
-                                                </a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    @endfor
-                                </tbody>
-                            </table>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <div style="overflow-x: auto;">
+                                <table class="table table-bordered w-100" style="table-layout: auto;">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 40px;">No</th>
+                                            <th style="width: 120px;">Tanggal Surat</th>
+                                            <th style="width: 150px;">No Surat</th>
+                                            <th style="width: 200px;">Pengundang</th>
+                                            <th style="width: 120px;">Tempat</th>
+                                            <th style="width: 150px;">Hari/Tanggal</th>
+                                            <th style="width: 180px;">Acara</th>
+                                            <th style="width: 100px;">Cakupan</th>
+                                            <th style="width: 180px;">Pendamping</th>
+                                            <th style="width: 120px;">Bidang</th>
+                                            <th style="width: 150px;">Nama Pendamping</th>
+                                            <th style="width: 120px;">Instruksi</th>
+                                            <th style="width: 80px;">Waktu</th>
+                                            <th style="width: 250px;">Catatan</th>
+                                            <th style="width: 130px;">File</th>
+                                            <th style="width: 80px;">Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($data as $agenda)
+                                        <?php $no = 1; ?>
+                                            <tr>
+                                                <td>{{ ($data->currentPage() - 1) * $data->perPage() + $loop->iteration }}</td>
+                                                <td>{{ $agenda->tanggal_surat }}</td>
+                                                <td>{{$agenda->no_surat}}</td>
+                                                <td>{{ $agenda->pengundang }}</td>
+                                                <td>{{ $agenda->tempat }}</td>
+                                                <td>{{ $agenda->hari_tanggal }}</td>
+                                                <td>{{ $agenda->acara }}</td>
+                                                <td>{{ $agenda->cakupan}}</td>
+                                                <td>{{ $agenda->nama_jabatan }}</td>
+                                                <td>{{ $agenda->nama_bidang }}</td>
+                                                <td>{{ $agenda->nama_pendamping }}</td>
+                                                <td>{{ $agenda->isi_instruksi }}</td>
+                                                <td>{{ $agenda->waktu }}</td>
+                                                <td>{{ $agenda->catatan }}</td>
+                                                <td>
+                                                    <br>
+                                                    @if($agenda->softfile_surat)
+                                                    <a href="{{ asset('storage/dokumen/' . $agenda->softfile_surat) }}" target="_blank" class="btn btn-success btn-sm">
+                                                        <i class="fas fa-file-pdf"></i> Lihat Dokumen
+                                                    </a>
+                                                    @else
+                                                    <span class="text-muted">Tidak ada dokumen</span>
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    <a href="tu-bidang/edit/{{$agenda->id}}" class="btn btn-warning btn-sm">edit</a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                        <div class="card-footer bg-white border-0 rounded-bottom-4 clearfix">
-                            <ul class="pagination pagination-sm m-0 float-end">
-                                <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
-                                <li class="page-item active"><a class="page-link bg-primary text-white border-primary" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
-                            </ul>
+                        <!-- /.card-body -->
+                        <div class="card-footer clearfix">
+                            <div class="float-end">
+                                {{ $data->links('pagination::bootstrap-4') }}
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <!--end::Row-->
         </div>
+        <!--end::Container-->
     </div>
+    <!--end::App Content-->
 </main>
-<style>
-    .bg-gradient-primary {
-        background: linear-gradient(90deg, #4e73df 0%, #224abe 100%) !important;
-    }
-    .bg-gradient-success {
-        background: linear-gradient(90deg, #1cc88a 0%, #17a673 100%) !important;
-    }
-    .bg-gradient-warning {
-        background: linear-gradient(90deg, #f6c23e 0%, #dda20a 100%) !important;
-    }
-    .bg-gradient-danger {
-        background: linear-gradient(90deg, #e74a3b 0%, #be2617 100%) !important;
-    }
-    .bg-gradient-info {
-        background: linear-gradient(90deg, #36b9cc 0%, #258fa7 100%) !important;
-    }
-    .small-box {
-        transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .small-box:hover {
-        transform: translateY(-5px) scale(1.03);
-        box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-        z-index: 2;
-    }
-    .card-title a:hover {
-        color: #224abe !important;
-    }
-</style>
+<!--end::App Main-->
+
+{{-- script --}}
+    
 @endsection

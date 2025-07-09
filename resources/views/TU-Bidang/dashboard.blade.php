@@ -128,6 +128,9 @@
             <!--begin::Row-->
             <div class="row">
                 <div class="col-md-12">
+                    <div class="text-end mb-3">
+                        <a href="tu-bidang/tambah-agenda" class="btn btn-primary">Tambah Data</a>
+                    </div>
                     <div class="card mb-4">
                         <div class="card-header">
                             <h3 class="card-title">
@@ -167,7 +170,7 @@
                                         @foreach($data as $agenda)
                                         <?php $no = 1; ?>
                                             <tr>
-                                                <td>{{ $loop->iteration }}</td>
+                                                <td>{{ ($data->currentPage() - 1) * $data->perPage() + $loop->iteration }}</td>
                                                 <td>{{ $agenda->tanggal_surat }}</td>
                                                 <td>{{$agenda->no_surat}}</td>
                                                 <td>{{ $agenda->pengundang }}</td>
@@ -198,18 +201,13 @@
                                         @endforeach
                                     </tbody>
                                 </table>
-
                             </div>
                         </div>
                         <!-- /.card-body -->
                         <div class="card-footer clearfix">
-                            <ul class="pagination pagination-sm m-0 float-end">
-                                <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
-                            </ul>
+                            <div class="float-end">
+                                {{ $data->links('pagination::bootstrap-4') }}
+                            </div>
                         </div>
                     </div>
                 </div>
