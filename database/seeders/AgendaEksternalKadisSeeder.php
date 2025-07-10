@@ -23,6 +23,8 @@ class AgendaEksternalKadisSeeder extends Seeder
                 'tanggal' => '2024-01-03', // Diubah dari "Rabu / 03 Januari 2024"
                 'waktu' => '07.30',
                 'tempat' => 'Ruang Rapat Gedung A Lantai II',
+                'provinsi' => 'Jawa Tengah',
+                'kabupaten' => 'Semarang',
                 'nama_pendamping' => '-',
                 'catatan' => '-',
                 'id_bidang' => 1,
@@ -40,6 +42,8 @@ class AgendaEksternalKadisSeeder extends Seeder
                 'tanggal' => '2024-01-09', // Diubah dari "8-9 Januari 2024" → ambil tanggal terakhir
                 'waktu' => '09.00',
                 'tempat' => 'Ruang Rapat Lantai VI A Bappeda Prov Jateng',
+                'provinsi' => 'Jawa Tengah',
+                'kabupaten' => 'Semarang',
                 'nama_pendamping' => '-',
                 'catatan' => '-',
                 'id_bidang' => 1,
@@ -57,6 +61,8 @@ class AgendaEksternalKadisSeeder extends Seeder
                 'tanggal' => '2024-01-05', // Diubah dari "Jumat / 05 Januari 2024"
                 'waktu' => '08.30',
                 'tempat' => 'Zoom Meeting',
+                'provinsi' => 'Jawa Tengah',
+                'kabupaten' => 'Semarang',
                 'nama_pendamping' => '-',
                 'catatan' => '-',
                 'id_bidang' => 1,
@@ -74,6 +80,8 @@ class AgendaEksternalKadisSeeder extends Seeder
                 'tanggal' => '2024-01-09', // dari "8-9 Januari 2024"
                 'waktu' => '10.00',
                 'tempat' => 'Litbang Lantai I RSUD dr. Rehatta Jepara',
+                'provinsi' => 'Jawa Tengah',
+                'kabupaten' => 'Semarang',
                 'nama_pendamping' => '-',
                 'catatan' => '-',
                 'id_bidang' => 1,

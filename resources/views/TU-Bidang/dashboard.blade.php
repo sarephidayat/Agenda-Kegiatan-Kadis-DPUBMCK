@@ -155,6 +155,8 @@
                                             <th style="width: 150px;">No Surat</th>
                                             <th style="width: 200px;">Pengundang</th>
                                             <th style="width: 120px;">Tempat</th>
+                                            <th style="width: 120px;">Provinsi</th>
+                                            <th style="width: 120px;">Kabupaten/Kota</th>
                                             <th style="width: 150px;">Hari/Tanggal</th>
                                             <th style="width: 180px;">Acara</th>
                                             <th style="width: 180px;">Pendamping</th>
@@ -176,6 +178,8 @@
                                                 <td>{{$agendaEksternal->no_surat}}</td>
                                                 <td>{{ $agendaEksternal->pengundang }}</td>
                                                 <td>{{ $agendaEksternal->tempat }}</td>
+                                                <td>{{ $agendaEksternal->provinsi }}</td>
+                                                <td>{{ $agendaEksternal->kabupaten }}</td>
                                                 <td>{{ $agendaEksternal->tanggal }}</td>
                                                 <td>{{ $agendaEksternal->acara }}</td>
                                                 <td>{{ $agendaEksternal->nama_jabatan }}</td>
@@ -187,9 +191,9 @@
                                                 <td>
                                                     <br>
                                                     @if($agendaEksternal->softfile_surat)
-                                                    <a href="{{ asset('storage/dokumen/' . $agendaEksternal->softfile_surat) }}" target="_blank" class="btn btn-success btn-sm">
+                                                    <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#pdfModal-{{ $agendaEksternal->id }}">
                                                         <i class="fas fa-file-pdf"></i> Lihat Dokumen
-                                                    </a>
+                                                    </button>
                                                     @else
                                                     <span class="text-muted">Tidak ada dokumen</span>
                                                     @endif
@@ -264,10 +268,10 @@
                                                 <td>{{ $agendaInternal->catatan }}</td>
                                                 <td>
                                                     <br>
-                                                    @if($agendaInternal->softfile_surat)
-                                                    <a href="{{ asset('storage/dokumen/' . $agendaInternal->softfile_surat) }}" target="_blank" class="btn btn-success btn-sm">
+                                                    @if($agendaEksternal->softfile_surat)
+                                                    <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#pdfModal-{{ $agendaEksternal->id }}">
                                                         <i class="fas fa-file-pdf"></i> Lihat Dokumen
-                                                    </a>
+                                                    </button>
                                                     @else
                                                     <span class="text-muted">Tidak ada dokumen</span>
                                                     @endif
@@ -293,6 +297,24 @@
                 </div>
             </div>
             <!--end::Row-->
+
+            {{-- Modal pop up --}}
+            @if($agendaEksternal->softfile_surat)
+            <div class="modal fade" id="pdfModal-{{ $agendaEksternal->id }}" tabindex="-1" aria-labelledby="pdfModalLabel-{{ $agendaEksternal->id }}" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-centered">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="pdfModalLabel-{{ $agendaEksternal->id }}">Preview Dokumen</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+                </div>
+                <div class="modal-body" style="height: 80vh;">
+                    <iframe src="{{ asset('storage/dokumen/' . $agendaEksternal->softfile_surat) }}" frameborder="0" style="width:100%; height:100%;"></iframe>
+                </div>
+                </div>
+            </div>
+            </div>
+            @endif
+            {{-- End Modal --}}
         </div>
         <!--end::Container-->
     </div>

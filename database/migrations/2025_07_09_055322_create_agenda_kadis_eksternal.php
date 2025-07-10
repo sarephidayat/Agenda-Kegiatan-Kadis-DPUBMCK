@@ -17,6 +17,8 @@ return new class extends Migration {
             $table->string('no_surat');
             $table->string('pengundang');
             $table->string('tempat');
+            $table->string('provinsi');
+            $table->string('kabupaten');
             $table->string('tanggal');
 
             // Foreign key fields

@@ -70,6 +70,24 @@
                                 </div>
 
                                 <div class="form-group row mb-3">
+                                    <label for="provinsi" class="col-sm-3 col-form-label">Provinsi</label>
+                                    <div class="col-sm-9">
+                                        <select name="provinsi" id="provinsi" class="form-control" required>
+                                        <option>Pilih Provinsi</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-3">
+                                    <label for="kabupaten" class="col-sm-3 col-form-label">Kabupaten/Kota</label>
+                                    <div class="col-sm-9">
+                                        <select name="kabupaten" id="kabupaten" class="form-control" required>
+                                        <option>Pilih Kabupaten/Kota</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-3">
                                     <label for="tanggal_acara" class="col-sm-3 col-form-label">Tanggal Acara</label>
                                     <div class="col-sm-9">
                                         <input type="date" name="tanggal_acara" class="form-control" required>

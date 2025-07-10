@@ -56,6 +56,11 @@ class MasterInstruksiSeeder extends Seeder
                 'updated_at' => Carbon::now(),
             ],
             [
+                'isi_instruksi' => 'Hadir Pribadi',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
                 'isi_instruksi' => 'dengan',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),

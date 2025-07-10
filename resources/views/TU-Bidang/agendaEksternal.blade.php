@@ -89,9 +89,9 @@
                                                 <td>
                                                     <br>
                                                     @if($agendaEksternal->softfile_surat)
-                                                    <a href="{{ asset('storage/dokumen/' . $agendaEksternal->softfile_surat) }}" target="_blank" class="btn btn-success btn-sm">
+                                                    <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#pdfModal-{{ $agendaEksternal->id }}">
                                                         <i class="fas fa-file-pdf"></i> Lihat Dokumen
-                                                    </a>
+                                                    </button>
                                                     @else
                                                     <span class="text-muted">Tidak ada dokumen</span>
                                                     @endif
@@ -117,6 +117,23 @@
                 </div>
             </div>
             <!--end::Row-->
+            {{-- Modal pop up --}}
+            @if($agendaEksternal->softfile_surat)
+            <div class="modal fade" id="pdfModal-{{ $agendaEksternal->id }}" tabindex="-1" aria-labelledby="pdfModalLabel-{{ $agendaEksternal->id }}" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-centered">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="pdfModalLabel-{{ $agendaEksternal->id }}">Preview Dokumen</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+                </div>
+                <div class="modal-body" style="height: 80vh;">
+                    <iframe src="{{ asset('storage/dokumen/' . $agendaEksternal->softfile_surat) }}" frameborder="0" style="width:100%; height:100%;"></iframe>
+                </div>
+                </div>
+            </div>
+            </div>
+            @endif
+            {{-- End Modal --}}
         </div>
         <!--end::Container-->
     </div>
