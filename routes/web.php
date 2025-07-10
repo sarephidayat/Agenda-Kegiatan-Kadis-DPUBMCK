@@ -20,18 +20,6 @@ Route::prefix('tu-bidang')->name('tu-bidang.')->group(function () {
     // Halaman dashboard TU
     Route::get('/', [TUBidangController::class, 'index'])->name('index');
 
-    // Halaman input agenda eksternal
-    Route::get('/tambah-agenda-eksternal', [TUBidangController::class, 'tambahAgendaEksternal'])->name('tambahAgendaEksternal');
-
-    // Halaman input agenda internal
-    Route::get('/tambah-agenda-internal', [TUBidangController::class, 'tambahAgendaInternal'])->name('tambahAgendaInternal');
-
-    // proses simpan agenda
-    Route::post('/eksternal', [TUBidangController::class, 'storeEksternal'])->name('storeEksternal');
-
-    // proses simpan agenda
-    Route::post('/internal', [TUBidangController::class, 'storeInternal'])->name('storeInternal');
-
     // Halaman agenda eksternal
     Route::get('/agenda-eksternal', [TUBidangController::class, 'agendaEksternal'])->name('agendaEksternal');
 

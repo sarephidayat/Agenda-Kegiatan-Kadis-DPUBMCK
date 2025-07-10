@@ -42,9 +42,6 @@
                                 </a>
 
                             </h3>
-                            <span class="float-end">
-                                 <a href="tu-bidang/tambah-agenda" class="btn btn-primary">Tambah Data</a>
-                            </span>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
