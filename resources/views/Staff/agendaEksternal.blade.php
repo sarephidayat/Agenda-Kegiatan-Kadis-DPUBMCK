@@ -1,4 +1,4 @@
-@extends('staff/TemplateDashboard/main')
+@extends('Staff/TemplateDashboard/main')
 
 @section('content')
 <!--begin::App Main-->

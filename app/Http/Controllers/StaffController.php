@@ -122,7 +122,7 @@ class StaffController extends Controller
                 'updated_at' => now(),
             ]);
 
-            return redirect()->route('Staff.index')->with('success', 'Data berhasil disimpan!');
+            return redirect()->route('staff.index')->with('success', 'Data berhasil disimpan!');
 
         } catch (\Exception $e) {
             // Hapus file yang sudah terupload jika terjadi error
@@ -184,7 +184,7 @@ class StaffController extends Controller
                 'updated_at' => now(),
             ]);
 
-            return redirect()->route('Staff.index')->with('success', 'Data berhasil disimpan!');
+            return redirect()->route('staff.index')->with('success', 'Data berhasil disimpan!');
 
         } catch (\Exception $e) {
             // Hapus file yang sudah terupload jika terjadi error
@@ -304,7 +304,7 @@ class StaffController extends Controller
                 'updated_at' => now()
             ]);
 
-        return redirect()->route('Staff.index')->with('success', 'Data berhasil diperbarui!');
+        return redirect()->route('staff.index')->with('success', 'Data berhasil diperbarui!');
 
 
     }
@@ -367,7 +367,7 @@ class StaffController extends Controller
             ]);
 
 
-        return redirect()->route('Staff.index')->with('success', 'Data berhasil diperbarui!');
+        return redirect()->route('staff.index')->with('success', 'Data berhasil diperbarui!');
     }
 
     public function agendaEksternal()
