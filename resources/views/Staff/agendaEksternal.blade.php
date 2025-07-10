@@ -1,4 +1,4 @@
-@extends('TU-Bidang/TemplateDashboard/main')
+@extends('staff/TemplateDashboard/main')
 
 @section('content')
 <!--begin::App Main-->
@@ -43,7 +43,7 @@
 
                             </h3>
                             <span class="float-end">
-                                 <a href="tu-bidang/tambah-agenda" class="btn btn-primary">Tambah Data</a>
+                                 <a href="staff/tambah-agenda" class="btn btn-primary">Tambah Data</a>
                             </span>
                         </div>
                         <!-- /.card-header -->
@@ -97,7 +97,7 @@
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    <a href="tu-bidang/editEksternal/{{$agendaEksternal->id}}" class="btn btn-warning btn-sm">edit</a>
+                                                    <a href="staff/editEksternal/{{$agendaEksternal->id}}" class="btn btn-warning btn-sm">edit</a>
                                                 </td>
                                             </tr>
                                         @endforeach

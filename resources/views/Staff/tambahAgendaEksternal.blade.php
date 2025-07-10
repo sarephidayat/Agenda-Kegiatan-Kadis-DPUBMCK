@@ -1,4 +1,4 @@
-@extends('TU-Bidang/TemplateDashboard/main')
+@extends('staff/TemplateDashboard/main')
 
 @section('content')
 <!--begin::App Main-->
@@ -38,7 +38,7 @@
                         <!-- /.card-header -->
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <form action="{{ route('tu-bidang.storeEksternal') }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('staff.storeEksternal') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
 
                                 <div class="form-group row mb-3">
