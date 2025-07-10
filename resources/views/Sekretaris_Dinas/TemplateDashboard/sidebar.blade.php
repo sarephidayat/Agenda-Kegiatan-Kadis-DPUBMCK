@@ -10,7 +10,7 @@
             <!--end::Brand Image-->
             <!--begin::Brand Text-->
             <img src="{{ asset('storage/img/logo-jateng.jpg') }}" class="user-image rounded-circle shadow " style="width: 40px; height: 40px;" alt="User Image" />
-            <span class="brand-text fw-light">Sub Koordinator</span>
+            <span class="brand-text fw-light">TU-Bidang</span>
             <!--end::Brand Text-->
         </a>
         <!--end::Brand Link-->
@@ -22,7 +22,7 @@
             <!--begin::Sidebar Menu-->
             <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" role="menu" data-accordion="false">
                 <li class="nav-item">
-                    <a href="/sub-koor" class="nav-link">
+                    <a href="/tu-bidang" class="nav-link">
                         <i class="nav-icon bi bi-house-door"></i>
                         <p>
                             Dashboard
@@ -30,27 +30,18 @@
                     </a>
                 </li>
 
-                <li class="nav-item">
-                    <a href="/sub-koor/tambah-agenda" class="nav-link">
-                        <i class="nav-icon bi bi-upload"></i>
-                        <p>
-                            Input Agenda
-                        </p>
-                    </a>
-                </li>
-
-                <li class="nav-header">AGENDA</li>
+                <li class="nav-header">AGENDA KEPALA DINAS</li>
                 <li class="nav-item">
                     <li class="nav-item">
-                        <a href="/sub-koor/agenda-internal" class="nav-link">
-                            <i class="nav-icon bi bi-circle"></i>
-                            <p>Agenda Internal</p>
+                        <a href="/tu-bidang/agenda-eksternal" class="nav-link">
+                            <i class="nav-icon bi bi-calendar-event"></i>
+                            <p>Agenda Eksternal</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/sub-koor/agenda-eksternal" class="nav-link">
-                            <i class="nav-icon bi bi-circle"></i>
-                            <p>Agenda Eksternal</p>
+                        <a href="/tu-bidang/agenda-internal" class="nav-link">
+                            <i class="nav-icon bi bi-calendar-event"></i>
+                            <p>Agenda Internal</p>
                         </a>
                     </li>
                 </li>

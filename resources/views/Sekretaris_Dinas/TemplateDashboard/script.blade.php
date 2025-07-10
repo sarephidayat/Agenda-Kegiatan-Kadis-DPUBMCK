@@ -14,6 +14,49 @@
 <!--end::Required Plugin(Bootstrap 5)--><!--begin::Required Plugin(AdminLTE)-->
 <script src="{{ asset("AdminLTE-4.0.0-beta3") }}/dist/js/adminlte.js"></script>
 <!--end::Required Plugin(AdminLTE)--><!--begin::OverlayScrollbars Configure-->
+
+{{-- begin api wilayah --}}
+
+    <script>
+      // Ambil data provinsi saat halaman dimuat
+      fetch("https://www.emsifa.com/api-wilayah-indonesia/api/provinces.json")
+        .then((response) => response.json())
+        .then((provinces) => {
+          let tampung = "<option>Pilih Provinsi</option>";
+          provinces.forEach((element) => {
+            tampung += `<option data-id="${element.id}" value="${element.name}">${element.name}</option>`;
+          });
+          document.getElementById("provinsi").innerHTML = tampung;
+        })
+        .catch((error) => console.error("Gagal fetch provinsi:", error));
+
+      // Saat provinsi dipilih, ambil data kabupaten/kota
+      document
+        .getElementById("provinsi")
+        .addEventListener("change", function () {
+            const selectedOption = this.options[this.selectedIndex];
+            const provinsiId = selectedOption.getAttribute("data-id");
+
+          if (provinsiId) {
+            fetch(
+              `https://www.emsifa.com/api-wilayah-indonesia/api/regencies/${provinsiId}.json`
+            )
+              .then((response) => response.json())
+              .then((kabupaten) => {
+                let tampung = "<option>Pilih Kabupaten/Kota</option>";
+                kabupaten.forEach((item) => {
+                  tampung += `<option value="${item.name}">${item.name}</option>`;
+                });
+                document.getElementById("kabupaten").innerHTML = tampung;
+              })
+              .catch((error) => console.error("Gagal fetch kabupaten:", error));
+          } else {
+            document.getElementById("kabupaten").innerHTML =
+              "<option>Pilih Kabupaten/Kota</option>";
+          }
+        });
+    </script>
+{{-- end api wilayah --}}
 <script>
     const SELECTOR_SIDEBAR_WRAPPER = '.sidebar-wrapper';
     const Default = {

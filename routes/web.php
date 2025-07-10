@@ -71,41 +71,61 @@ Route::prefix('tu-bidang')->name('tu-bidang.')->group(function () {
 });
 
 
-// Sekelompok route untuk Sub-Koor
-Route::prefix('sub-koor')->name('sub-koor.')->group(function () {
-    // Halaman dashboard TU
-    Route::get('/', [SubKoorController::class, 'index'])->name('index');
 
-    // Halaman input agenda
-    Route::get('/tambah-agenda', [SubKoorController::class, 'tambah'])->name('tambah');
+// Sekelompok route untuk SekretarisDinasController
+Route::prefix('sekretaris-dinas')->name('sekretaris-dinas.')->group(function () {
+    // Halaman dashboard TU
+    Route::get('/', [SekretarisDinasController::class, 'index'])->name('index');
+
+    // Halaman input agenda eksternal
+    Route::get('/tambah-agenda-eksternal', [SekretarisDinasController::class, 'tambahAgendaEksternal'])->name('tambahAgendaEksternal');
+
+    // Halaman input agenda internal
+    Route::get('/tambah-agenda-internal', [SekretarisDinasController::class, 'tambahAgendaInternal'])->name('tambahAgendaInternal');
 
     // proses simpan agenda
-    Route::post('/', [SubKoorController::class, 'store'])->name('store');
+    Route::post('/eksternal', [SekretarisDinasController::class, 'storeEksternal'])->name('storeEksternal');
+
+    // proses simpan agenda
+    Route::post('/internal', [SekretarisDinasController::class, 'storeInternal'])->name('storeInternal');
 
     // Halaman agenda eksternal
-    Route::get('/agenda-eksternal', [SubKoorController::class, 'agendaEksternal'])->name('agendaEksternal');
+    Route::get('/agenda-eksternal', [SekretarisDinasController::class, 'agendaEksternal'])->name('agendaEksternal');
 
     // Halaman agenda internal
-    Route::get('/agenda-internal', [SubKoorController::class, 'agendaInternal'])->name('agendaInternal');
+    Route::get('/agenda-internal', [SekretarisDinasController::class, 'agendaInternal'])->name('agendaInternal');
 
-    //halaman edit data
-    Route::get('/edit/{id}', [SubKoorController::class, 'edit'])->name('edit');
+    //halaman edit data eksternal
+    Route::get('/editEksternal/{id}', [SekretarisDinasController::class, 'editEksternal'])->name('editEksternal');
+
+    //halaman edit data internal
+    Route::get('/editInternal/{id}', [SekretarisDinasController::class, 'editInternal'])->name('editInternal');
 
     // Proses update data
-    Route::post('/update/{id}', [SubKoorController::class, 'update'])->name('update');
+    Route::post('/updateEksternal/{id}', [SekretarisDinasController::class, 'updateEksternal'])->name('updateEksternal');
+
+    // Proses update data
+    Route::post('/updateInternal/{id}', [SekretarisDinasController::class, 'updateInternal'])->name('updateInternal');
 });
 
 
-// Sekelompok route untuk Staff
+
+// Sekelompok route untuk StaffController
 Route::prefix('staff')->name('staff.')->group(function () {
     // Halaman dashboard TU
     Route::get('/', [StaffController::class, 'index'])->name('index');
 
-    // Halaman input agenda
-    Route::get('/tambah-agenda', [StaffController::class, 'tambah'])->name('tambah');
+    // Halaman input agenda eksternal
+    Route::get('/tambah-agenda-eksternal', [StaffController::class, 'tambahAgendaEksternal'])->name('tambahAgendaEksternal');
+
+    // Halaman input agenda internal
+    Route::get('/tambah-agenda-internal', [StaffController::class, 'tambahAgendaInternal'])->name('tambahAgendaInternal');
 
     // proses simpan agenda
-    Route::post('/', [StaffController::class, 'store'])->name('store');
+    Route::post('/eksternal', [StaffController::class, 'storeEksternal'])->name('storeEksternal');
+
+    // proses simpan agenda
+    Route::post('/internal', [StaffController::class, 'storeInternal'])->name('storeInternal');
 
     // Halaman agenda eksternal
     Route::get('/agenda-eksternal', [StaffController::class, 'agendaEksternal'])->name('agendaEksternal');
@@ -113,9 +133,15 @@ Route::prefix('staff')->name('staff.')->group(function () {
     // Halaman agenda internal
     Route::get('/agenda-internal', [StaffController::class, 'agendaInternal'])->name('agendaInternal');
 
-    //halaman edit data
-    Route::get('/edit/{id}', [StaffController::class, 'edit'])->name('edit');
+    //halaman edit data eksternal
+    Route::get('/editEksternal/{id}', [StaffController::class, 'editEksternal'])->name('editEksternal');
+
+    //halaman edit data internal
+    Route::get('/editInternal/{id}', [StaffController::class, 'editInternal'])->name('editInternal');
 
     // Proses update data
-    Route::post('/update/{id}', [StaffController::class, 'update'])->name('update');
+    Route::post('/updateEksternal/{id}', [StaffController::class, 'updateEksternal'])->name('updateEksternal');
+
+    // Proses update data
+    Route::post('/updateInternal/{id}', [StaffController::class, 'updateInternal'])->name('updateInternal');
 });
