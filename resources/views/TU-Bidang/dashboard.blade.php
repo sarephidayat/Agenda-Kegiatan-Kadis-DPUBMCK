@@ -140,9 +140,6 @@
                                 </a>
 
                             </h3>
-                            <span class="float-end">
-                                 <a href="tu-bidang/tambah-agenda-eksternal" class="btn btn-primary">Tambah Data</a>
-                            </span>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -228,9 +225,6 @@
                                 </a>
                                 
                             </h3>
-                                <span class="float-end">
-                                    <a href="tu-bidang/tambah-agenda-internal" class="btn btn-primary">Tambah Data</a>
-                                </span>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">

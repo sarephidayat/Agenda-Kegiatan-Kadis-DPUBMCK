@@ -1,4 +1,4 @@
-@extends('TU-Bidang/TemplateDashboard/main')
+@extends('Sekretaris_Dinas/TemplateDashboard/main')
 
 @section('content')
 <!--begin::App Main-->
@@ -43,7 +43,7 @@
                                 
                             </h3>
                                 <span class="float-end">
-                                    <a href="tu-bidang/tambah-agenda" class="btn btn-primary">Tambah Data</a>
+                                    <a href="sekretaris-dinas/tambah-agenda" class="btn btn-primary">Tambah Data</a>
                                 </span>
                         </div>
                         <!-- /.card-header -->
@@ -82,8 +82,8 @@
                                                 <td>{{ $agendaInternal->catatan }}</td>
                                                 <td>
                                                     <br>
-                                                    @if($agendaEksternal->softfile_surat)
-                                                    <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#pdfModal-{{ $agendaEksternal->id }}">
+                                                    @if($agendaInternal->softfile_surat)
+                                                    <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#pdfModal-{{ $agendaInternal->id }}">
                                                         <i class="fas fa-file-pdf"></i> Lihat Dokumen
                                                     </button>
                                                     @else
@@ -91,7 +91,7 @@
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    <a href="tu-bidang/editInternal/{{$agendaInternal->id}}" class="btn btn-warning btn-sm">edit</a>
+                                                    <a href="sekretaris-dinas/editInternal/{{$agendaInternal->id}}" class="btn btn-warning btn-sm">edit</a>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -112,16 +112,16 @@
             </div>
             <!--end::Row-->
             {{-- Modal pop up --}}
-            @if($agendaEksternal->softfile_surat)
-            <div class="modal fade" id="pdfModal-{{ $agendaEksternal->id }}" tabindex="-1" aria-labelledby="pdfModalLabel-{{ $agendaEksternal->id }}" aria-hidden="true">
+            @if($agendaInternal->softfile_surat)
+            <div class="modal fade" id="pdfModal-{{ $agendaInternal->id }}" tabindex="-1" aria-labelledby="pdfModalLabel-{{ $agendaInternal->id }}" aria-hidden="true">
             <div class="modal-dialog modal-xl modal-dialog-centered">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="pdfModalLabel-{{ $agendaEksternal->id }}">Preview Dokumen</h5>
+                    <h5 class="modal-title" id="pdfModalLabel-{{ $agendaInternal->id }}">Preview Dokumen</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
                 </div>
                 <div class="modal-body" style="height: 80vh;">
-                    <iframe src="{{ asset('storage/dokumen/' . $agendaEksternal->softfile_surat) }}" frameborder="0" style="width:100%; height:100%;"></iframe>
+                    <iframe src="{{ asset('storage/dokumen/' . $agendaInternal->softfile_surat) }}" frameborder="0" style="width:100%; height:100%;"></iframe>
                 </div>
                 </div>
             </div>
