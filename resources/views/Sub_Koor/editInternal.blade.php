@@ -1,4 +1,4 @@
-@extends('TU-Bidang/TemplateDashboard/main')
+@extends('Sub_Koor/TemplateDashboard/main')
 
 @section('content')
 <!--begin::App Main-->
@@ -10,7 +10,7 @@
             <!--begin::Row-->
             <div class="row mt-3">
                 <div class="mb-3 text-end">
-                        <a href="/tu-bidang" class="btn btn-secondary">
+                        <a href="/sub-koor" class="btn btn-secondary">
                             Kembali ke Dashboard
                         </a>
                 </div>
@@ -30,7 +30,7 @@
                         <!-- /.card-header -->
                         <div class="card-body">
                             <div style="overflow-x: auto;">
-                                <form action="{{ route('tu-bidang.updateInternal', $dataAgendaInternal->id) }}" method="POST" enctype="multipart/form-data">
+                                <form action="{{ route('sub-koor.updateInternal', $dataAgendaInternal->id) }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <table style="width: 100%; border-collapse: separate; border-spacing: 15px;">
                                         <tr>

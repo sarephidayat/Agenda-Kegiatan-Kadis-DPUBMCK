@@ -15,25 +15,6 @@ Route::get('/', function () {
 Route::get('/agenda', [AgendaKadisController::class, 'index']);
 Route::post('/agenda', [AgendaKadisController::class, 'store'])->name('agenda.store');
 
-// Sekelompok route untuk SekretarisDinasController
-Route::prefix('sekretaris-dinas')->name('sekretaris-dinas.')->group(function () {
-    // Halaman tabel data
-    Route::get('/', [SekretarisDinasController::class, 'index'])->name('index');
-
-    // Form tambah data
-    Route::get('/tambah-data', [SekretarisDinasController::class, 'create'])->name('create');
-
-    // Proses simpan data
-    Route::post('/', [SekretarisDinasController::class, 'store'])->name('store');
-
-    // Form edit data
-    Route::get('/edit/{id}', [SekretarisDinasController::class, 'edit'])->name('edit');
-
-    // Proses update data
-    Route::post('/update/{id}', [SekretarisDinasController::class, 'update'])->name('update');
-
-});
-
 // Sekelompok route untuk TUBidangController
 Route::prefix('tu-bidang')->name('tu-bidang.')->group(function () {
     // Halaman dashboard TU
@@ -144,4 +125,41 @@ Route::prefix('staff')->name('staff.')->group(function () {
 
     // Proses update data
     Route::post('/updateInternal/{id}', [StaffController::class, 'updateInternal'])->name('updateInternal');
+});
+
+
+// Sekelompok route untuk SubKoorController
+Route::prefix('sub-koor')->name('sub-koor.')->group(function () {
+    // Halaman dashboard TU
+    Route::get('/', [SubKoorController::class, 'index'])->name('index');
+
+    // Halaman input agenda eksternal
+    Route::get('/tambah-agenda-eksternal', [SubKoorController::class, 'tambahAgendaEksternal'])->name('tambahAgendaEksternal');
+
+    // Halaman input agenda internal
+    Route::get('/tambah-agenda-internal', [SubKoorController::class, 'tambahAgendaInternal'])->name('tambahAgendaInternal');
+
+    // proses simpan agenda
+    Route::post('/eksternal', [SubKoorController::class, 'storeEksternal'])->name('storeEksternal');
+
+    // proses simpan agenda
+    Route::post('/internal', [SubKoorController::class, 'storeInternal'])->name('storeInternal');
+
+    // Halaman agenda eksternal
+    Route::get('/agenda-eksternal', [SubKoorController::class, 'agendaEksternal'])->name('agendaEksternal');
+
+    // Halaman agenda internal
+    Route::get('/agenda-internal', [SubKoorController::class, 'agendaInternal'])->name('agendaInternal');
+
+    //halaman edit data eksternal
+    Route::get('/editEksternal/{id}', [SubKoorController::class, 'editEksternal'])->name('editEksternal');
+
+    //halaman edit data internal
+    Route::get('/editInternal/{id}', [SubKoorController::class, 'editInternal'])->name('editInternal');
+
+    // Proses update data
+    Route::post('/updateEksternal/{id}', [SubKoorController::class, 'updateEksternal'])->name('updateEksternal');
+
+    // Proses update data
+    Route::post('/updateInternal/{id}', [SubKoorController::class, 'updateInternal'])->name('updateInternal');
 });

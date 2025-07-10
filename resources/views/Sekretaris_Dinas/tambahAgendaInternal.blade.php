@@ -1,4 +1,4 @@
-@extends('TU-Bidang/TemplateDashboard/main')
+@extends('Sekretaris_Dinas/TemplateDashboard/main')
 
 @section('content')
 <!--begin::App Main-->
@@ -38,7 +38,7 @@
                         <!-- /.card-header -->
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <form action="{{ route('tu-bidang.storeInternal') }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('sekretaris-dinas.storeInternal') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group row mb-3">
                                     <label for="no_surat" class="col-sm-3 col-form-label">Nomor Surat</label>

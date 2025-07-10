@@ -1,4 +1,4 @@
-@extends('TU-Bidang/TemplateDashboard/main')
+@extends('Sub_Koor/TemplateDashboard/main')
 
 @section('content')
 <!--begin::App Main-->
@@ -141,7 +141,7 @@
 
                             </h3>
                             <span class="float-end">
-                                 <a href="tu-bidang/tambah-agenda-eksternal" class="btn btn-primary">Tambah Data</a>
+                                 <a href="sub-koor/tambah-agenda-eksternal" class="btn btn-primary">Tambah Data</a>
                             </span>
                         </div>
                         <!-- /.card-header -->
@@ -199,7 +199,7 @@
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    <a href="tu-bidang/editEksternal/{{$agendaEksternal->id}}" class="btn btn-warning btn-sm">edit</a>
+                                                    <a href="sub-koor/editEksternal/{{$agendaEksternal->id}}" class="btn btn-warning btn-sm">edit</a>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -229,7 +229,7 @@
                                 
                             </h3>
                                 <span class="float-end">
-                                    <a href="tu-bidang/tambah-agenda-internal" class="btn btn-primary">Tambah Data</a>
+                                    <a href="sub-koor/tambah-agenda-internal" class="btn btn-primary">Tambah Data</a>
                                 </span>
                         </div>
                         <!-- /.card-header -->
@@ -277,7 +277,7 @@
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    <a href="tu-bidang/editInternal/{{$agendaInternal->id}}" class="btn btn-warning btn-sm">edit</a>
+                                                    <a href="sub-koor/editInternal/{{$agendaInternal->id}}" class="btn btn-warning btn-sm">edit</a>
                                                 </td>
                                             </tr>
                                         @endforeach
