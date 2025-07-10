@@ -11,6 +11,10 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('/landing-page', function () {
+    return view('LandingPage');
+});
+
 // untuk controller AgendaKadisController halaman CobaDatabase
 Route::get('/agenda', [AgendaKadisController::class, 'index']);
 Route::post('/agenda', [AgendaKadisController::class, 'store'])->name('agenda.store');
