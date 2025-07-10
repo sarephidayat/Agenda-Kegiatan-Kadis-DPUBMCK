@@ -76,11 +76,11 @@
 
                                         {{-- Tanggal Acara --}}
                                         <tr>
-                                            <td><label for="tanggal_acara">Tanggal Acara</label></td>
+                                            <td><label for="tanggal">Tanggal Acara</label></td>
                                             <td>:</td>
                                             <td>
-                                                <input type="date" name="tanggal_acara" class="form-control" value="{{ $dataAgendaEksternal->tanggal }}" required readonly>
-                                                <input type="hidden" name="tanggal_acara" value="{{ $dataAgendaEksternal->tanggal }}">
+                                                <input type="date" name="tanggal" class="form-control" value="{{ $dataAgendaEksternal->tanggal }}" required readonly>
+                                                <input type="hidden" name="tanggal" value="{{ $dataAgendaEksternal->tanggal }}">
                                             </td>
                                         </tr>
 

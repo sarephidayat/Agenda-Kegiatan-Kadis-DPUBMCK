@@ -243,7 +243,7 @@ class TUBidangController extends Controller
             'tanggal_surat' => 'required|date',
             'pengundang' => 'required|string',
             'tempat' => 'required|string',
-            'tanggal_acara' => 'required|date',
+            'tanggal' => 'required|date',
             'acara' => 'required|string',
             'id_jabatan' => 'required|integer',
             'id_bidang' => 'required|integer',
@@ -254,50 +254,55 @@ class TUBidangController extends Controller
             'softfile_surat' => 'nullable|file|mimes:pdf|max:2048',
         ]);
 
-        try {
-            // Cek apakah ada file baru diupload
-            $fileName = DB::table('agenda_kadis_eksternal')->where('id', $id)->value('softfile_surat');
+        // dd($request->all());
+        // dd(collect($validatedData)->toArray());
 
-            if ($request->hasFile('softfile_surat')) {
-                $file = $request->file('softfile_surat');
-                $originalName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
-                $extension = $file->getClientOriginalExtension();
-                $fileName = 'surat_' . time() . '_' . preg_replace('/[^A-Za-z0-9_\-]/', '_', $originalName) . '.' . $extension;
+        if ($request->hasFile('softfile_surat')) {
+            $file = $request->file('softfile_surat');
 
-                // Simpan file baru
-                $file->move(public_path('storage/dokumen'), $fileName);
+            // Buat nama file unik dan aman
+            $originalName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+            $extension = $file->getClientOriginalExtension();
+            $fileName = 'surat_' . time() . '_' . preg_replace('/[^A-Za-z0-9_\-]/', '_', $originalName) . '.' . $extension;
 
-                // Hapus file lama jika ada
-                $oldFile = DB::table('agenda_kadis_eksternal')->where('id', $id)->value('softfile_surat');
-                if ($oldFile && file_exists(public_path('storage/dokumen/' . $oldFile))) {
-                    unlink(public_path('storage/dokumen/' . $oldFile));
-                }
+            // Pindahkan ke folder dokumen
+            $file->move(public_path('storage/dokumen'), $fileName);
+
+            // Ambil nama file lama
+            $oldFile = DB::table('agenda_kadis_eksternal')->where('id', $id)->value('softfile_surat');
+
+            // Hapus file lama jika ada
+            if ($oldFile && file_exists(public_path('storage/dokumen/' . $oldFile))) {
+                unlink(public_path('storage/dokumen/' . $oldFile));
             }
-
-            // Update data di database
-            DB::table('agenda_kadis_eksternal')
-                ->where('id', $id)
-                ->update([
-                    'no_surat' => $validatedData['no_surat'],
-                    'tanggal_surat' => $validatedData['tanggal_surat'],
-                    'pengundang' => $validatedData['pengundang'],
-                    'tempat' => $validatedData['tempat'],
-                    'tanggal' => $validatedData['tanggal_acara'], // Field di DB = tanggal
-                    'acara' => $validatedData['acara'],
-                    'id_jabatan' => $validatedData['id_jabatan'],
-                    'id_bidang' => $validatedData['id_bidang'],
-                    'nama_pendamping' => $validatedData['nama_pendamping'],
-                    'id_instruksi' => $validatedData['id_instruksi'],
-                    'waktu' => $validatedData['waktu'],
-                    'catatan' => $validatedData['catatan'],
-                    'softfile_surat' => $fileName,
-                    'updated_at' => now(),
-                ]);
-
-            return redirect()->route('tu-bidang.index')->with('success', 'Data berhasil diperbarui!');
-        } catch (\Exception $e) {
-            return back()->with('error', 'Update gagal: ' . $e->getMessage());
+        } else {
+            // Tidak ada file baru, pakai file lama
+            $fileName = DB::table('agenda_kadis_eksternal')->where('id', $id)->value('softfile_surat');
         }
+
+        // Update data di database
+        DB::table('agenda_kadis_eksternal')
+            ->where('id', $id)
+            ->update([
+                'no_surat' => $validatedData['no_surat'],
+                'tanggal_surat' => $validatedData['tanggal_surat'],
+                'pengundang' => $validatedData['pengundang'],
+                'tempat' => $validatedData['tempat'],
+                'tanggal' => $validatedData['tanggal'], // Field di DB = tanggal
+                'acara' => $validatedData['acara'],
+                'id_jabatan' => $validatedData['id_jabatan'],
+                'id_bidang' => $validatedData['id_bidang'],
+                'nama_pendamping' => $validatedData['nama_pendamping'],
+                'id_instruksi' => $validatedData['id_instruksi'],
+                'waktu' => $validatedData['waktu'],
+                'catatan' => $validatedData['catatan'],
+                'softfile_surat' => $fileName,
+                'updated_at' => now()
+            ]);
+
+        return redirect()->route('tu-bidang.index')->with('success', 'Data berhasil diperbarui!');
+
+
     }
 
 
