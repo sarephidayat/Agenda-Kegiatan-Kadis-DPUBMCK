@@ -139,8 +139,39 @@ class MasterJabatanSeeder extends Seeder
                 'nama_jabatan' => 'Sub Koordinator Tata Bangunan dan Perumahan Ahli Muda Seksi Tata Bangunan dan Jasa Konstruksi',
                 'id_bidang' => 6,
                 'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),  
-            ]
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'nama_jabatan' => 'Staff Sekretaris',
+                'id_bidang' => 2,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'nama_jabatan' => 'Staff Rancang Bangun dan Pengawasan',
+                'id_bidang' => 3,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'nama_jabatan' => 'Staff Pelaksana Jalan Wilayah Barat',
+                'id_bidang' => 4,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'nama_jabatan' => 'Staff Pelaksana Jalan Wilayah Timur',
+                'id_bidang' => 5,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'nama_jabatan' => 'Staff Sarana Prasarana Permukiman dan Bangunan Gedung',
+                'id_bidang' => 6,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+
         ]);
     }
 }

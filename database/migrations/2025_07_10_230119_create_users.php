@@ -13,7 +13,10 @@ return new class extends Migration {
         Schema::create('users', function (Blueprint $table) {
             $table->id('id_user'); // Primary key + auto increment
             $table->string('username');
+            $table->string('name');
             $table->string('password');
+
+
             // Foreign key fields
             $table->unsignedBigInteger('id_bidang');
             $table->unsignedBigInteger('id_jabatan');

@@ -1,4 +1,5 @@
 <!--begin::Sidebar-->
+
 <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark">
     <!--begin::Sidebar Brand-->
     <div class="sidebar-brand">
@@ -22,7 +23,7 @@
             <!--begin::Sidebar Menu-->
             <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" role="menu" data-accordion="false">
                 <li class="nav-item">
-                    <a href="/staff" class="nav-link">
+                    <a href="{{ url('/staff') }}?id_bidang={{ Auth::check() ? Auth::user()->id_bidang : '' }}" class="nav-link">
                         <i class="nav-icon bi bi-house-door"></i>
                         <p>
                             Dashboard
@@ -46,7 +47,7 @@
                     </li>
                 </li>
             </ul>
-            <!--end::Sidebar Menu-->
+            <!--end::Sidebar Menu-->       
         </nav>
     </div>
     <!--end::Sidebar Wrapper-->

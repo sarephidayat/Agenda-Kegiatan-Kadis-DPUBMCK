@@ -13,11 +13,11 @@ Route::get('/', function () {
 });
 
 Route::prefix('login')->name('login.')->group(function () {
-    // Halaman dashboard TU
-    Route::get('/', [TUBidangController::class, 'showLoginForm'])->name('showLoginForm');
+    // Tampilkan form login
+    Route::get('/', [AuthController::class, 'showLoginForm'])->name('form');
 
     // Proses login
-    Route::post('/', [AuthController::class, 'login'])->name('login');
+    Route::post('/proses', [AuthController::class, 'login'])->name('proses');
 });
 
 Route::get('/landing-page', function () {
