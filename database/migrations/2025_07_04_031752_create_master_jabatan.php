@@ -13,6 +13,11 @@ return new class extends Migration {
         Schema::create('master_jabatan', function (Blueprint $table) {
             $table->id('id_jabatan'); // primary key + auto increment
             $table->string('nama_jabatan');
+            $table->unsignedBigInteger('id_bidang');
+
+            // Foreign key constraints
+            $table->foreign('id_bidang')->references('id_bidang')->on('master_bidang')->onDelete('cascade');
+
             $table->timestamps();
         });
     }

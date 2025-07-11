@@ -16,6 +16,11 @@ class MasterBidangSeeder extends Seeder
     {
         DB::table('master_bidang')->insert([
             [
+                'nama_bidang' => 'Kepala Dinas',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
                 'nama_bidang' => 'Sekertaris',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),

@@ -14,8 +14,8 @@ class DatabaseSeeder extends Seeder
     {
         // Pemanggilan seeder untuk mengisi data awal
         $this->call([
-            MasterJabatanSeeder::class,
             MasterBidangSeeder::class,
+            MasterJabatanSeeder::class,
             MasterInstruksiSeeder::class,
             AgendaInternalKadisSeeder::class,
             AgendaEksternalKadisSeeder::class,

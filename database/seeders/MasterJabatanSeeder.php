@@ -17,6 +17,7 @@ class MasterJabatanSeeder extends Seeder
         DB::table('master_jabatan')->insert([
             [
                 'nama_jabatan' => 'Kepala Dinas',
+                'id_bidang' => 1,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
@@ -121,10 +122,31 @@ class MasterJabatanSeeder extends Seeder
                 'updated_at' => Carbon::now(),
             ],
             [
-                'nama_jabatan' => 'Staff',
+                'nama_jabatan' => 'Staff Sekretaris',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
+            [
+                'nama_jabatan' => 'Staff Rancang Bangun dan Pengawasan',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'nama_jabatan' => 'Staff Pelaksana Jalan Wilayah Timur',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'nama_jabatan' => 'Staff Pelaksana Jalan Wilayah Barat',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'nama_jabatan' => 'Staff Sarana Prasarana Permukiman dan Bangunan Gedung',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+
         ]);
     }
 }
