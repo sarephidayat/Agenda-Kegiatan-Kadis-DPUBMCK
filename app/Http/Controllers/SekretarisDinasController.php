@@ -35,7 +35,9 @@ class SekretarisDinasController extends Controller
                 'master_jabatan.nama_jabatan',
                 'master_bidang.nama_bidang',
                 'master_instruksi.isi_instruksi'
-            )->paginate(10);
+            )
+            ->orderBy('agenda_kadis_eksternal.created_at', 'desc') // (opsional) untuk internal juga urut terbaru
+            ->paginate(10);
 
         $jabatan = DB::table('master_jabatan')->get();
         $bidang = DB::table('master_bidang')->get();
@@ -48,6 +50,7 @@ class SekretarisDinasController extends Controller
                 'agenda_kadis_internal.*',
                 'master_bidang.nama_bidang'
             )
+            ->orderBy('agenda_kadis_internal.created_at', 'desc') // Urutkan dari terbaru
             ->paginate(10);
 
         return view('Sekretaris_Dinas/dashboard', compact('dataAgendaEksternal', 'dataAgendaInternal', 'jabatan', 'bidang', 'instruksi', ));

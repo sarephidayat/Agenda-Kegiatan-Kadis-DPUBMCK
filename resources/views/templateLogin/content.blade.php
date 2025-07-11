@@ -2,7 +2,7 @@
     <div class="card shadow rounded-4" style="width: 400px;">
         <div class="card-body">
             <h3 class="text-center mb-4">Sign In</h3>
-            <form action="/" method="post">
+            <form action="/login" method="post">
                 <div class="mb-3">
                     <label for="username" class="form-label">Username</label>
                     <div class="input-group">

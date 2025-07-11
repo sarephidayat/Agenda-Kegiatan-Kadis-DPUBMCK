@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\SubKoorController;
 use App\Http\Controllers\TUBidangController;
@@ -11,8 +12,12 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/login', function () {
-    return view('login');
+Route::prefix('login')->name('login.')->group(function () {
+    // Halaman dashboard TU
+    Route::get('/', [TUBidangController::class, 'showLoginForm'])->name('showLoginForm');
+
+    // Proses login
+    Route::post('/', [AuthController::class, 'login'])->name('login');
 });
 
 Route::get('/landing-page', function () {

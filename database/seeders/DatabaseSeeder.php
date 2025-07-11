@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             MasterInstruksiSeeder::class,
             AgendaInternalKadisSeeder::class,
             AgendaEksternalKadisSeeder::class,
+            UserSeeder::class,
         ]);
     }
 }
