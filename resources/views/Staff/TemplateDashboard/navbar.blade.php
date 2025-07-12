@@ -8,8 +8,7 @@
                     <i class="bi bi-list"></i>
                 </a>
             </li>
-            <li class="nav-item d-none d-md-block"><a href="staff" class="nav-link">Dashboard</a></li>
-            <li class="nav-item d-none d-md-block"><a href="#" class="nav-link">Contact</a></li>
+            <li class="nav-item d-none d-md-block"><a href="{{ url('/staff?id_bidang=' . request()->query('id_bidang')) }}" class="nav-link">Dashboard</a></li>
         </ul>
         <!--end::Start Navbar Links-->
         <!--begin::End Navbar Links-->

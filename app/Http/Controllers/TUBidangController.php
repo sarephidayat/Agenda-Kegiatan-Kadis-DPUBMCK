@@ -24,8 +24,11 @@ class TUBidangController extends Controller
         ];
     }
 
-    public function index()
+    public function index(Request $request)
     {
+        // Ambil id_bidang dari query string (?id_bidang=...)
+        $idBidang = $request->query('id_bidang');
+
         $dataAgendaEksternal = DB::table('agenda_kadis_eksternal')
             ->join('master_jabatan', 'agenda_kadis_eksternal.id_jabatan', '=', 'master_jabatan.id_jabatan')
             ->join('master_bidang', 'agenda_kadis_eksternal.id_bidang', '=', 'master_bidang.id_bidang')
@@ -35,7 +38,11 @@ class TUBidangController extends Controller
                 'master_jabatan.nama_jabatan',
                 'master_bidang.nama_bidang',
                 'master_instruksi.isi_instruksi'
-            )->paginate(10);
+            )
+            ->when($idBidang, function ($query) use ($idBidang) {
+                return $query->where('agenda_kadis_eksternal.id_bidang', $idBidang);
+            })
+            ->paginate(10);
 
         $jabatan = DB::table('master_jabatan')->get();
         $bidang = DB::table('master_bidang')->get();
@@ -48,6 +55,9 @@ class TUBidangController extends Controller
                 'agenda_kadis_internal.*',
                 'master_bidang.nama_bidang'
             )
+            ->when($idBidang, function ($query) use ($idBidang) {
+                return $query->where('agenda_kadis_internal.id_bidang', $idBidang);
+            })
             ->paginate(10);
 
         return view('TU-Bidang/dashboard', compact('dataAgendaEksternal', 'dataAgendaInternal', 'jabatan', 'bidang', 'instruksi', ));
@@ -225,8 +235,11 @@ class TUBidangController extends Controller
         return redirect()->route('tu-bidang.index')->with('success', 'Data berhasil diperbarui!');
     }
 
-    public function agendaEksternal()
+    public function agendaEksternal(Request $request)
     {
+        // Ambil id_bidang dari query string (?id_bidang=...)
+        $idBidang = $request->query('id_bidang');
+
         $dataAgendaEksternal = DB::table('agenda_kadis_eksternal')
             ->join('master_jabatan', 'agenda_kadis_eksternal.id_jabatan', '=', 'master_jabatan.id_jabatan')
             ->join('master_bidang', 'agenda_kadis_eksternal.id_bidang', '=', 'master_bidang.id_bidang')
@@ -237,6 +250,9 @@ class TUBidangController extends Controller
                 'master_bidang.nama_bidang',
                 'master_instruksi.isi_instruksi'
             )
+            ->when($idBidang, function ($query) use ($idBidang) {
+                return $query->where('agenda_kadis_eksternal.id_bidang', $idBidang);
+            })
             ->paginate(10);
 
         $jabatan = DB::table('master_jabatan')->get();
@@ -247,14 +263,20 @@ class TUBidangController extends Controller
 
     }
 
-    public function agendaInternal()
+    public function agendaInternal(Request $request)
     {
+        // Ambil id_bidang dari query string (?id_bidang=...)
+        $idBidang = $request->query('id_bidang');
+
         $dataAgendaInternal = DB::table('agenda_kadis_internal')
             ->join('master_bidang', 'agenda_kadis_internal.id_bidang', '=', 'master_bidang.id_bidang')
             ->select(
                 'agenda_kadis_internal.*',
                 'master_bidang.nama_bidang',
             )
+            ->when(request()->query('id_bidang'), function ($query) {
+                return $query->where('agenda_kadis_internal.id_bidang', request()->query('id_bidang'));
+            })
             ->paginate(10);
 
         $bidang = DB::table('master_bidang')->get();

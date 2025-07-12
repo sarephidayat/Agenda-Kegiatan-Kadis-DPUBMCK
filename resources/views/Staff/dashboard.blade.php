@@ -133,16 +133,8 @@
                     <div class="card mb-4">       
                         <div class="card-header">
                             <h3 class="card-title">
-                                <a href="/approvalAlat" style="color: black; text-decoration: none;"
-                                    onmouseover="this.style.textDecoration='underline'"
-                                    onmouseout="this.style.textDecoration='none'">
                                     Daftar Agenda Eksternal Kepala Dinas
-                                </a>
-
                             </h3>
-                            <span class="float-end">
-                                 <a href="staff/tambah-agenda-eksternal" class="btn btn-primary">Tambah Data</a>
-                            </span>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -166,7 +158,6 @@
                                             <th style="width: 80px;">Waktu</th>
                                             <th style="width: 250px;">Catatan</th>
                                             <th style="width: 130px;">File</th>
-                                            <th style="width: 80px;">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -197,9 +188,6 @@
                                                     @else
                                                     <span class="text-muted">Tidak ada dokumen</span>
                                                     @endif
-                                                </td>
-                                                <td>
-                                                    <a href="staff/editEksternal/{{$agendaEksternal->id}}" class="btn btn-warning btn-sm">edit</a>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -241,16 +229,8 @@
                     <div class="card mb-4">
                         <div class="card-header">
                             <h3 class="card-title">
-                                <a href="/approvalAlat" style="color: black; text-decoration: none;"
-                                    onmouseover="this.style.textDecoration='underline'"
-                                    onmouseout="this.style.textDecoration='none'">
                                     Daftar Agenda Internal Kepala Dinas
-                                </a>
-                                
                             </h3>
-                                <span class="float-end">
-                                    <a href="staff/tambah-agenda-internal" class="btn btn-primary">Tambah Data</a>
-                                </span>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -269,7 +249,6 @@
                                             <th style="width: 120px;">Kepada</th>
                                             <th style="width: 250px;">Catatan</th>
                                             <th style="width: 130px;">File</th>
-                                            <th style="width: 80px;">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -295,9 +274,6 @@
                                                     @else
                                                     <span class="text-muted">Tidak ada dokumen</span>
                                                     @endif
-                                                </td>
-                                                <td>
-                                                    <a href="staff/editInternal/{{$agendaInternal->id}}" class="btn btn-warning btn-sm">edit</a>
                                                 </td>
                                             </tr>
                                         @endforeach

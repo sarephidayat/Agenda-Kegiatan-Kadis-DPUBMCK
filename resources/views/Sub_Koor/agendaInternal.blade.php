@@ -42,9 +42,6 @@
                                 </a>
                                 
                             </h3>
-                                <span class="float-end">
-                                    <a href="sub-koor/tambah-agenda" class="btn btn-primary">Tambah Data</a>
-                                </span>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -112,6 +109,7 @@
             </div>
             <!--end::Row-->
             {{-- Modal pop up --}}
+            @foreach($dataAgendaInternal as $agendaInternal)
             @if($agendaInternal->softfile_surat)
             <div class="modal fade" id="pdfModal-{{ $agendaInternal->id }}" tabindex="-1" aria-labelledby="pdfModalLabel-{{ $agendaInternal->id }}" aria-hidden="true">
             <div class="modal-dialog modal-xl modal-dialog-centered">
@@ -127,6 +125,7 @@
             </div>
             </div>
             @endif
+            @endforeach
             {{-- End Modal --}}
         </div>
         <!--end::Container-->

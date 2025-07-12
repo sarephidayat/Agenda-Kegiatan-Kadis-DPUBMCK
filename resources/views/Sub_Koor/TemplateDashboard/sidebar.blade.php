@@ -22,7 +22,7 @@
             <!--begin::Sidebar Menu-->
             <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" role="menu" data-accordion="false">
                 <li class="nav-item">
-                    <a href="/sub-koor" class="nav-link">
+                    <a href="{{ url('/sub-koor?id_bidang=' . request()->query('id_bidang')) }}" class="nav-link">
                         <i class="nav-icon bi bi-house-door"></i>
                         <p>
                             Dashboard
@@ -33,13 +33,13 @@
                 <li class="nav-header">AGENDA KEPALA DINAS</li>
                 <li class="nav-item">
                     <li class="nav-item">
-                        <a href="/sub-koor/agenda-eksternal" class="nav-link">
+                        <a href="{{ url('/sub-koor/agenda-eksternal/?id_bidang=' . request()->query('id_bidang')) }}" class="nav-link">
                             <i class="nav-icon bi bi-calendar-event"></i>
                             <p>Agenda Eksternal</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/sub-koor/agenda-internal" class="nav-link">
+                        <a href="{{ url('/sub-koor/agenda-internal/?id_bidang=' . request()->query('id_bidang')) }}" class="nav-link">
                             <i class="nav-icon bi bi-calendar-event"></i>
                             <p>Agenda Internal</p>
                         </a>

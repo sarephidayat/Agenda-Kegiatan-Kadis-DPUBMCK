@@ -35,16 +35,8 @@
                     <div class="card mb-4">       
                         <div class="card-header">
                             <h3 class="card-title">
-                                <a href="/approvalAlat" style="color: black; text-decoration: none;"
-                                    onmouseover="this.style.textDecoration='underline'"
-                                    onmouseout="this.style.textDecoration='none'">
                                     Daftar Agenda Eksternal Kepala Dinas
-                                </a>
-
                             </h3>
-                            <span class="float-end">
-                                 <a href="sub-koor/tambah-agenda" class="btn btn-primary">Tambah Data</a>
-                            </span>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -118,6 +110,7 @@
             </div>
             <!--end::Row-->
             {{-- Modal pop up --}}
+            @foreach ($dataAgendaEksternal as $agendaEksternal)
             @if($agendaEksternal->softfile_surat)
             <div class="modal fade" id="pdfModal-{{ $agendaEksternal->id }}" tabindex="-1" aria-labelledby="pdfModalLabel-{{ $agendaEksternal->id }}" aria-hidden="true">
             <div class="modal-dialog modal-xl modal-dialog-centered">
@@ -133,6 +126,7 @@
             </div>
             </div>
             @endif
+            @endforeach
             {{-- End Modal --}}
         </div>
         <!--end::Container-->

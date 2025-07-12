@@ -97,35 +97,11 @@ Route::prefix('staff')->name('staff.')->group(function () {
     // Halaman dashboard TU
     Route::get('/', [StaffController::class, 'index'])->name('index');
 
-    // Halaman input agenda eksternal
-    Route::get('/tambah-agenda-eksternal', [StaffController::class, 'tambahAgendaEksternal'])->name('tambahAgendaEksternal');
-
-    // Halaman input agenda internal
-    Route::get('/tambah-agenda-internal', [StaffController::class, 'tambahAgendaInternal'])->name('tambahAgendaInternal');
-
-    // proses simpan agenda
-    Route::post('/eksternal', [StaffController::class, 'storeEksternal'])->name('storeEksternal');
-
-    // proses simpan agenda
-    Route::post('/internal', [StaffController::class, 'storeInternal'])->name('storeInternal');
-
     // Halaman agenda eksternal
     Route::get('/agenda-eksternal', [StaffController::class, 'agendaEksternal'])->name('agendaEksternal');
 
     // Halaman agenda internal
     Route::get('/agenda-internal', [StaffController::class, 'agendaInternal'])->name('agendaInternal');
-
-    //halaman edit data eksternal
-    Route::get('/editEksternal/{id}', [StaffController::class, 'editEksternal'])->name('editEksternal');
-
-    //halaman edit data internal
-    Route::get('/editInternal/{id}', [StaffController::class, 'editInternal'])->name('editInternal');
-
-    // Proses update data
-    Route::post('/updateEksternal/{id}', [StaffController::class, 'updateEksternal'])->name('updateEksternal');
-
-    // Proses update data
-    Route::post('/updateInternal/{id}', [StaffController::class, 'updateInternal'])->name('updateInternal');
 });
 
 

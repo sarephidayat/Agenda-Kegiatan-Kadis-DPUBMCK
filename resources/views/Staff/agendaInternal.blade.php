@@ -35,16 +35,8 @@
                     <div class="card mb-4">
                         <div class="card-header">
                             <h3 class="card-title">
-                                <a href="/approvalAlat" style="color: black; text-decoration: none;"
-                                    onmouseover="this.style.textDecoration='underline'"
-                                    onmouseout="this.style.textDecoration='none'">
-                                    Daftar Agenda Internal Kepala Dinas
-                                </a>
-                                
+                                    Daftar Agenda Internal Kepala Dinas                                
                             </h3>
-                                <span class="float-end">
-                                    <a href="staff/tambah-agenda" class="btn btn-primary">Tambah Data</a>
-                                </span>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -112,21 +104,23 @@
             </div>
             <!--end::Row-->
             {{-- Modal pop up --}}
-            @if($agendaInternal->softfile_surat)
-            <div class="modal fade" id="pdfModal-{{ $agendaInternal->id }}" tabindex="-1" aria-labelledby="pdfModalLabel-{{ $agendaInternal->id }}" aria-hidden="true">
-            <div class="modal-dialog modal-xl modal-dialog-centered">
-                <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="pdfModalLabel-{{ $agendaInternal->id }}">Preview Dokumen</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+            @foreach($dataAgendaInternal as $agendaInternal)
+                @if($agendaInternal->softfile_surat)
+                <div class="modal fade" id="pdfModal-{{ $agendaInternal->id }}" tabindex="-1" aria-labelledby="pdfModalLabel-{{ $agendaInternal->id }}" aria-hidden="true">
+                <div class="modal-dialog modal-xl modal-dialog-centered">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="pdfModalLabel-{{ $agendaInternal->id }}">Preview Dokumen</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+                    </div>
+                    <div class="modal-body" style="height: 80vh;">
+                        <iframe src="{{ asset('storage/dokumen/' . $agendaInternal->softfile_surat) }}" frameborder="0" style="width:100%; height:100%;"></iframe>
+                    </div>
+                    </div>
                 </div>
-                <div class="modal-body" style="height: 80vh;">
-                    <iframe src="{{ asset('storage/dokumen/' . $agendaInternal->softfile_surat) }}" frameborder="0" style="width:100%; height:100%;"></iframe>
                 </div>
-                </div>
-            </div>
-            </div>
-            @endif
+                @endif
+            @endforeach
             {{-- End Modal --}}
         </div>
         <!--end::Container-->

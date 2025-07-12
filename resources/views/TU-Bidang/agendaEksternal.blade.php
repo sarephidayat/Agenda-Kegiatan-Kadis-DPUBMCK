@@ -35,12 +35,8 @@
                     <div class="card mb-4">       
                         <div class="card-header">
                             <h3 class="card-title">
-                                <a href="/approvalAlat" style="color: black; text-decoration: none;"
-                                    onmouseover="this.style.textDecoration='underline'"
-                                    onmouseout="this.style.textDecoration='none'">
                                     Daftar Agenda Eksternal Kepala Dinas
                                 </a>
-
                             </h3>
                         </div>
                         <!-- /.card-header -->
@@ -54,6 +50,8 @@
                                             <th style="width: 150px;">No Surat</th>
                                             <th style="width: 200px;">Pengundang</th>
                                             <th style="width: 120px;">Tempat</th>
+                                            <th style="width: 120px;">Provinsi</th>
+                                            <th style="width: 120px;">Kabupaten/Kota</th>
                                             <th style="width: 150px;">Hari/Tanggal</th>
                                             <th style="width: 180px;">Acara</th>
                                             <th style="width: 180px;">Pendamping</th>
@@ -75,6 +73,8 @@
                                                 <td>{{$agendaEksternal->no_surat}}</td>
                                                 <td>{{ $agendaEksternal->pengundang }}</td>
                                                 <td>{{ $agendaEksternal->tempat }}</td>
+                                                <td>{{ $agendaEksternal->provinsi }}</td>
+                                                <td>{{ $agendaEksternal->kabupaten }}</td>
                                                 <td>{{ $agendaEksternal->tanggal }}</td>
                                                 <td>{{ $agendaEksternal->acara }}</td>
                                                 <td>{{ $agendaEksternal->nama_jabatan }}</td>
@@ -102,8 +102,6 @@
                                 </table>
                             </div>
                         </div>
-
-                        
                         <!-- /.card-body -->
                         <div class="card-footer clearfix">
                             <div class="float-end">
@@ -115,6 +113,7 @@
             </div>
             <!--end::Row-->
             {{-- Modal pop up --}}
+            @foreach($dataAgendaEksternal as $agendaEksternal)
             @if($agendaEksternal->softfile_surat)
             <div class="modal fade" id="pdfModal-{{ $agendaEksternal->id }}" tabindex="-1" aria-labelledby="pdfModalLabel-{{ $agendaEksternal->id }}" aria-hidden="true">
             <div class="modal-dialog modal-xl modal-dialog-centered">
@@ -130,6 +129,7 @@
             </div>
             </div>
             @endif
+            @endforeach
             {{-- End Modal --}}
         </div>
         <!--end::Container-->

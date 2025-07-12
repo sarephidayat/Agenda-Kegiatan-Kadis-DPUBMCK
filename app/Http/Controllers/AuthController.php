@@ -63,7 +63,7 @@ class AuthController extends Controller
             ($idJabatan == 18 && $idBidang == 6)
         ) {
             // Kepala bidang
-            return redirect()->route('tu-bidang.index', ['id' => $idBidang]);
+            return redirect()->route('tu-bidang.index', ['id_bidang' => $idBidang]);
         } elseif (in_array($idJabatan, [22, 23, 24, 25, 26])) {
             // Staff
             return redirect()->route('staff.index', ['id_bidang' => $idBidang]);

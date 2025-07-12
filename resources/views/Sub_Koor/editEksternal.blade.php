@@ -19,12 +19,7 @@
                     <div class="card mb-4">
                         <div class="card-header">
                             <h3 class="card-title">
-                                <a href="/approvalAlat" style="color: black; text-decoration: none;"
-                                    onmouseover="this.style.textDecoration='underline'"
-                                    onmouseout="this.style.textDecoration='none'">
                                     Edit Disposisi Agenda
-                                </a>
-
                             </h3>
                         </div>
                         <!-- /.card-header -->
