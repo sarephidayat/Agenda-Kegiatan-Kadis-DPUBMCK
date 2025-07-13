@@ -24,9 +24,13 @@ class SekretarisDinasController extends Controller
         ];
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $dataAgendaEksternal = DB::table('agenda_kadis_eksternal')
+        $tanggalMulai = $request->query('tanggal_mulai');
+        $tanggalAkhir = $request->query('tanggal_akhir');
+
+        // ----------------- AGENDA EKSTERNAL -----------------
+        $queryEksternal = DB::table('agenda_kadis_eksternal')
             ->join('master_jabatan', 'agenda_kadis_eksternal.id_jabatan', '=', 'master_jabatan.id_jabatan')
             ->join('master_bidang', 'agenda_kadis_eksternal.id_bidang', '=', 'master_bidang.id_bidang')
             ->join('master_instruksi', 'agenda_kadis_eksternal.id_instruksi', '=', 'master_instruksi.id_instruksi')
@@ -35,26 +39,53 @@ class SekretarisDinasController extends Controller
                 'master_jabatan.nama_jabatan',
                 'master_bidang.nama_bidang',
                 'master_instruksi.isi_instruksi'
-            )
-            ->orderBy('agenda_kadis_eksternal.created_at', 'desc') // (opsional) untuk internal juga urut terbaru
-            ->paginate(10);
+            );
 
+        if ($tanggalMulai && $tanggalAkhir) {
+            $queryEksternal->whereBetween('agenda_kadis_eksternal.tanggal', [$tanggalMulai, $tanggalAkhir]);
+        }
+
+        $dataAgendaEksternal = $queryEksternal
+            ->orderBy('agenda_kadis_eksternal.created_at', 'desc')
+            ->paginate(10)
+            ->appends($request->only(['tanggal_mulai', 'tanggal_akhir']));
+
+
+        // ----------------- AGENDA INTERNAL -----------------
+        $queryInternal = DB::table('agenda_kadis_internal')
+            ->join('master_bidang', 'agenda_kadis_internal.id_bidang', '=', 'master_bidang.id_bidang')
+            ->select(
+                'agenda_kadis_internal.*',
+                'master_bidang.nama_bidang'
+            );
+
+        if ($tanggalMulai && $tanggalAkhir) {
+            $queryInternal->whereBetween('agenda_kadis_internal.tanggal', [$tanggalMulai, $tanggalAkhir]);
+        }
+
+        $dataAgendaInternal = $queryInternal
+            ->orderBy('agenda_kadis_internal.created_at', 'desc')
+            ->paginate(10)
+            ->appends($request->only(['tanggal_mulai', 'tanggal_akhir']));
+
+
+        // ----------------- MASTER DATA -----------------
         $jabatan = DB::table('master_jabatan')->get();
         $bidang = DB::table('master_bidang')->get();
         $instruksi = DB::table('master_instruksi')->get();
 
-
-        $dataAgendaInternal = DB::table('agenda_kadis_internal')
-            ->join('master_bidang', 'agenda_kadis_internal.id_bidang', '=', 'master_bidang.id_bidang') // Join dengan master_cakupan
-            ->select(
-                'agenda_kadis_internal.*',
-                'master_bidang.nama_bidang'
-            )
-            ->orderBy('agenda_kadis_internal.created_at', 'desc') // Urutkan dari terbaru
-            ->paginate(10);
-
-        return view('Sekretaris_Dinas/dashboard', compact('dataAgendaEksternal', 'dataAgendaInternal', 'jabatan', 'bidang', 'instruksi', ));
+        return view('Sekretaris_Dinas.dashboard', compact(
+            'dataAgendaEksternal',
+            'dataAgendaInternal',
+            'jabatan',
+            'bidang',
+            'instruksi',
+            'tanggalMulai',
+            'tanggalAkhir'
+        ));
     }
+
+
 
     public function tambahAgendaInternal()
     {

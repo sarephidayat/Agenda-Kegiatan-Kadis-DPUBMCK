@@ -14,6 +14,13 @@
 <!--end::Required Plugin(Bootstrap 5)--><!--begin::Required Plugin(AdminLTE)-->
 <script src="{{ asset("AdminLTE-4.0.0-beta3") }}/dist/js/adminlte.js"></script>
 <!--end::Required Plugin(AdminLTE)--><!--begin::OverlayScrollbars Configure-->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById("tanggal_mulai").value = today;
+        document.getElementById("tanggal_akhir").value = today;
+    });
+</script>
 
 {{-- begin api wilayah --}}
 

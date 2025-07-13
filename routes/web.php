@@ -8,11 +8,11 @@ use App\Http\Controllers\TUBidangController;
 use App\Http\Controllers\AgendaKadisController;
 use App\Http\Controllers\SekretarisDinasController;
 
-Route::get('/', function () {
-    return view('index');
-});
+// Route::get('/', function () {
+//     return view('index');
+// });
 
-Route::prefix('login')->name('login.')->group(function () {
+Route::prefix('/')->name('login.')->group(function () {
     // Tampilkan form login
     Route::get('/', [AuthController::class, 'showLoginForm'])->name('form');
 
