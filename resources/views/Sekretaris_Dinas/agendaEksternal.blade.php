@@ -32,7 +32,7 @@
                 {{-- Pencarian Data Kegiatan --}}
                 <div class="row mb-3">
                     <div class="col-md-12">
-                        <form action="{{ url('/sekretaris-dinas') }}" method="GET">
+                        <form action="{{ url('/sekretaris-dinas/agenda-eksternal') }}" method="GET">
                             <div class="d-flex justify-content-between align-items-center rounded-2 px-2 py-2 border-gray shadow-sm" style="border: 2px solid #e0e0e0;">
                                 {{-- Teks Kiri --}}
                                 <div class="fw-bold">
@@ -148,6 +148,7 @@
             </div>
             <!--end::Row-->
             {{-- Modal pop up --}}
+            @foreach ($dataAgendaEksternal as $agendaEksternal )
             @if($agendaEksternal->softfile_surat)
             <div class="modal fade" id="pdfModal-{{ $agendaEksternal->id }}" tabindex="-1" aria-labelledby="pdfModalLabel-{{ $agendaEksternal->id }}" aria-hidden="true">
             <div class="modal-dialog modal-xl modal-dialog-centered">
@@ -163,6 +164,7 @@
             </div>
             </div>
             @endif
+            @endforeach
             {{-- End Modal --}}
         </div>
         <!--end::Container-->

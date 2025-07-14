@@ -44,6 +44,31 @@ class SubKoorController extends Controller
             })
             ->paginate(10);
 
+        // ----------------- Count Data -----------------
+        $TotalAgendaEksternal = DB::table('agenda_kadis_eksternal')
+            ->where('id_bidang', $idBidang)
+            ->count();
+
+        $TotalAgendaInternal = DB::table('agenda_kadis_internal')
+            ->where('id_bidang', $idBidang)
+            ->count();
+
+        $TotalAgenda = $TotalAgendaEksternal + $TotalAgendaInternal;
+
+        // Count agenda eksternal hari ini (dengan id_bidang)
+        $TotalAgendaEksternalHariIni = DB::table('agenda_kadis_eksternal')
+            ->where('id_bidang', $idBidang)
+            ->whereDate('tanggal', now())
+            ->count();
+
+        // Count agenda internal hari ini (dengan id_bidang)
+        $TotalAgendaInternalHariIni = DB::table('agenda_kadis_internal')
+            ->where('id_bidang', $idBidang)
+            ->whereDate('tanggal', now())
+            ->count();
+
+        $TotalAgendaHariIni = $TotalAgendaEksternalHariIni + $TotalAgendaInternalHariIni;
+
         $jabatan = DB::table('master_jabatan')->get();
         $bidang = DB::table('master_bidang')->get();
         $instruksi = DB::table('master_instruksi')->get();
@@ -60,7 +85,17 @@ class SubKoorController extends Controller
             })
             ->paginate(10);
 
-        return view('Sub_Koor/dashboard', compact('dataAgendaEksternal', 'dataAgendaInternal', 'jabatan', 'bidang', 'instruksi', ));
+        return view('Sub_Koor/dashboard', compact(
+            'dataAgendaEksternal',
+            'dataAgendaInternal',
+            'TotalAgendaEksternal',
+            'TotalAgendaInternal',
+            'TotalAgenda',
+            'TotalAgendaHariIni',
+            'jabatan',
+            'bidang',
+            'instruksi',
+        ));
     }
 
     public function tambahAgendaInternal()

@@ -8,9 +8,9 @@ use App\Http\Controllers\TUBidangController;
 use App\Http\Controllers\AgendaKadisController;
 use App\Http\Controllers\SekretarisDinasController;
 
-// Route::get('/', function () {
-//     return view('index');
-// });
+Route::get('/', function () {
+    return view('index');
+});
 
 Route::prefix('/')->name('login.')->group(function () {
     // Tampilkan form login
@@ -20,9 +20,6 @@ Route::prefix('/')->name('login.')->group(function () {
     Route::post('/proses', [AuthController::class, 'login'])->name('proses');
 });
 
-Route::get('/landing-page', function () {
-    return view('LandingPage');
-});
 
 // untuk controller AgendaKadisController halaman CobaDatabase
 Route::get('/agenda', [AgendaKadisController::class, 'index']);
