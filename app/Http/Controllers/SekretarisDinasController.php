@@ -68,6 +68,19 @@ class SekretarisDinasController extends Controller
             ->paginate(10)
             ->appends($request->only(['tanggal_mulai', 'tanggal_akhir']));
 
+        // ----------------- Count Data -----------------
+        $TotalAgendaEksternal = $queryEksternal->count();
+        $TotalAgendaInternal = $queryInternal->count();
+        $TotalAgenda = $TotalAgendaEksternal + $TotalAgendaInternal;
+        $TotalAgendaEksternalHariIni = DB::table('agenda_kadis_eksternal')
+            ->whereDate('tanggal', now())
+            ->count();
+
+        $TotalAgendaInternalHariIni = DB::table('agenda_kadis_internal')
+            ->whereDate('tanggal', now())
+            ->count();
+
+        $TotalAgendaHariIni = $TotalAgendaEksternalHariIni + $TotalAgendaInternalHariIni;
 
         // ----------------- MASTER DATA -----------------
         $jabatan = DB::table('master_jabatan')->get();
@@ -77,6 +90,10 @@ class SekretarisDinasController extends Controller
         return view('Sekretaris_Dinas.dashboard', compact(
             'dataAgendaEksternal',
             'dataAgendaInternal',
+            'TotalAgendaEksternal',
+            'TotalAgendaInternal',
+            'TotalAgenda',
+            'TotalAgendaHariIni',
             'jabatan',
             'bidang',
             'instruksi',
@@ -404,9 +421,13 @@ class SekretarisDinasController extends Controller
         return redirect()->route('sekretaris-dinas.index')->with('success', 'Data berhasil diperbarui!');
     }
 
-    public function agendaEksternal()
+    public function agendaEksternal(Request $request)
     {
-        $dataAgendaEksternal = DB::table('agenda_kadis_eksternal')
+        $tanggalMulai = $request->query('tanggal_mulai');
+        $tanggalAkhir = $request->query('tanggal_akhir');
+
+        // ----------------- AGENDA EKSTERNAL -----------------
+        $queryEksternal = DB::table('agenda_kadis_eksternal')
             ->join('master_jabatan', 'agenda_kadis_eksternal.id_jabatan', '=', 'master_jabatan.id_jabatan')
             ->join('master_bidang', 'agenda_kadis_eksternal.id_bidang', '=', 'master_bidang.id_bidang')
             ->join('master_instruksi', 'agenda_kadis_eksternal.id_instruksi', '=', 'master_instruksi.id_instruksi')
@@ -415,8 +436,16 @@ class SekretarisDinasController extends Controller
                 'master_jabatan.nama_jabatan',
                 'master_bidang.nama_bidang',
                 'master_instruksi.isi_instruksi'
-            )
-            ->paginate(10);
+            );
+
+        if ($tanggalMulai && $tanggalAkhir) {
+            $queryEksternal->whereBetween('agenda_kadis_eksternal.tanggal', [$tanggalMulai, $tanggalAkhir]);
+        }
+
+        $dataAgendaEksternal = $queryEksternal
+            ->orderBy('agenda_kadis_eksternal.created_at', 'desc')
+            ->paginate(10)
+            ->appends($request->only(['tanggal_mulai', 'tanggal_akhir']));
 
         $jabatan = DB::table('master_jabatan')->get();
         $bidang = DB::table('master_bidang')->get();
@@ -426,15 +455,27 @@ class SekretarisDinasController extends Controller
 
     }
 
-    public function agendaInternal()
+    public function agendaInternal(Request $request)
     {
-        $dataAgendaInternal = DB::table('agenda_kadis_internal')
+        $tanggalMulai = $request->query('tanggal_mulai');
+        $tanggalAkhir = $request->query('tanggal_akhir');
+
+        $queryInternal = DB::table('agenda_kadis_internal')
             ->join('master_bidang', 'agenda_kadis_internal.id_bidang', '=', 'master_bidang.id_bidang')
             ->select(
                 'agenda_kadis_internal.*',
-                'master_bidang.nama_bidang',
-            )
-            ->paginate(10);
+                'master_bidang.nama_bidang'
+            );
+
+        if ($tanggalMulai && $tanggalAkhir) {
+            $queryInternal->whereBetween('agenda_kadis_internal.tanggal', [$tanggalMulai, $tanggalAkhir]);
+        }
+
+        $dataAgendaInternal = $queryInternal
+            ->orderBy('agenda_kadis_internal.created_at', 'desc')
+            ->paginate(10)
+            ->appends($request->only(['tanggal_mulai', 'tanggal_akhir']));
+
 
         $bidang = DB::table('master_bidang')->get();
 
