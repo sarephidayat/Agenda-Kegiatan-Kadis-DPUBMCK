@@ -28,6 +28,36 @@
     <div class="app-content">
         <!--begin::Container-->
         <div class="container-fluid">
+            {{-- begin row --}}
+                {{-- Pencarian Data Kegiatan --}}
+                <div class="row mb-3">
+                    <div class="col-md-12">
+                        <form action="{{ url('/sekretaris-dinas') }}" method="GET">
+                            <div class="d-flex justify-content-between align-items-center rounded-2 px-2 py-2 border-gray shadow-sm" style="border: 2px solid #e0e0e0;">
+                                {{-- Teks Kiri --}}
+                                <div class="fw-bold">
+                                    Pencarian Data Kegiatan
+                                </div>
+
+                                {{-- Tanggal dan Tombol Kanan --}}
+                                <div class="d-flex align-items-center gap-2">
+                                    {{-- Tanggal Mulai --}}
+                                    <input type="date" name="tanggal_mulai" class="form-control form-control-sm" value="{{ \Carbon\Carbon::today()->format('Y-m-d') }}" style="min-width: 150px;">
+                                    
+                                    {{-- Tanggal Akhir --}}
+                                    <input type="date" name="tanggal_akhir" class="form-control form-control-sm" value="{{ \Carbon\Carbon::today()->format('Y-m-d') }}" style="min-width: 150px;">
+                                    
+                                    {{-- Tombol Cari --}}
+                                    <button type="submit" class="btn btn-primary">
+                                        Cari
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            {{-- end row pencarian data --}}
+            {{-- end row --}}
             <!--begin::Row-->
             <div class="row">
                 <div class="col-md-12">
