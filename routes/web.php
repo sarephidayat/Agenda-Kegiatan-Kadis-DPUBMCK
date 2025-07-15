@@ -34,19 +34,18 @@ Route::middleware(['web', 'auth'])->group(function () {
     Route::get('/sub-koor', [SubKoorController::class, 'index'])->name('sub-koor.index');
 });
 
+Route::get('/sekretaris-dinas', [SekretarisDinasController::class, 'index'])
+    ->name('sekretaris-dinas.index')
+    ->middleware('Auth');
 
+// Tampilkan form login
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 
-Route::prefix('/login')->name('login.')->group(function () {
-    // Tampilkan form login
-    Route::get('/', [AuthController::class, 'showLoginForm'])->name('form');
-
-    // Proses login
-    Route::post('/proses', [AuthController::class, 'login'])->name('proses');
-});
+// Proses login
+Route::post('/proses', [AuthController::class, 'login'])->name('proses');
 
 //proses logout
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-
 
 // untuk controller AgendaKadisController halaman CobaDatabase
 Route::get('/agenda', [AgendaKadisController::class, 'index']);

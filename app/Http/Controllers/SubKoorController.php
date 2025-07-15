@@ -26,76 +26,81 @@ class SubKoorController extends Controller
 
     public function index(Request $request)
     {
-        // Ambil id_bidang dari query string (?id_bidang=...)
-        $idBidang = $request->query('id_bidang');
+        $user = $request->session()->get('username');
+        if (!$user) {
+            return redirect()->route('login')->with('error', 'Silakan login dulu.');
+        } else {
+            // Ambil id_bidang dari query string (?id_bidang=...)
+            $idBidang = $request->query('id_bidang');
 
-        $dataAgendaEksternal = DB::table('agenda_kadis_eksternal')
-            ->join('master_jabatan', 'agenda_kadis_eksternal.id_jabatan', '=', 'master_jabatan.id_jabatan')
-            ->join('master_bidang', 'agenda_kadis_eksternal.id_bidang', '=', 'master_bidang.id_bidang')
-            ->join('master_instruksi', 'agenda_kadis_eksternal.id_instruksi', '=', 'master_instruksi.id_instruksi')
-            ->select(
-                'agenda_kadis_eksternal.*',
-                'master_jabatan.nama_jabatan',
-                'master_bidang.nama_bidang',
-                'master_instruksi.isi_instruksi'
-            )
-            ->when($idBidang, function ($query) use ($idBidang) {
-                return $query->where('agenda_kadis_eksternal.id_bidang', $idBidang);
-            })
-            ->paginate(10);
+            $dataAgendaEksternal = DB::table('agenda_kadis_eksternal')
+                ->join('master_jabatan', 'agenda_kadis_eksternal.id_jabatan', '=', 'master_jabatan.id_jabatan')
+                ->join('master_bidang', 'agenda_kadis_eksternal.id_bidang', '=', 'master_bidang.id_bidang')
+                ->join('master_instruksi', 'agenda_kadis_eksternal.id_instruksi', '=', 'master_instruksi.id_instruksi')
+                ->select(
+                    'agenda_kadis_eksternal.*',
+                    'master_jabatan.nama_jabatan',
+                    'master_bidang.nama_bidang',
+                    'master_instruksi.isi_instruksi'
+                )
+                ->when($idBidang, function ($query) use ($idBidang) {
+                    return $query->where('agenda_kadis_eksternal.id_bidang', $idBidang);
+                })
+                ->paginate(10);
 
-        // ----------------- Count Data -----------------
-        $TotalAgendaEksternal = DB::table('agenda_kadis_eksternal')
-            ->where('id_bidang', $idBidang)
-            ->count();
+            // ----------------- Count Data -----------------
+            $TotalAgendaEksternal = DB::table('agenda_kadis_eksternal')
+                ->where('id_bidang', $idBidang)
+                ->count();
 
-        $TotalAgendaInternal = DB::table('agenda_kadis_internal')
-            ->where('id_bidang', $idBidang)
-            ->count();
+            $TotalAgendaInternal = DB::table('agenda_kadis_internal')
+                ->where('id_bidang', $idBidang)
+                ->count();
 
-        $TotalAgenda = $TotalAgendaEksternal + $TotalAgendaInternal;
+            $TotalAgenda = $TotalAgendaEksternal + $TotalAgendaInternal;
 
-        // Count agenda eksternal hari ini (dengan id_bidang)
-        $TotalAgendaEksternalHariIni = DB::table('agenda_kadis_eksternal')
-            ->where('id_bidang', $idBidang)
-            ->whereDate('tanggal', now())
-            ->count();
+            // Count agenda eksternal hari ini (dengan id_bidang)
+            $TotalAgendaEksternalHariIni = DB::table('agenda_kadis_eksternal')
+                ->where('id_bidang', $idBidang)
+                ->whereDate('tanggal', now())
+                ->count();
 
-        // Count agenda internal hari ini (dengan id_bidang)
-        $TotalAgendaInternalHariIni = DB::table('agenda_kadis_internal')
-            ->where('id_bidang', $idBidang)
-            ->whereDate('tanggal', now())
-            ->count();
+            // Count agenda internal hari ini (dengan id_bidang)
+            $TotalAgendaInternalHariIni = DB::table('agenda_kadis_internal')
+                ->where('id_bidang', $idBidang)
+                ->whereDate('tanggal', now())
+                ->count();
 
-        $TotalAgendaHariIni = $TotalAgendaEksternalHariIni + $TotalAgendaInternalHariIni;
+            $TotalAgendaHariIni = $TotalAgendaEksternalHariIni + $TotalAgendaInternalHariIni;
 
-        $jabatan = DB::table('master_jabatan')->get();
-        $bidang = DB::table('master_bidang')->get();
-        $instruksi = DB::table('master_instruksi')->get();
+            $jabatan = DB::table('master_jabatan')->get();
+            $bidang = DB::table('master_bidang')->get();
+            $instruksi = DB::table('master_instruksi')->get();
 
 
-        $dataAgendaInternal = DB::table('agenda_kadis_internal')
-            ->join('master_bidang', 'agenda_kadis_internal.id_bidang', '=', 'master_bidang.id_bidang') // Join dengan master_cakupan
-            ->select(
-                'agenda_kadis_internal.*',
-                'master_bidang.nama_bidang'
-            )
-            ->when($idBidang, function ($query) use ($idBidang) {
-                return $query->where('agenda_kadis_internal.id_bidang', $idBidang);
-            })
-            ->paginate(10);
+            $dataAgendaInternal = DB::table('agenda_kadis_internal')
+                ->join('master_bidang', 'agenda_kadis_internal.id_bidang', '=', 'master_bidang.id_bidang') // Join dengan master_cakupan
+                ->select(
+                    'agenda_kadis_internal.*',
+                    'master_bidang.nama_bidang'
+                )
+                ->when($idBidang, function ($query) use ($idBidang) {
+                    return $query->where('agenda_kadis_internal.id_bidang', $idBidang);
+                })
+                ->paginate(10);
 
-        return view('Sub_Koor/dashboard', compact(
-            'dataAgendaEksternal',
-            'dataAgendaInternal',
-            'TotalAgendaEksternal',
-            'TotalAgendaInternal',
-            'TotalAgenda',
-            'TotalAgendaHariIni',
-            'jabatan',
-            'bidang',
-            'instruksi',
-        ));
+            return view('Sub_Koor/dashboard', compact(
+                'dataAgendaEksternal',
+                'dataAgendaInternal',
+                'TotalAgendaEksternal',
+                'TotalAgendaInternal',
+                'TotalAgenda',
+                'TotalAgendaHariIni',
+                'jabatan',
+                'bidang',
+                'instruksi',
+            ));
+        }
     }
 
     public function tambahAgendaInternal()

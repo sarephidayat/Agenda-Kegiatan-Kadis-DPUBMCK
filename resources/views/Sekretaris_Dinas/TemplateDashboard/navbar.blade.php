@@ -35,7 +35,7 @@
                     
                     <!--begin::Menu Footer-->
                     <li class="user-footer">
-                        <form action="{{ route('logout') }}" method="POST" class="d-inline">
+                        <form action="{{ route('logout') }}" method="post" class="d-inline">
                             @csrf
                             <button type="submit" class="btn btn-default btn-flat float-end">Sign out</button>
                         </form>

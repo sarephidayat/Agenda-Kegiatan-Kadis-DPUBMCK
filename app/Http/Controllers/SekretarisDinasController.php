@@ -27,87 +27,96 @@ class SekretarisDinasController extends Controller
 
     public function index(Request $request)
     {
-        Auth::check();
+        // dd(session()->get('username'));
+        $user = $request->session()->get('username');
+        if (!$user) {
+            return redirect()->route('login')->with('error', 'Silakan login dulu.');
+        } else {
+            // Jika user sudah login, lanjutkan ke halaman dashboard
+            $tanggalMulai = $request->query('tanggal_mulai');
+            $tanggalAkhir = $request->query('tanggal_akhir');
 
-        $tanggalMulai = $request->query('tanggal_mulai');
-        $tanggalAkhir = $request->query('tanggal_akhir');
+            // ----------------- AGENDA EKSTERNAL -----------------
+            $queryEksternal = DB::table('agenda_kadis_eksternal')
+                ->join('master_jabatan', 'agenda_kadis_eksternal.id_jabatan', '=', 'master_jabatan.id_jabatan')
+                ->join('master_bidang', 'agenda_kadis_eksternal.id_bidang', '=', 'master_bidang.id_bidang')
+                ->join('master_instruksi', 'agenda_kadis_eksternal.id_instruksi', '=', 'master_instruksi.id_instruksi')
+                ->select(
+                    'agenda_kadis_eksternal.*',
+                    'master_jabatan.nama_jabatan',
+                    'master_bidang.nama_bidang',
+                    'master_instruksi.isi_instruksi'
+                );
 
-        // ----------------- AGENDA EKSTERNAL -----------------
-        $queryEksternal = DB::table('agenda_kadis_eksternal')
-            ->join('master_jabatan', 'agenda_kadis_eksternal.id_jabatan', '=', 'master_jabatan.id_jabatan')
-            ->join('master_bidang', 'agenda_kadis_eksternal.id_bidang', '=', 'master_bidang.id_bidang')
-            ->join('master_instruksi', 'agenda_kadis_eksternal.id_instruksi', '=', 'master_instruksi.id_instruksi')
-            ->select(
-                'agenda_kadis_eksternal.*',
-                'master_jabatan.nama_jabatan',
-                'master_bidang.nama_bidang',
-                'master_instruksi.isi_instruksi'
-            );
+            if ($tanggalMulai && $tanggalAkhir) {
+                $queryEksternal->whereBetween('agenda_kadis_eksternal.tanggal', [$tanggalMulai, $tanggalAkhir]);
+            }
 
-        if ($tanggalMulai && $tanggalAkhir) {
-            $queryEksternal->whereBetween('agenda_kadis_eksternal.tanggal', [$tanggalMulai, $tanggalAkhir]);
+            $dataAgendaEksternal = $queryEksternal
+                ->orderBy('agenda_kadis_eksternal.tanggal', 'desc')
+                ->paginate(10)
+                ->appends($request->only(['tanggal_mulai', 'tanggal_akhir']));
+
+
+            // ----------------- AGENDA INTERNAL -----------------
+            $queryInternal = DB::table('agenda_kadis_internal')
+                ->join('master_bidang', 'agenda_kadis_internal.id_bidang', '=', 'master_bidang.id_bidang')
+                ->select(
+                    'agenda_kadis_internal.*',
+                    'master_bidang.nama_bidang'
+                );
+
+            if ($tanggalMulai && $tanggalAkhir) {
+                $queryInternal->whereBetween('agenda_kadis_internal.tanggal', [$tanggalMulai, $tanggalAkhir]);
+            }
+
+            $dataAgendaInternal = $queryInternal
+                ->orderBy('agenda_kadis_internal.tanggal', 'desc')
+                ->paginate(10)
+                ->appends($request->only(['tanggal_mulai', 'tanggal_akhir']));
+
+            // ----------------- Count Data -----------------
+            $TotalAgendaEksternal = $queryEksternal->count();
+            $TotalAgendaInternal = $queryInternal->count();
+            $TotalAgenda = $TotalAgendaEksternal + $TotalAgendaInternal;
+            $TotalAgendaEksternalHariIni = DB::table('agenda_kadis_eksternal')
+                ->whereDate('tanggal', now())
+                ->count();
+
+            $TotalAgendaInternalHariIni = DB::table('agenda_kadis_internal')
+                ->whereDate('tanggal', now())
+                ->count();
+
+            $TotalAgendaHariIni = $TotalAgendaEksternalHariIni + $TotalAgendaInternalHariIni;
+
+            // ----------------- MASTER DATA -----------------
+            $jabatan = DB::table('master_jabatan')->get();
+            $bidang = DB::table('master_bidang')->get();
+            $instruksi = DB::table('master_instruksi')->get();
+
+            // $user = Auth::user(); // Mendapatkan data user yang sedang login
+            // dd(Auth::user());
+            // return auth()->user();
+            // dd(Auth::user());
+
+            // dd(session('username'));
+
+
+            return view('Sekretaris_Dinas.dashboard', compact(
+                'dataAgendaEksternal',
+                'dataAgendaInternal',
+                'TotalAgendaEksternal',
+                'TotalAgendaInternal',
+                'TotalAgenda',
+                'TotalAgendaHariIni',
+                'jabatan',
+                'bidang',
+                'instruksi',
+                'tanggalMulai',
+                'tanggalAkhir'
+                // 'user' // Mengirim data user ke view
+            ));
         }
-
-        $dataAgendaEksternal = $queryEksternal
-            ->orderBy('agenda_kadis_eksternal.tanggal', 'desc')
-            ->paginate(10)
-            ->appends($request->only(['tanggal_mulai', 'tanggal_akhir']));
-
-
-        // ----------------- AGENDA INTERNAL -----------------
-        $queryInternal = DB::table('agenda_kadis_internal')
-            ->join('master_bidang', 'agenda_kadis_internal.id_bidang', '=', 'master_bidang.id_bidang')
-            ->select(
-                'agenda_kadis_internal.*',
-                'master_bidang.nama_bidang'
-            );
-
-        if ($tanggalMulai && $tanggalAkhir) {
-            $queryInternal->whereBetween('agenda_kadis_internal.tanggal', [$tanggalMulai, $tanggalAkhir]);
-        }
-
-        $dataAgendaInternal = $queryInternal
-            ->orderBy('agenda_kadis_internal.tanggal', 'desc')
-            ->paginate(10)
-            ->appends($request->only(['tanggal_mulai', 'tanggal_akhir']));
-
-        // ----------------- Count Data -----------------
-        $TotalAgendaEksternal = $queryEksternal->count();
-        $TotalAgendaInternal = $queryInternal->count();
-        $TotalAgenda = $TotalAgendaEksternal + $TotalAgendaInternal;
-        $TotalAgendaEksternalHariIni = DB::table('agenda_kadis_eksternal')
-            ->whereDate('tanggal', now())
-            ->count();
-
-        $TotalAgendaInternalHariIni = DB::table('agenda_kadis_internal')
-            ->whereDate('tanggal', now())
-            ->count();
-
-        $TotalAgendaHariIni = $TotalAgendaEksternalHariIni + $TotalAgendaInternalHariIni;
-
-        // ----------------- MASTER DATA -----------------
-        $jabatan = DB::table('master_jabatan')->get();
-        $bidang = DB::table('master_bidang')->get();
-        $instruksi = DB::table('master_instruksi')->get();
-
-        // $user = Auth::user(); // Mendapatkan data user yang sedang login
-        // dd(Auth::user());
-
-
-        return view('Sekretaris_Dinas.dashboard', compact(
-            'dataAgendaEksternal',
-            'dataAgendaInternal',
-            'TotalAgendaEksternal',
-            'TotalAgendaInternal',
-            'TotalAgenda',
-            'TotalAgendaHariIni',
-            'jabatan',
-            'bidang',
-            'instruksi',
-            'tanggalMulai',
-            'tanggalAkhir'
-            // 'user' // Mengirim data user ke view
-        ));
     }
 
 

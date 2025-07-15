@@ -18,8 +18,6 @@ class AuthController extends Controller
     // Proses login
     public function login(Request $request)
     {
-        // dd(Auth::check(), Auth::user());
-
         // 1. Validasi input terlebih dahulu
         $request->validate([
             'username' => 'required|string',
@@ -39,6 +37,8 @@ class AuthController extends Controller
 
         // 4. Login user ke sistem
         Auth::login($user);
+        // dd(Auth::user()->username);
+        // return auth()->user();
         $request->session()->regenerate();
 
         // 4.1 Simpan data tambahan ke session
@@ -85,14 +85,13 @@ class AuthController extends Controller
 
 
 
-    // Logout
     public function logout(Request $request)
     {
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect()->route('login.form');
+        return redirect()->route('login');
     }
 
 }

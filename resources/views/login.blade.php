@@ -34,7 +34,7 @@
             <div class="success-message" id="successMessage"></div>
             <div class="error-message" id="errorMessage"></div>
             
-            <form id="loginForm" method="POST" action="{{ route('login.proses') }}">
+            <form id="loginForm" method="POST" action="{{ route('proses') }}">
                 @csrf
                 <div class="form-group">
                     <label for="username">Username / NIP</label>
