@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class SekretarisDinasController extends Controller
@@ -26,6 +27,8 @@ class SekretarisDinasController extends Controller
 
     public function index(Request $request)
     {
+        Auth::check();
+
         $tanggalMulai = $request->query('tanggal_mulai');
         $tanggalAkhir = $request->query('tanggal_akhir');
 
@@ -46,7 +49,7 @@ class SekretarisDinasController extends Controller
         }
 
         $dataAgendaEksternal = $queryEksternal
-            ->orderBy('agenda_kadis_eksternal.created_at', 'desc')
+            ->orderBy('agenda_kadis_eksternal.tanggal', 'desc')
             ->paginate(10)
             ->appends($request->only(['tanggal_mulai', 'tanggal_akhir']));
 
@@ -64,7 +67,7 @@ class SekretarisDinasController extends Controller
         }
 
         $dataAgendaInternal = $queryInternal
-            ->orderBy('agenda_kadis_internal.created_at', 'desc')
+            ->orderBy('agenda_kadis_internal.tanggal', 'desc')
             ->paginate(10)
             ->appends($request->only(['tanggal_mulai', 'tanggal_akhir']));
 
@@ -87,6 +90,10 @@ class SekretarisDinasController extends Controller
         $bidang = DB::table('master_bidang')->get();
         $instruksi = DB::table('master_instruksi')->get();
 
+        // $user = Auth::user(); // Mendapatkan data user yang sedang login
+        // dd(Auth::user());
+
+
         return view('Sekretaris_Dinas.dashboard', compact(
             'dataAgendaEksternal',
             'dataAgendaInternal',
@@ -99,6 +106,7 @@ class SekretarisDinasController extends Controller
             'instruksi',
             'tanggalMulai',
             'tanggalAkhir'
+            // 'user' // Mengirim data user ke view
         ));
     }
 

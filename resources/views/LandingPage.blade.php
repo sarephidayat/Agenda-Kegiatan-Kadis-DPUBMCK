@@ -557,6 +557,7 @@ function formatTanggal($date) {
     
     <main class="container">
         <h1 class="dashboard-title">DASHBOARD AGENDA KEPALA DINAS</h1>
+        <a href="/login">login</a>
         
         <div class="stats-container">
             <div class="stat-card total">

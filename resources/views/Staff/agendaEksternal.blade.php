@@ -87,9 +87,6 @@
                                                     <span class="text-muted">Tidak ada dokumen</span>
                                                     @endif
                                                 </td>
-                                                <td>
-                                                    <a href="staff/editEksternal/{{$agendaEksternal->id}}" class="btn btn-warning btn-sm">edit</a>
-                                                </td>
                                             </tr>
                                         @endforeach
                                     </tbody>

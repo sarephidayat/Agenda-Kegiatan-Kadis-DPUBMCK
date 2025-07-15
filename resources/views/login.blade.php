@@ -55,7 +55,7 @@
                     @enderror
                 </div>
                 
-                <button type="submit" class="login-btn">Masuk ke Dashboard</button>
+                <button type="submit" class="login-btn">Masuk</button>
             </form>
             
             <div class="footer-text">

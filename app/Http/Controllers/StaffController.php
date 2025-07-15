@@ -11,7 +11,7 @@ class StaffController extends Controller
     public function index(Request $request)
     {
         // Ambil id_bidang dari query string (?id_bidang=...)
-        $idBidang = $request->query('id_bidang');
+        $idBidang = session('id_bidang');
 
         // Agenda Eksternal (difilter berdasarkan id_bidang)
         $dataAgendaEksternal = DB::table('agenda_kadis_eksternal')

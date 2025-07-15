@@ -1,7 +1,9 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ChartController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\SubKoorController;
 use App\Http\Controllers\TUBidangController;
@@ -9,16 +11,41 @@ use App\Http\Controllers\AgendaKadisController;
 use App\Http\Controllers\SekretarisDinasController;
 
 Route::get('/', function () {
-    return view('index');
+    return view('landingpage');
 });
 
-Route::prefix('/')->name('login.')->group(function () {
+Route::get('/chart', function () {
+    return view('chart');
+});
+
+Route::get('/chart2', function () {
+    return view('chart2');
+});
+
+Route::get('/api/chart-agenda-eksternal-mingguan', [ChartController::class, 'chartAgendaEksternalPerMinggu']);
+Route::get('/api/chart-agenda-internal-mingguan', [ChartController::class, 'chartAgendaInternalPerMinggu']);
+
+
+// Route untuk autentikasi
+Route::middleware(['web', 'auth'])->group(function () {
+    Route::get('/sekretaris-dinas', [SekretarisDinasController::class, 'index'])->name('sekretaris-dinas.index');
+    Route::get('/staff', [StaffController::class, 'index'])->name('staff.index');
+    Route::get('/tu-bidang', [TUBidangController::class, 'index'])->name('tu-bidang.index');
+    Route::get('/sub-koor', [SubKoorController::class, 'index'])->name('sub-koor.index');
+});
+
+
+
+Route::prefix('/login')->name('login.')->group(function () {
     // Tampilkan form login
     Route::get('/', [AuthController::class, 'showLoginForm'])->name('form');
 
     // Proses login
     Route::post('/proses', [AuthController::class, 'login'])->name('proses');
 });
+
+//proses logout
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 
 // untuk controller AgendaKadisController halaman CobaDatabase
